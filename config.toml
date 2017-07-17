@@ -1,38 +1,28 @@
 baseurl = "https://example.org/"
-languageCode = "en-us"
-title = "John Doe's blog"
+languageCode = "ja-jp"
+title = "kuluna.class"
 # Define how many pages appear per site
-paginate = 10
+paginate = 5
 # Enable comments powered by Disqus by entering your disqus shortname
-disqusShortname = "spf13"
+disqusShortname = "kuluna"
+theme = "hugo-minimalist-theme"
+publishDir = "docs"
 # Enable gogle analytics by entering your tracking code
 googleAnalytics = ""
-theme = "hugo-minimalist-theme"
 
 [params]
-    site_author = "John Doe"
-    site_description = "The awesome blog of John Doe."
-    location = "Earth"
+    site_author = "kuluna"
+    site_description = "Build any languages, Run anywhere."
+    location = "Japan"
     # Link custom assets relative to /static
-    avatar = "img/profile-image.png"
+    avatar = "favicon.png"
     header_background = "img/desk.jpg"
-    header_title = "Customizable header title"
+    header_title = "kuluna.class"
     copyright = "Powered by [Hugo](http://gohugo.io)."
-    custom_css = []
-    custom_js  = []
 
     # Enable gogle analytics by entering your tracking code
     google_analytics = ""
 
 [social]
-    # Add your social network accounts to the profile section on the left
-    # by entering your username. The links to your account will be
-    # create automatically.
-    twitter   = "spf13"
-    facebook  = ""
-    linkedin  = ""
-    behance   = ""
-    dribbble  = ""
-    instagram = ""
-    github    = "digitalcraftsman"
-    gplus     = ""
+    twitter   = "kuluna"
+    github    = "kuluna"
