@@ -3,8 +3,6 @@ languageCode = "ja-jp"
 title = "kuluna.class"
 # Define how many pages appear per site
 paginate = 5
-# Enable comments powered by Disqus by entering your disqus shortname
-disqusShortname = "kuluna"
 theme = "hugo-minimalist-theme"
 publishDir = "docs"
 # Enable gogle analytics by entering your tracking code
@@ -16,7 +14,7 @@ googleAnalytics = ""
     location = "Japan"
     # Link custom assets relative to /static
     avatar = "favicon.png"
-    header_background = "img/desk.jpg"
+    header_background = "cover.jpg"
     header_title = "kuluna.class"
     copyright = "Powered by [Hugo](http://gohugo.io)."
 
