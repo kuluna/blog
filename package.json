@@ -1,0 +1,15 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "author": "kuluna",
+  "private": true,
+  "scripts": {
+    "build": "hugo",
+    "start": "hugo server --watch",
+    "lint": "textlint"
+  },
+  "devDependencies": {
+    "textlint": "^8.2.1",
+    "textlint-rule-preset-japanese": "^1.3.4"
+  }
+}

@@ -1,0 +1,211 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>kuluna.class</title>
+        <meta name="author">
+        <meta name="description" content="Build any languages, Run anywhere.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="generator" content="Hugo 0.25.1" />
+        <link href="https://kuluna.github.io/blog/post/index.xml" rel="alternate" type="application/rss+xml" title="kuluna.class" />
+        <link href="https://kuluna.github.io/blog/post/index.xml" rel="feed" type="application/rss+xml" title="kuluna.class" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://kuluna.github.io/blog/css/styles.css">
+        <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
+        <link rel="apple-touch-icon" href="https://kuluna.github.io/blog/apple-touch-icon.png" />
+        <link rel="stylesheet" href="https://kuluna.github.io/blog/css/highlightjs/monokai.css">
+        <script src="https://kuluna.github.io/blog/js/vendor/modernizr-2.8.0.min.js"></script>
+        
+        <style>
+        .site-header h2 .logo {
+        background: url(https://kuluna.github.io/blog/cover.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(https://kuluna.github.io/blog/cover.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(https://kuluna.github.io/blog/cover.jpg) no-repeat center center;
+         z-index: -1;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2>kuluna.class</h2>
+          </div>
+        </header>
+
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        <article class="post">
+            <a class="btn home" href="https://kuluna.github.io/blog/" title="">&laquo; </a>
+            
+<h1><a href="https://kuluna.github.io/blog/post/20170723/" title="ASP.NET Coreで常にHTTPSにリダイレクトする">ASP.NET Coreで常にHTTPSにリダイレクトする</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2017.07.23">2017.07.23</time>
+
+</span>
+</footer>
+
+            
+
+<p>従来のASP.NETではweb.configをたくさんいじってあれこれ設定していましたが、ASP.NET CoreからはほとんどをStartup.csに記述するようなりました。<br />
+個人的にもそのほうがコンパイルエラーで設定ミスとかが分かるのでこっちのほうが好きですね。</p>
+
+<h1 id="環境">環境</h1>
+
+<ul>
+<li>.net core 1.1</li>
+</ul>
+
+<h1 id="httpsにリダイレクトする">HTTPSにリダイレクトする</h1>
+
+<h2 id="rewriteのインストール">Rewriteのインストール</h2>
+
+<p>HTTPでアクセスしたときにHTTPSへリダイレクトするのもStartup.csで設定するようになりました。</p>
+
+<p>まずはNugetからリダイレクトするライブラリをインストールします。<br />
+Nugetで<code>Microsoft.AspNetCore.Rewrite</code>を検索してインストールします。あるいはcsprojに直接書いてもOKです。</p>
+
+<pre><code class="language-xml">&lt;ItemGroup&gt;
+    &lt;PackageReference Include=&quot;Microsoft.AspNetCore.Rewrite&quot; Version=&quot;1.0.2&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre>
+
+<p>csprojに直接書いた場合は<code>dotnet restore</code>コマンドを忘れずに実行しましょう。</p>
+
+<h2 id="リダイレクト設定">リダイレクト設定</h2>
+
+<p>Startup.csで編集する箇所は2か所です。</p>
+
+<pre><code class="language-cs">public void ConfigureServices(IServiceCollection services)
+{
+    // Add framework services.
+    services.AddMvc();
+    
+    services.Configure&lt;MvcOptions&gt;(options =&gt;
+    {
+        options.Filters.Add(new RequireHttpsAttribute());
+    });
+}
+</code></pre>
+
+<pre><code class="language-cs">public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    loggerFactory.AddConsole(Configuration.GetSection(&quot;Logging&quot;));
+    loggerFactory.AddDebug();
+
+    app.UseRewriter(new RewriteOptions().AddRedirectToHttps());
+
+    app.UseMvc();
+}
+</code></pre>
+
+<p>上ではASP.NET Core全体にHTTPSを必須とする属性を追加します。<br />
+下ではHTTPでアクセスしたときにHTTPSでリダイレクトするように設定をしています。</p>
+
+<p>Azure App ServicesではHTTPも受け付けますが、これでAzureにアップロードするとHTTPでアクセス時にHTTPSにリダイレクトされるようになります。</p>
+
+<p><a href="https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=ja">Googleのチェックツール</a>を使うとHTTPからHTTPSにリダイレクトできていることが検証できます。</p>
+
+<p><img src="../../images/2017-07-23/1.png" alt="Lighthouse" /></p>
+
+<h2 id="プロダクション時だけonにする">プロダクション時だけONにする</h2>
+
+<p>Startup.csでは現在がどのモードで動作しているかが取得できるので、Production時だけの処理を簡単に書けます。</p>
+
+<pre><code class="language-cs">if (env.IsProduction())
+{
+    app.UseRewriter(new RewriteOptions().AddRedirectToHttps());
+}
+</code></pre>
+
+<p>またはappsettings.jsonの値を見るようにしても良いと思います。</p>
+
+<h1 id="参考">参考</h1>
+
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/aspnet/core/security/enforcing-ssl">Enforcing SSL in an ASP.NET Core app</a></li>
+</ul>
+
+            <ul class="share-buttons">
+    <li></li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkuluna.github.io%2fblog%2fpost%2f20170723%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=ASP.NET%20Core%e3%81%a7%e5%b8%b8%e3%81%abHTTPS%e3%81%ab%e3%83%aa%e3%83%80%e3%82%a4%e3%83%ac%e3%82%af%e3%83%88%e3%81%99%e3%82%8b&amp;url=https%3a%2f%2fkuluna.github.io%2fblog%2fpost%2f20170723%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=https%3a%2f%2fkuluna.github.io%2fblog%2fpost%2f20170723%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkuluna.github.io%2fblog%2fpost%2f20170723%2f&title=ASP.NET%20Core%e3%81%a7%e5%b8%b8%e3%81%abHTTPS%e3%81%ab%e3%83%aa%e3%83%80%e3%82%a4%e3%83%ac%e3%82%af%e3%83%88%e3%81%99%e3%82%8b" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title=""></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3></h3>
+            
+        </div>
+    </main>
+    <aside class="author">
+  <img class="profile-image" src="https://kuluna.github.io/blog/favicon.png" alt="kuluna" />
+  <p class="name"> 
+  <strong>kuluna</strong></p>
+  <p class="address">Japan</p>
+  <p class="link"></p>
+  <ul class="social">
+    
+<li><a href="//twitter.com/kuluna" class="icon-twitter" target="_blank" title="Twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//github.com/kuluna" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+
+<li><a href="https://kuluna.github.io/blog/post/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+  </ul>
+  <br><br>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="https://kuluna.github.io/blog/post/index.xml" title="RSS"></a>
+        <p>&copy; 2017 &middot; Powered by <a href="http://gohugo.io">Hugo</a>.</p>
+  </div>
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="https:\/\/kuluna.github.io\/blog\/js\/vendor\/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="https://kuluna.github.io/blog/js/plugins.js"></script>
+
+
+
+
+</body>
+</html>
+

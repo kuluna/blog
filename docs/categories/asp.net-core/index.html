@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Categories &middot; kuluna.class</title>
+        <title>Asp.Net Core &middot; kuluna.class</title>
         <meta name="author">
         <meta name="description" content="Build any languages, Run anywhere.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,16 +41,46 @@
 
 <div class="container clearfix">
     <main role="main" class="content">
-    <a class="btn home" href="https://kuluna.github.io/blog/" title="">&laquo; </a>
-    <h2>Categories:</a>
-    <ul>
-     
-        <li>
-            <a href="asp.net-core">asp.net-core (1)</a>
-        </li>
+        <a class="btn home" href="https://kuluna.github.io/blog/" title="">&laquo; </a>
+        
+        
+            <article class="post">
     
-    </ul>
+<h1><a href="https://kuluna.github.io/blog/post/20170723/" title="ASP.NET Coreで常にHTTPSにリダイレクトする">ASP.NET Coreで常にHTTPSにリダイレクトする</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2017.07.23">2017.07.23</time>
+
+</span>
+</footer>
+
+    <p>従来のASP.NETではweb.configをたくさんいじってあれこれ設定していましたが、ASP.NET CoreからはほとんどをStartup.csに記述するようなりました。
+個人的にもそのほうがコンパイルエラーで設定ミスとかが分かるのでこっちのほうが好きですね。
+環境  .net core 1.1  HTTPSにリダイレクトする Rewriteのインストール HTTPでアクセスしたときにHTTPSへリダイレクトするのもStartup.csで設定するようになりました。
+まずはNugetからリダイレクトするライブラリをインストールします。
+NugetでMicrosoft.AspNetCore.Rewriteを検索してインストールします。あるいはcsprojに直接書いてもOKです。
+&lt;ItemGroup&gt; &lt;PackageReference Include=&quot;Microsoft.AspNetCore.Rewrite&quot; Version=&quot;1.0.2&quot; /&gt; &lt;/ItemGroup&gt;  csprojに直接書いた場合はdotnet restoreコマンドを忘れずに実行しましょう。
+リダイレクト設定 Startup.csで編集する箇所は2か所です。
+public void ConfigureServices(IServiceCollection services) { // Add framework services. services.AddMvc(); services.Configure&lt;MvcOptions&gt;(options =&gt; { options.Filters.Add(new RequireHttpsAttribute()); }); }  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) { loggerFactory.AddConsole(Configuration.GetSection(&quot;Logging&quot;)); loggerFactory.AddDebug(); app.UseRewriter(new RewriteOptions().AddRedirectToHttps()); app.UseMvc(); }  上ではASP.NET Core全体にHTTPSを必須とする属性を追加します。
+下ではHTTPでアクセスしたときにHTTPSでリダイレクトするように設定をしています。
+Azure App ServicesではHTTPも受け付けますが、これでAzureにアップロードするとHTTPでアクセス時にHTTPSにリダイレクトされるようになります。
+Googleのチェックツールを使うとHTTPからHTTPSにリダイレクトできていることが検証できます。
+プロダクション時だけONにする Startup.csでは現在がどのモードで動作しているかが取得できるので、Production時だけの処理を簡単に書けます。
+if (env.&hellip;</p>
+    <a href="https://kuluna.github.io/blog/post/20170723/" title="ASP.NET Coreで常にHTTPSにリダイレクトする"> &raquo;</a>
+</article>
+
+        
+        <div class="pagination">
+<nav>
+
+	<p class="counter"> 1  1</p>
+
+
+</nav>
+</div>
+
     </main>
+
     <aside class="author">
   <img class="profile-image" src="https://kuluna.github.io/blog/favicon.png" alt="kuluna" />
   <p class="name"> 

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kuluna.class</title>
-    <link>https://kuluna.github.io/blog/</link>
-    <description>Recent content on kuluna.class</description>
+    <title>Asp.Net Core on kuluna.class</title>
+    <link>https://kuluna.github.io/blog/categories/asp.net-core/</link>
+    <description>Recent content in Asp.Net Core on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
     <lastBuildDate>Sun, 23 Jul 2017 11:37:28 +0900</lastBuildDate>
     
-	<atom:link href="https://kuluna.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kuluna.github.io/blog/categories/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -31,17 +31,6 @@ Azure App ServicesではHTTPも受け付けますが、これでAzureにアッ�
 Googleのチェックツールを使うとHTTPからHTTPSにリダイレクトできていることが検証できます。
 プロダクション時だけONにする Startup.csでは現在がどのモードで動作しているかが取得できるので、Production時だけの処理を簡単に書けます。
 if (env.</description>
-    </item>
-    
-    <item>
-      <title>First commit.</title>
-      <link>https://kuluna.github.io/blog/post/20170717/</link>
-      <pubDate>Mon, 17 Jul 2017 00:11:38 +0900</pubDate>
-      
-      <guid>https://kuluna.github.io/blog/post/20170717/</guid>
-      <description>これまではQiita等でいくつか技術的な内容を投稿してきましたが、 それ以外にも書く場所が欲しかったので、GitHub Pagesを使ってブログを書くことにしました。
-このサイトはHugoを使って作りました。ほんとはAngularとかで作ってみたかったのですが、まずは気軽に始めたかったので。
-まずは継続。</description>
     </item>
     
   </channel>

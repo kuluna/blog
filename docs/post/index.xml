@@ -7,10 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
-    <lastBuildDate>Mon, 17 Jul 2017 00:11:38 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 23 Jul 2017 11:37:28 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ASP.NET Coreで常にHTTPSにリダイレクトする</title>
+      <link>https://kuluna.github.io/blog/post/20170723/</link>
+      <pubDate>Sun, 23 Jul 2017 11:37:28 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20170723/</guid>
+      <description>従来のASP.NETではweb.configをたくさんいじってあれこれ設定していましたが、ASP.NET CoreからはほとんどをStartup.csに記述するようなりました。
+個人的にもそのほうがコンパイルエラーで設定ミスとかが分かるのでこっちのほうが好きですね。
+環境  .net core 1.1  HTTPSにリダイレクトする Rewriteのインストール HTTPでアクセスしたときにHTTPSへリダイレクトするのもStartup.csで設定するようになりました。
+まずはNugetからリダイレクトするライブラリをインストールします。
+NugetでMicrosoft.AspNetCore.Rewriteを検索してインストールします。あるいはcsprojに直接書いてもOKです。
+&amp;lt;ItemGroup&amp;gt; &amp;lt;PackageReference Include=&amp;quot;Microsoft.AspNetCore.Rewrite&amp;quot; Version=&amp;quot;1.0.2&amp;quot; /&amp;gt; &amp;lt;/ItemGroup&amp;gt;  csprojに直接書いた場合はdotnet restoreコマンドを忘れずに実行しましょう。
+リダイレクト設定 Startup.csで編集する箇所は2か所です。
+public void ConfigureServices(IServiceCollection services) { // Add framework services. services.AddMvc(); services.Configure&amp;lt;MvcOptions&amp;gt;(options =&amp;gt; { options.Filters.Add(new RequireHttpsAttribute()); }); }  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) { loggerFactory.AddConsole(Configuration.GetSection(&amp;quot;Logging&amp;quot;)); loggerFactory.AddDebug(); app.UseRewriter(new RewriteOptions().AddRedirectToHttps()); app.UseMvc(); }  上ではASP.NET Core全体にHTTPSを必須とする属性を追加します。
+下ではHTTPでアクセスしたときにHTTPSでリダイレクトするように設定をしています。
+Azure App ServicesではHTTPも受け付けますが、これでAzureにアップロードするとHTTPでアクセス時にHTTPSにリダイレクトされるようになります。
+Googleのチェックツールを使うとHTTPからHTTPSにリダイレクトできていることが検証できます。
+プロダクション時だけONにする Startup.csでは現在がどのモードで動作しているかが取得できるので、Production時だけの処理を簡単に書けます。
+if (env.</description>
+    </item>
     
     <item>
       <title>First commit.</title>
