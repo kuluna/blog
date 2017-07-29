@@ -7,15 +7,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
-    <lastBuildDate>Sun, 23 Jul 2017 11:37:28 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 29 Jul 2017 18:24:32 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Angular</title>
+      <link>https://kuluna.github.io/blog/categories/angular/</link>
+      <pubDate>Sat, 29 Jul 2017 18:24:32 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/categories/angular/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Asp.Net Core</title>
       <link>https://kuluna.github.io/blog/categories/asp.net-core/</link>
-      <pubDate>Sun, 23 Jul 2017 11:37:28 +0900</pubDate>
+      <pubDate>Sat, 29 Jul 2017 18:24:32 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/categories/asp.net-core/</guid>
       <description></description>

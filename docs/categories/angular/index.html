@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Posts &middot; kuluna.class</title>
+        <title>Angular &middot; kuluna.class</title>
         <meta name="author">
         <meta name="description" content="Build any languages, Run anywhere.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,48 +66,6 @@ kuluna/macaron: Test sweet tool
 Excelとなるとバージョン管理が大変だったり、だれかが開いていると他の人が編集できなかったりと不便極まりないので、しばらく自分で使ってみてWebならではの良さを盛り込めていければなーと考えています。
 もしWebのテスト管理で何か欲しい機能があったりしたらGitHub経由で教えていただけると大変うれしいですね。&hellip;</p>
     <a href="https://kuluna.github.io/blog/post/20170729/" title="Webでテスト管理できるツールを作ろうとしている"> &raquo;</a>
-</article>
-
-        
-            <article class="post">
-    
-<h1><a href="https://kuluna.github.io/blog/post/20170723/" title="ASP.NET Coreで常にHTTPSにリダイレクトする">ASP.NET Coreで常にHTTPSにリダイレクトする</a></h1>
-
-<footer class="post-info"> <span class="post-meta"><time datetime="2017.07.23">2017.07.23</time>
-
-</span>
-</footer>
-
-    <p>従来のASP.NETではweb.configをたくさんいじってあれこれ設定していましたが、ASP.NET CoreからはほとんどをStartup.csに記述するようなりました。
-個人的にもそのほうがコンパイルエラーで設定ミスとかが分かるのでこっちのほうが好きですね。
-環境  .net core 1.1  HTTPSにリダイレクトする Rewriteのインストール HTTPでアクセスしたときにHTTPSへリダイレクトするのもStartup.csで設定するようになりました。
-まずはNugetからリダイレクトするライブラリをインストールします。
-NugetでMicrosoft.AspNetCore.Rewriteを検索してインストールします。あるいはcsprojに直接書いてもOKです。
-&lt;ItemGroup&gt; &lt;PackageReference Include=&quot;Microsoft.AspNetCore.Rewrite&quot; Version=&quot;1.0.2&quot; /&gt; &lt;/ItemGroup&gt;  csprojに直接書いた場合はdotnet restoreコマンドを忘れずに実行しましょう。
-リダイレクト設定 Startup.csで編集する箇所は2か所です。
-public void ConfigureServices(IServiceCollection services) { // Add framework services. services.AddMvc(); services.Configure&lt;MvcOptions&gt;(options =&gt; { options.Filters.Add(new RequireHttpsAttribute()); }); }  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) { loggerFactory.AddConsole(Configuration.GetSection(&quot;Logging&quot;)); loggerFactory.AddDebug(); app.UseRewriter(new RewriteOptions().AddRedirectToHttps()); app.UseMvc(); }  上ではASP.NET Core全体にHTTPSを必須とする属性を追加します。
-下ではHTTPでアクセスしたときにHTTPSでリダイレクトするように設定をしています。
-Azure App ServicesではHTTPも受け付けますが、これでAzureにアップロードするとHTTPでアクセス時にHTTPSにリダイレクトされるようになります。
-Googleのチェックツールを使うとHTTPからHTTPSにリダイレクトできていることが検証できます。
-プロダクション時だけONにする Startup.csでは現在がどのモードで動作しているかが取得できるので、Production時だけの処理を簡単に書けます。
-if (env.&hellip;</p>
-    <a href="https://kuluna.github.io/blog/post/20170723/" title="ASP.NET Coreで常にHTTPSにリダイレクトする"> &raquo;</a>
-</article>
-
-        
-            <article class="post">
-    
-<h1><a href="https://kuluna.github.io/blog/post/20170717/" title="First commit.">First commit.</a></h1>
-
-<footer class="post-info"> <span class="post-meta"><time datetime="2017.07.17">2017.07.17</time>
-
-</span>
-</footer>
-
-    <p>これまではQiita等でいくつか技術的な内容を投稿してきましたが、 それ以外にも書く場所が欲しかったので、GitHub Pagesを使ってブログを書くことにしました。
-このサイトはHugoを使って作りました。ほんとはAngularとかで作ってみたかったのですが、まずは気軽に始めたかったので。
-まずは継続。&hellip;</p>
-    <a href="https://kuluna.github.io/blog/post/20170717/" title="First commit."> &raquo;</a>
 </article>
 
         

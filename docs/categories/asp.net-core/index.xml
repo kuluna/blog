@@ -7,10 +7,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
-    <lastBuildDate>Sun, 23 Jul 2017 11:37:28 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 29 Jul 2017 18:24:32 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/categories/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Webでテスト管理できるツールを作ろうとしている</title>
+      <link>https://kuluna.github.io/blog/post/20170729/</link>
+      <pubDate>Sat, 29 Jul 2017 18:24:32 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20170729/</guid>
+      <description>GitHubで草を生やすために作っています。
+kuluna/macaron: Test sweet tool
+簡単にいうとテストケースをWeb上で作成し実施するWebアプリです。
+テストケース テスト一覧
+テスト作成
+テストケースを作成する項目はとてもシンプルにしています。Markdown形式で入力できるようにしています。
+テスト計画 対象のテストケースが今どれぐらいテストされているのかを見る画面です。開発中なのでいろいろ雑な表示です。
+テスト実施 上に現在実施中のテストが表示されて、切り替えて次々とテストを記録していく感じです。
+作ってて気づいた事 このレベルならExcelでよくね？
+確かに今の私の職場でもテスト仕様書はExcelで共有しています。
+Excelとなるとバージョン管理が大変だったり、だれかが開いていると他の人が編集できなかったりと不便極まりないので、しばらく自分で使ってみてWebならではの良さを盛り込めていければなーと考えています。
+もしWebのテスト管理で何か欲しい機能があったりしたらGitHub経由で教えていただけると大変うれしいですね。</description>
+    </item>
     
     <item>
       <title>ASP.NET Coreで常にHTTPSにリダイレクトする</title>
