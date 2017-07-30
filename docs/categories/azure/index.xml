@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Azure on kuluna.class</title>
+    <link>https://kuluna.github.io/blog/categories/azure/</link>
+    <description>Recent content in Azure on kuluna.class</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
+    <lastBuildDate>Sun, 30 Jul 2017 15:25:01 +0900</lastBuildDate>
+    
+	<atom:link href="https://kuluna.github.io/blog/categories/azure/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Azure App Service にSFTPでログインするときのユーザー名</title>
+      <link>https://kuluna.github.io/blog/post/20170730/</link>
+      <pubDate>Sun, 30 Jul 2017 15:25:01 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20170730/</guid>
+      <description>ちゃんとよく見ればいいってだけの話です。
+Azure App Service ではデプロイする領域にSFTP(FTP)ではいることができます。デプロイパイプラインを組む前に、App Service へファイルを送信したいときに使えます。
+FTPログイン設定 Azureのポータルから設定したいApp Serviceを開き、 デプロイ資格情報 を選択します。
+FTPでログインするユーザー名とパスワードをここで作成します。
+概要に戻るとSFTPのアドレスができてますので、これをコピーします。あとユーザー名ですが、先ほどの azureftplogin ではなく、　macaron\azureftplogin なことに気を付けてください。
+頭にmacaronとついているのはこの App Service の名前がmacaronだからだと思います。
+あとはWindows環境であれば、エクスプローラーにSFTPのアドレスを貼り付けて、上のユーザー名と設定したパスワードを入力すればログインできます。
+site/wwwroot/ にデプロイして App Service を再起動すると反映されます。kuduを使うとこういったデプロイを自動でしてくれますが、FTPでのデプロイの場合はweb.configも自分で用意する必要がある点に注意してください。</description>
+    </item>
+    
+  </channel>
+</rss>
