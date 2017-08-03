@@ -1,0 +1,335 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>kuluna.class</title>
+        <meta name="author">
+        <meta name="description" content="Build any languages, Run anywhere.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="generator" content="Hugo 0.25.1" />
+        <link href="https://kuluna.github.io/blog/post/index.xml" rel="alternate" type="application/rss+xml" title="kuluna.class" />
+        <link href="https://kuluna.github.io/blog/post/index.xml" rel="feed" type="application/rss+xml" title="kuluna.class" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://kuluna.github.io/blog/css/styles.css">
+        <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
+        <link rel="apple-touch-icon" href="https://kuluna.github.io/blog/apple-touch-icon.png" />
+        <link rel="stylesheet" href="https://kuluna.github.io/blog/css/highlightjs/monokai.css">
+        <script src="https://kuluna.github.io/blog/js/vendor/modernizr-2.8.0.min.js"></script>
+        
+        <style>
+        .site-header h2 .logo {
+        background: url(https://kuluna.github.io/blog/cover.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(https://kuluna.github.io/blog/cover.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(https://kuluna.github.io/blog/cover.jpg) no-repeat center center;
+         z-index: -1;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2>kuluna.class</h2>
+          </div>
+        </header>
+
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        <article class="post">
+            <a class="btn home" href="https://kuluna.github.io/blog/" title="">&laquo; </a>
+            
+<h1><a href="https://kuluna.github.io/blog/post/20170803/" title="Google for Mobile I/O RECAP 2017 1日目">Google for Mobile I/O RECAP 2017 1日目</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2017.08.03">2017.08.03</time>
+
+</span>
+</footer>
+
+            
+
+<p>2017/08/03にGoogle主催のMobile向けイベントに参加してきました。招待制?なのか知り合いには誰一人招待状が届いておらず、結果私一人さみしく参加してきました。</p>
+
+<p>内容は題のとおりでGoogle I/Oをつまみつつ、Mobile向けの最新情報が紹介されていました。このイベントで初披露というものはなかったと思います。</p>
+
+<p>聞いてきたものをメモレベルですが書いていきます。後で資料を公開しますと言われたけど、どうもApp DOJOに登録しないと見れないっぽい？</p>
+
+<h1 id="最新-support-library">最新 Support Library</h1>
+
+<p>Support Library 26.0.0のお話</p>
+
+<ul>
+<li>minSdkVersionが9から14になった</li>
+<li>Maven経由で取得できるようになった<br />
+Gradle4.0ならさらに簡潔にかけるようになったようです</li>
+</ul>
+
+<pre><code>repositories {
+    google()
+}
+
+dependecies {
+    ...
+}
+</code></pre>
+
+<h2 id="25からの変更点">25からの変更点</h2>
+
+<p>挙げると結構キリがないようですが、特にText &amp; Font系に変更があるようです。</p>
+
+<h3 id="fonts-xml">Fonts XML</h3>
+
+<ul>
+<li>R.font.font1.ttf で使える</li>
+<li>カスタムフォントをfontFamiliyとして登録できる</li>
+</ul>
+
+<h3 id="downloadadable-fonts">Downloadadable Fonts</h3>
+
+<ul>
+<li>Google Fontsが使える</li>
+</ul>
+
+<h3 id="emoji-api-19">Emoji (API 19+)</h3>
+
+<ul>
+<li>support libraryにemojiが追加</li>
+</ul>
+
+<h3 id="auto-sizing-textview">Auto sizing TextView</h3>
+
+<ul>
+<li>TextViewの大きさを決めた枠に合わせて自動的にtextSizeを変更する</li>
+</ul>
+
+<h2 id="diamicanimation">DiamicAnimation</h2>
+
+<ul>
+<li>これまではDurationがメイン</li>
+<li>バネをひっぱってびよんびよんできる -&gt; SpringAnimation</li>
+</ul>
+
+<h2 id="transition">Transition</h2>
+
+<ul>
+<li>Lolipopでしか使えなかったTransitionがICS以降でも使える</li>
+<li>ActivityTransitionはまだ</li>
+</ul>
+
+<h2 id="vector">Vector</h2>
+
+<ul>
+<li>VectorDrawableを使うときに、変なFillになるのを治せる</li>
+</ul>
+
+<h2 id="小ネタ">小ネタ</h2>
+
+<p>aapt:attr XMLの中にまったく別のXMLを定義できる。こいつのためだけに1つのXMLを書いてたみたいな時に使える</p>
+
+<h2 id="data">Data</h2>
+
+<h3 id="preferencemanager">PreferenceManager</h3>
+
+<p>これまで設定はSharedPreferenceしかなかったけど、Manager経由でSQLiteやGoogle Cloudに変更できる。</p>
+
+<h1 id="tdd-テスト駆動開発">TDD(テスト駆動開発)</h1>
+
+<p>AndroidでTDDするの大変 <strong>(知ってた)</strong><br />
+UnitTestはまぁまぁ、UI Testはいつも鬼門</p>
+
+<h2 id="test-tool">Test tool</h2>
+
+<ul>
+<li>Robolectricはいいぞ<br />
+Robolectricは地味に新しいAndroidに追いついている</li>
+<li>Espressoとは使い分けするとよい(アクティビティの遷移とかはEspressoのほうが良いらしい)</li>
+</ul>
+
+<h1 id="slim-down-apk-size">Slim down APK size</h1>
+
+<p>APK size &gt;= Download size</p>
+
+<p>少しでも減らせればDownload sizeが減らせてキャンセル率を減らせる<br />
+また、サイズが多いと真っ先にアンインストールの対象にされる</p>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="proguard">Proguard</h3>
+
+<ul>
+<li>使ってないコードを全部消してくれる</li>
+</ul>
+
+<h3 id="resource-shrinking">Resource Shrinking</h3>
+
+<ul>
+<li>使ってないリソースを全部消してくれる</li>
+</ul>
+
+<h3 id="multiple-apks">Multiple APKs</h3>
+
+<ul>
+<li>一つのapkに全リソースをいれるのではなく、それぞれに適したapkを作ることでダウンロードさいずをめっさ減らせる</li>
+</ul>
+
+<h3 id="vector-drawables">Vector Drawables</h3>
+
+<ul>
+<li>Support Libraryで使えるようになったベクターデータをjpg, pngの代わりに使うことでかなり減らせる</li>
+</ul>
+
+<p><strong>3.8MBのAPKを500kbに減らせた！</strong></p>
+
+<h2 id="apk-analyzer">APK Analyzer</h2>
+
+<p>他のセッションでもAPK Analyzerの紹介がたくさんありました。Android Studio3.0から機能がかなり強化されるようです。<br />
+APKファイルのかなり細かいところまで見れるようです。</p>
+
+<ul>
+<li>Proguardを使うとクラス名がaとかになる -&gt; Android Studio3.0から対応する</li>
+<li>APK AnalyzerからProguardの除外ルールを作成できる</li>
+</ul>
+
+<h1 id="instant-app">Instant App</h1>
+
+<h2 id="事例">事例</h2>
+
+<ul>
+<li>署名をする箇所だけをInstant Appとして提供</li>
+<li>買い物かごにいれて決済する箇所だけ提供</li>
+<li>ビデオ再生するだけでなく、関連動画を表示することでエンゲージ率を高める</li>
+</ul>
+
+<h2 id="作り方">作り方</h2>
+
+<ol>
+<li>Instant App用のプロジェクトを作成する</li>
+<li>フルAppから共通部分をモジュールとして切り出す</li>
+<li>Instant Appにモジュールを読み込ませて開発する</li>
+</ol>
+
+<h1 id="play-console">Play Console</h1>
+
+<p>Play Consoleの機能もかなり強化されたようです。特にレポート周りが充実していました。<br />
+(ハッピーアワーで聞いてみると、前から分析していた人から見れば今までやってたことがPlay Consoleで表示されただけであまり驚きはなかったようです)</p>
+
+<h2 id="pre-launch-report">Pre-launch report</h2>
+
+<p>アルファやベータとしてPlay ConsoleにapkをアップロードするとFirebase Test Labが動いてクラッシュしないか自動的に検査してくれます。Pre-launch reportとしてFirebase Test Labを使うなら無料とのことです。</p>
+
+<p>クラッシュ情報とLogCatと操作ビデオを後から確認できる</p>
+
+<ul>
+<li>ログインサポートが実装され、Test Labがアプリにログインしてテストできるようになった</li>
+<li>異なる画面サイズのスクリーンショットを確認できる</li>
+<li>脆弱性検査を行える</li>
+</ul>
+
+<h2 id="release-dashboard">Release Dashboard</h2>
+
+<p>ダッシュボードの情報が最短1時間前からみれるようになったようです。</p>
+
+<ul>
+<li>Crashes and ANRs</li>
+<li>Ratings and Reviews</li>
+<li>New Install, Updates and Unininstalls</li>
+</ul>
+
+<p>大事なのはそれぞれの値を一つずつ見るのではなく、統計と特異点をダッシュボードから確認できること、ダッシュボードでは一つのグラフに複数の指標を重ねて表示できるようになったようです。</p>
+
+<h2 id="android-vitals">Android vitals</h2>
+
+<ul>
+<li>端末の情報を収集してPlay Consoleで表示<br />
+(今まで情報収集用ライブラリをわざわざアプリに組み込んでいたけどGoogleが公式でやってくれるのはありがたいですね)</li>
+</ul>
+
+<h2 id="better-visualisation">Better visualisation</h2>
+
+<ul>
+<li>Play console上で統計情報が見れる(Google TrendのPlay Console版のようなもの)</li>
+<li>去年のGWと今年のGWを比較といったことができる</li>
+</ul>
+
+            <ul class="share-buttons">
+    <li></li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkuluna.github.io%2fblog%2fpost%2f20170803%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=Google%20for%20Mobile%20I%2fO%20RECAP%202017%201%e6%97%a5%e7%9b%ae&amp;url=https%3a%2f%2fkuluna.github.io%2fblog%2fpost%2f20170803%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=https%3a%2f%2fkuluna.github.io%2fblog%2fpost%2f20170803%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkuluna.github.io%2fblog%2fpost%2f20170803%2f&title=Google%20for%20Mobile%20I%2fO%20RECAP%202017%201%e6%97%a5%e7%9b%ae" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title=""></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3></h3>
+            
+        </div>
+    </main>
+    <aside class="author">
+  <img class="profile-image" src="https://kuluna.github.io/blog/favicon.png" alt="kuluna" />
+  <p class="name"> 
+  <strong>kuluna</strong></p>
+  <p class="address">Japan</p>
+  <p class="link"></p>
+  <ul class="social">
+    
+<li><a href="//twitter.com/kuluna" class="icon-twitter" target="_blank" title="Twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//github.com/kuluna" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+
+<li><a href="https://kuluna.github.io/blog/post/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+  </ul>
+  <br><br>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="https://kuluna.github.io/blog/post/index.xml" title="RSS"></a>
+        <p>&copy; 2017 &middot; Powered by <a href="http://gohugo.io">Hugo</a>.</p>
+  </div>
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="https:\/\/kuluna.github.io\/blog\/js\/vendor\/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="https://kuluna.github.io/blog/js/plugins.js"></script>
+
+
+
+
+</body>
+</html>
+
