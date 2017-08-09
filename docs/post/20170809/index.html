@@ -1,0 +1,200 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>kuluna.class</title>
+        <meta name="author">
+        <meta name="description" content="Build any languages, Run anywhere.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="generator" content="Hugo 0.25.1" />
+        <link href="https://kuluna.github.io/blog/post/index.xml" rel="alternate" type="application/rss+xml" title="kuluna.class" />
+        <link href="https://kuluna.github.io/blog/post/index.xml" rel="feed" type="application/rss+xml" title="kuluna.class" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://kuluna.github.io/blog/css/styles.css">
+        <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
+        <link rel="apple-touch-icon" href="https://kuluna.github.io/blog/apple-touch-icon.png" />
+        <link rel="stylesheet" href="https://kuluna.github.io/blog/css/highlightjs/monokai.css">
+        <script src="https://kuluna.github.io/blog/js/vendor/modernizr-2.8.0.min.js"></script>
+        
+        <style>
+        .site-header h2 .logo {
+        background: url(https://kuluna.github.io/blog/cover.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(https://kuluna.github.io/blog/cover.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(https://kuluna.github.io/blog/cover.jpg) no-repeat center center;
+         z-index: -1;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2>kuluna.class</h2>
+          </div>
+        </header>
+
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        <article class="post">
+            <a class="btn home" href="https://kuluna.github.io/blog/" title="">&laquo; </a>
+            
+<h1><a href="https://kuluna.github.io/blog/post/20170809/" title="Reactお兄さんと宗教戦争したはなし">Reactお兄さんと宗教戦争したはなし</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2017.08.09">2017.08.09</time>
+
+</span>
+</footer>
+
+            
+
+<p>とある会議でReactお兄さんとフロントエンド宗教戦争(大袈裟)をしてしまいました。</p>
+
+<h1 id="会議の内容">会議の内容</h1>
+
+<ul>
+<li>お兄さんはPoC向けに簡単にフロントエンドのテンプレートを使える仕組みを作ろうとしている</li>
+<li>出来上がったテンプレートはReactベースで作られている</li>
+<li>これをPoCでぜひ使ってほしいがいかがだろうか</li>
+</ul>
+
+<h1 id="pocとは">PoCとは</h1>
+
+<blockquote>
+<p>POC 【 Proof Of Concept 】 概念実証<br />
+<a href="http://e-words.jp/w/POC.html">http://e-words.jp/w/POC.html</a><br />
+POCとは、新しい概念や理論、原理などが実現可能であることを示すための簡易な試行。一通り全体を作り上げる試作(プロトタイプ)の前段階で、要となる新しいアイデアなどの実現可能性のみを示すために行われる、不完全あるいは部分的なデモンストレーションなどを意味する。</p>
+</blockquote>
+
+<p>簡単にいうとProttとかSketchのようなペーパープロトと比べて実際に操作でき、でも本開発するほどの力の入れ方ではないというなんとも微妙なプロトを作ります。</p>
+
+<h1 id="why-react">Why React?</h1>
+
+<p>フロントエンド界の動向は少しだけですがおさえているつもりです。なので私もReactワカラナイというわけではないです。<br />
+確かにReactは導入実績も多いし、コミュニティや開発自体も非常に活発、わからないことはFAQサイトとかにもたくさん載っているでしょう。</p>
+
+<p>でも話を聞いて思ったのが「どうしてReactなんだろうか」という点でした。<br />
+さらに作られたテンプレートを見て、これはどうなんだろうか？と思いました。</p>
+
+<p>package.jsonを見ると、Reactに始まりflux、babelにwebpackにmaterial-uiとなんともフル装備な感じでした。</p>
+
+<p>普通にReactで開発する分には大変開発効率を上げてくれる良いヤツらだと思うのですが、<br />
+改めて最初に戻ると、 <strong>これほど重装備(主観)なものをPoCのテンプレートとして使うことを考えられた構成なのか？</strong> ということです。</p>
+
+<h1 id="実際に使う人って誰">実際に使う人って誰？</h1>
+
+<p>このテンプレを実際に使うのはReactに詳しい人だけではないという点が非常に重要です。ReactどころかjQueryまでしか使ったことがないという人もいるでしょう。</p>
+
+<p>そんな人に拡張子jsxのファイルを渡して、JavaScriptかと思いきやHTMLもあるという構造を見たらどう思うでしょうか。<br />
+さらにはコンポーネントをビルドするためにwebpackを使っており、もちろんテンプレートの中にはさも当然のように <code>webpack.config.js</code> が存在します。断言します。必ずこのセリフを言う人が現れます。 <strong>これはなんだ</strong> と。</p>
+
+<p>PoCを開発する人は、ただ <strong>部分的なデモンストレーション</strong> が作れるのであればそれで良いのですよ。</p>
+
+<h1 id="みんなが使っているライブラリだったから">みんなが使っているライブラリだったから</h1>
+
+<p>彼はそう説明しました。Reactはほぼデファクトであり、三大フロントエンドの一つであり、Reactは世界中で使われていると。確かに正しいです。</p>
+
+<p>彼の中では「みんな」とは世界中の人のことであり、一方私の考える「みんな」とは実際にPoCでこのテンプレを使う人のことを指していました。ここが私があれ？と思った部分だったということです。</p>
+
+<h1 id="では何ならokなのか">では何ならOKなのか</h1>
+
+<p>ならjQueryなら良いのか？という話ではありません。大事なのは「何をテンプレートとして提供するか」です。あまりにも抽象的すぎるとほぼテンプレとしての役割は失われ、しかし目的別のように固めすぎると自由度が下がり使えないテンプレ扱いされてしまいます。</p>
+
+<p>私がテンプレートを作るとするならば、それはページと画面遷移を提供するテンプレート、そしてUIパーツの3つです。<br />
+例えばMaster-&gt;Detail形式。例えばハンバーガー方式、例えばタブ方式といった「各ページ」と、それらをつなぐ「ナビゲーション」をテンプレートとして提供する形です。<br />
+その各ページに目的別でパーツ化されたUIを当てはめていくという感じです。</p>
+
+<p>PoCではこれまでにないアイデアが本当にいいものなのかを検証するものなので、基本的には何かのサービスとUIが同じになることはありません。しかし、とはいってもナビゲーションやダイアログといったある程度これはお約束というものはいくつか存在します。それらをテンプレートに任せるというのが私の考え方です。</p>
+
+<p>そういった使い方としてReactというのであれば納得もいきますし。</p>
+
+<h1 id="分かり手になりたい">分かり手になりたい</h1>
+
+<p>確かに技術者としてReactとか使いたいのは非常にわかる。もうjQueryにdom操作するロジック書きたくないよね。わかる。es3つらいよね。わかる。というかフロント界がカオスすぎんだよ。</p>
+
+<p>なのでどうすればもっとみんなが幸せになれるのか。ここはまだ詰め切れてないので私も考えていきたいところです。</p>
+
+<p><strong>ちなみに私はAngular派です。</strong></p>
+
+            <ul class="share-buttons">
+    <li></li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkuluna.github.io%2fblog%2fpost%2f20170809%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=React%e3%81%8a%e5%85%84%e3%81%95%e3%82%93%e3%81%a8%e5%ae%97%e6%95%99%e6%88%a6%e4%ba%89%e3%81%97%e3%81%9f%e3%81%af%e3%81%aa%e3%81%97&amp;url=https%3a%2f%2fkuluna.github.io%2fblog%2fpost%2f20170809%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=https%3a%2f%2fkuluna.github.io%2fblog%2fpost%2f20170809%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkuluna.github.io%2fblog%2fpost%2f20170809%2f&title=React%e3%81%8a%e5%85%84%e3%81%95%e3%82%93%e3%81%a8%e5%ae%97%e6%95%99%e6%88%a6%e4%ba%89%e3%81%97%e3%81%9f%e3%81%af%e3%81%aa%e3%81%97" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title=""></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3></h3>
+            
+        </div>
+    </main>
+    <aside class="author">
+  <img class="profile-image" src="https://kuluna.github.io/blog/favicon.png" alt="kuluna" />
+  <p class="name"> 
+  <strong>kuluna</strong></p>
+  <p class="address">Japan</p>
+  <p class="link"></p>
+  <ul class="social">
+    
+<li><a href="//twitter.com/kuluna" class="icon-twitter" target="_blank" title="Twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//github.com/kuluna" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+
+<li><a href="https://kuluna.github.io/blog/post/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+  </ul>
+  <br><br>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="https://kuluna.github.io/blog/post/index.xml" title="RSS"></a>
+        <p>&copy; 2017 &middot; Powered by <a href="http://gohugo.io">Hugo</a>.</p>
+  </div>
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="https:\/\/kuluna.github.io\/blog\/js\/vendor\/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="https://kuluna.github.io/blog/js/plugins.js"></script>
+
+
+
+
+</body>
+</html>
+

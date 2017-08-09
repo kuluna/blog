@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Angular on kuluna.class</title>
-    <link>https://kuluna.github.io/blog/categories/angular/</link>
-    <description>Recent content in Angular on kuluna.class</description>
+    <title>React on kuluna.class</title>
+    <link>https://kuluna.github.io/blog/categories/react/</link>
+    <description>Recent content in React on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
     <lastBuildDate>Wed, 09 Aug 2017 21:38:20 +0900</lastBuildDate>
     
-	<atom:link href="https://kuluna.github.io/blog/categories/angular/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kuluna.github.io/blog/categories/react/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -45,26 +45,6 @@ PoCではこれまでにないアイデアが本当にいいものなのかを�
 分かり手になりたい 確かに技術者としてReactとか使いたいのは非常にわかる。もうjQueryにdom操作するロジック書きたくないよね。わかる。es3つらいよね。わかる。というかフロント界がカオスすぎんだよ。
 なのでどうすればもっとみんなが幸せになれるのか。ここはまだ詰め切れてないので私も考えていきたいところです。
 ちなみに私はAngular派です。</description>
-    </item>
-    
-    <item>
-      <title>Webでテスト管理できるツールを作ろうとしている</title>
-      <link>https://kuluna.github.io/blog/post/20170729/</link>
-      <pubDate>Sat, 29 Jul 2017 18:24:32 +0900</pubDate>
-      
-      <guid>https://kuluna.github.io/blog/post/20170729/</guid>
-      <description>GitHubで草を生やすために作っています。
-kuluna/macaron: Test sweet tool
-簡単にいうとテストケースをWeb上で作成し実施するWebアプリです。
-テストケース テスト一覧
-テスト作成
-テストケースを作成する項目はとてもシンプルにしています。Markdown形式で入力できるようにしています。
-テスト計画 対象のテストケースが今どれぐらいテストされているのかを見る画面です。開発中なのでいろいろ雑な表示です。
-テスト実施 上に現在実施中のテストが表示されて、切り替えて次々とテストを記録していく感じです。
-作ってて気づいた事 このレベルならExcelでよくね？
-確かに今の私の職場でもテスト仕様書はExcelで共有しています。
-Excelとなるとバージョン管理が大変だったり、だれかが開いていると他の人が編集できなかったりと不便極まりないので、しばらく自分で使ってみてWebならではの良さを盛り込めていければなーと考えています。
-もしWebのテスト管理で何か欲しい機能があったりしたらGitHub経由で教えていただけると大変うれしいですね。</description>
     </item>
     
   </channel>

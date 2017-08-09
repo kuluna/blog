@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kuluna.github.io/blog/post/20170809/</loc>
+    <lastmod>2017-08-09T21:38:20+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kuluna.github.io/blog/post/20170803/</loc>
     <lastmod>2017-08-03T20:23:02+09:00</lastmod>
   </url>
@@ -35,7 +40,7 @@
   
   <url>
     <loc>https://kuluna.github.io/blog/categories/angular/</loc>
-    <lastmod>2017-07-29T18:24:32+09:00</lastmod>
+    <lastmod>2017-08-09T21:38:20+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -59,7 +64,13 @@
   
   <url>
     <loc>https://kuluna.github.io/blog/post/</loc>
-    <lastmod>2017-08-03T20:23:02+09:00</lastmod>
+    <lastmod>2017-08-09T21:38:20+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kuluna.github.io/blog/categories/react/</loc>
+    <lastmod>2017-08-09T21:38:20+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -70,7 +81,7 @@
   
   <url>
     <loc>https://kuluna.github.io/blog/</loc>
-    <lastmod>2017-08-03T20:23:02+09:00</lastmod>
+    <lastmod>2017-08-09T21:38:20+09:00</lastmod>
     <priority>0</priority>
   </url>
   

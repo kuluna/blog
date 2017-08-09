@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>kuluna.class &middot; kuluna.class</title>
+        <title>React &middot; kuluna.class</title>
         <meta name="author">
         <meta name="description" content="Build any languages, Run anywhere.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,6 +41,7 @@
 
 <div class="container clearfix">
     <main role="main" class="content">
+        <a class="btn home" href="https://kuluna.github.io/blog/" title="">&laquo; </a>
         
         
             <article class="post">
@@ -83,109 +84,11 @@ PoCではこれまでにないアイデアが本当にいいものなのかを�
 </article>
 
         
-            <article class="post">
-    
-<h1><a href="https://kuluna.github.io/blog/post/20170803/" title="Google for Mobile I/O RECAP 2017">Google for Mobile I/O RECAP 2017</a></h1>
-
-<footer class="post-info"> <span class="post-meta"><time datetime="2017.08.03">2017.08.03</time>
-
-</span>
-</footer>
-
-    <p>2017/08/03にGoogle主催のMobile向けイベントに参加してきました。招待制?なのか知り合いには誰一人招待状が届いておらず、結果私一人さみしく参加してきました。
-内容は題のとおりでGoogle I/Oをつまみつつ、Mobile向けの最新情報が紹介されていました。このイベントで初披露というものはなかったと思います。
-聞いてきたものをメモレベルですが書いていきます。後で資料を公開しますと言われたけど、どうもApp DOJOに登録しないと見れないっぽい？
-最新 Support Library Support Library 26.0.0のお話
- minSdkVersionが9から14になった Maven経由で取得できるようになった
-Gradle4.0ならさらに簡潔にかけるようになったようです  repositories { google() } dependecies { &hellip; }  25からの変更点 挙げると結構キリがないようですが、特にText &amp; Font系に変更があるようです。
-Fonts XML  R.font.font1.ttf で使える カスタムフォントをfontFamiliyとして登録できる  Downloadadable Fonts  Google Fontsが使える  Emoji (API 19+)  support libraryにemojiが追加  Auto sizing TextView  TextViewの大きさを決めた枠に合わせて自動的にtextSizeを変更する  DiamicAnimation  これまではDurationがメイン バネをひっぱってびよんびよんできる -&gt; SpringAnimation  Transition  Lolipopでしか使えなかったTransitionがICS以降でも使える ActivityTransitionはまだ  Vector  VectorDrawableを使うときに、変なFillになるのを治せる  小ネタ aapt:attr XMLの中にまったく別のXMLを定義できる。こいつのためだけに1つのXMLを書いてたみたいな時に使える&hellip;</p>
-    <a href="https://kuluna.github.io/blog/post/20170803/" title="Google for Mobile I/O RECAP 2017"> &raquo;</a>
-</article>
-
-        
-            <article class="post">
-    
-<h1><a href="https://kuluna.github.io/blog/post/20170730/" title="Azure App Service にSFTPでログインするときのユーザー名">Azure App Service にSFTPでログインするときのユーザー名</a></h1>
-
-<footer class="post-info"> <span class="post-meta"><time datetime="2017.07.30">2017.07.30</time>
-
-</span>
-</footer>
-
-    <p>ちゃんとよく見ればいいってだけの話です。
-Azure App Service ではデプロイする領域にSFTP(FTP)ではいることができます。デプロイパイプラインを組む前に、App Service へファイルを送信したいときに使えます。
-FTPログイン設定 Azureのポータルから設定したいApp Serviceを開き、 デプロイ資格情報 を選択します。
-FTPでログインするユーザー名とパスワードをここで作成します。
-概要に戻るとSFTPのアドレスができてますので、これをコピーします。あとユーザー名ですが、先ほどの azureftplogin ではなく、　macaron\azureftplogin なことに気を付けてください。
-頭にmacaronとついているのはこの App Service の名前がmacaronだからだと思います。
-あとはWindows環境であれば、エクスプローラーにSFTPのアドレスを貼り付けて、上のユーザー名と設定したパスワードを入力すればログインできます。
-site/wwwroot/ にデプロイして App Service を再起動すると反映されます。kuduを使うとこういったデプロイを自動でしてくれますが、FTPでのデプロイの場合はweb.configも自分で用意する必要がある点に注意してください。&hellip;</p>
-    <a href="https://kuluna.github.io/blog/post/20170730/" title="Azure App Service にSFTPでログインするときのユーザー名"> &raquo;</a>
-</article>
-
-        
-            <article class="post">
-    
-<h1><a href="https://kuluna.github.io/blog/post/20170729/" title="Webでテスト管理できるツールを作ろうとしている">Webでテスト管理できるツールを作ろうとしている</a></h1>
-
-<footer class="post-info"> <span class="post-meta"><time datetime="2017.07.29">2017.07.29</time>
-
-</span>
-</footer>
-
-    <p>GitHubで草を生やすために作っています。
-kuluna/macaron: Test sweet tool
-簡単にいうとテストケースをWeb上で作成し実施するWebアプリです。
-テストケース テスト一覧
-テスト作成
-テストケースを作成する項目はとてもシンプルにしています。Markdown形式で入力できるようにしています。
-テスト計画 対象のテストケースが今どれぐらいテストされているのかを見る画面です。開発中なのでいろいろ雑な表示です。
-テスト実施 上に現在実施中のテストが表示されて、切り替えて次々とテストを記録していく感じです。
-作ってて気づいた事 このレベルならExcelでよくね？
-確かに今の私の職場でもテスト仕様書はExcelで共有しています。
-Excelとなるとバージョン管理が大変だったり、だれかが開いていると他の人が編集できなかったりと不便極まりないので、しばらく自分で使ってみてWebならではの良さを盛り込めていければなーと考えています。
-もしWebのテスト管理で何か欲しい機能があったりしたらGitHub経由で教えていただけると大変うれしいですね。&hellip;</p>
-    <a href="https://kuluna.github.io/blog/post/20170729/" title="Webでテスト管理できるツールを作ろうとしている"> &raquo;</a>
-</article>
-
-        
-            <article class="post">
-    
-<h1><a href="https://kuluna.github.io/blog/post/20170723/" title="ASP.NET Coreで常にHTTPSにリダイレクトする">ASP.NET Coreで常にHTTPSにリダイレクトする</a></h1>
-
-<footer class="post-info"> <span class="post-meta"><time datetime="2017.07.23">2017.07.23</time>
-
-</span>
-</footer>
-
-    <p>従来のASP.NETではweb.configをたくさんいじってあれこれ設定していましたが、ASP.NET CoreからはほとんどをStartup.csに記述するようなりました。
-個人的にもそのほうがコンパイルエラーで設定ミスとかが分かるのでこっちのほうが好きですね。
-環境  .net core 1.1  HTTPSにリダイレクトする Rewriteのインストール HTTPでアクセスしたときにHTTPSへリダイレクトするのもStartup.csで設定するようになりました。
-まずはNugetからリダイレクトするライブラリをインストールします。
-NugetでMicrosoft.AspNetCore.Rewriteを検索してインストールします。あるいはcsprojに直接書いてもOKです。
-&lt;ItemGroup&gt; &lt;PackageReference Include=&quot;Microsoft.AspNetCore.Rewrite&quot; Version=&quot;1.0.2&quot; /&gt; &lt;/ItemGroup&gt;  csprojに直接書いた場合はdotnet restoreコマンドを忘れずに実行しましょう。
-リダイレクト設定 Startup.csで編集する箇所は2か所です。
-public void ConfigureServices(IServiceCollection services) { // Add framework services. services.AddMvc(); services.Configure&lt;MvcOptions&gt;(options =&gt; { options.Filters.Add(new RequireHttpsAttribute()); }); }  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) { loggerFactory.AddConsole(Configuration.GetSection(&quot;Logging&quot;)); loggerFactory.AddDebug(); app.UseRewriter(new RewriteOptions().AddRedirectToHttps()); app.UseMvc(); }  上ではASP.NET Core全体にHTTPSを必須とする属性を追加します。
-下ではHTTPでアクセスしたときにHTTPSでリダイレクトするように設定をしています。
-Azure App ServicesではHTTPも受け付けますが、これでAzureにアップロードするとHTTPでアクセス時にHTTPSにリダイレクトされるようになります。
-Googleのチェックツールを使うとHTTPからHTTPSにリダイレクトできていることが検証できます。
-プロダクション時だけONにする Startup.csでは現在がどのモードで動作しているかが取得できるので、Production時だけの処理を簡単に書けます。
-if (env.&hellip;</p>
-    <a href="https://kuluna.github.io/blog/post/20170723/" title="ASP.NET Coreで常にHTTPSにリダイレクトする"> &raquo;</a>
-</article>
-
-        
         <div class="pagination">
 <nav>
 
-    
+	<p class="counter"> 1  1</p>
 
-	<p class="counter"> 1  2</p>
-
-
-	
-	<a class="btn older" href="/blog/page/2/" title=""> &raquo;</a>
-	
 
 </nav>
 </div>
@@ -226,7 +129,6 @@ if (env.&hellip;</p>
 </aside>
 
 </div>
-
 <footer class="main-footer">
   <div class="container clearfix">
         <a class="icon-rss" href="https://kuluna.github.io/blog/post/index.xml" title="RSS"></a>

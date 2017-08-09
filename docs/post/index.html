@@ -46,7 +46,47 @@
         
             <article class="post">
     
-<h1><a href="https://kuluna.github.io/blog/post/20170803/" title="Google for Mobile I/O RECAP 2017 1日目">Google for Mobile I/O RECAP 2017 1日目</a></h1>
+<h1><a href="https://kuluna.github.io/blog/post/20170809/" title="Reactお兄さんと宗教戦争したはなし">Reactお兄さんと宗教戦争したはなし</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2017.08.09">2017.08.09</time>
+
+</span>
+</footer>
+
+    <p>とある会議でReactお兄さんとフロントエンド宗教戦争(大袈裟)をしてしまいました。
+会議の内容  お兄さんはPoC向けに簡単にフロントエンドのテンプレートを使える仕組みを作ろうとしている 出来上がったテンプレートはReactベースで作られている これをPoCでぜひ使ってほしいがいかがだろうか  PoCとは  POC 【 Proof Of Concept 】 概念実証
+<a href="http://e-words.jp/w/POC.html">http://e-words.jp/w/POC.html</a>
+POCとは、新しい概念や理論、原理などが実現可能であることを示すための簡易な試行。一通り全体を作り上げる試作(プロトタイプ)の前段階で、要となる新しいアイデアなどの実現可能性のみを示すために行われる、不完全あるいは部分的なデモンストレーションなどを意味する。
+ 簡単にいうとProttとかSketchのようなペーパープロトと比べて実際に操作でき、でも本開発するほどの力の入れ方ではないというなんとも微妙なプロトを作ります。
+Why React? フロントエンド界の動向は少しだけですがおさえているつもりです。なので私もReactワカラナイというわけではないです。
+確かにReactは導入実績も多いし、コミュニティや開発自体も非常に活発、わからないことはFAQサイトとかにもたくさん載っているでしょう。
+でも話を聞いて思ったのが「どうしてReactなんだろうか」という点でした。
+さらに作られたテンプレートを見て、これはどうなんだろうか？と思いました。
+package.jsonを見ると、Reactに始まりflux、babelにwebpackにmaterial-uiとなんともフル装備な感じでした。
+普通にReactで開発する分には大変開発効率を上げてくれる良いヤツらだと思うのですが、
+改めて最初に戻ると、 これほど重装備(主観)なものをPoCのテンプレートとして使うことを考えられた構成なのか？ ということです。
+実際に使う人って誰？ このテンプレを実際に使うのはReactに詳しい人だけではないという点が非常に重要です。ReactどころかjQueryまでしか使ったことがないという人もいるでしょう。
+そんな人に拡張子jsxのファイルを渡して、JavaScriptかと思いきやHTMLもあるという構造を見たらどう思うでしょうか。
+さらにはコンポーネントをビルドするためにwebpackを使っており、もちろんテンプレートの中にはさも当然のように webpack.config.js が存在します。断言します。必ずこのセリフを言う人が現れます。 これはなんだ と。
+PoCを開発する人は、ただ 部分的なデモンストレーション が作れるのであればそれで良いのですよ。
+みんなが使っているライブラリだったから 彼はそう説明しました。Reactはほぼデファクトであり、三大フロントエンドの一つであり、Reactは世界中で使われていると。確かに正しいです。
+彼の中では「みんな」とは世界中の人のことであり、一方私の考える「みんな」とは実際にPoCでこのテンプレを使う人のことを指していました。ここが私があれ？と思った部分だったということです。
+では何ならOKなのか ならjQueryなら良いのか？という話ではありません。大事なのは「何をテンプレートとして提供するか」です。あまりにも抽象的すぎるとほぼテンプレとしての役割は失われ、しかし目的別のように固めすぎると自由度が下がり使えないテンプレ扱いされてしまいます。
+私がテンプレートを作るとするならば、それはページと画面遷移を提供するテンプレート、そしてUIパーツの3つです。
+例えばMaster-&gt;Detail形式。例えばハンバーガー方式、例えばタブ方式といった「各ページ」と、それらをつなぐ「ナビゲーション」をテンプレートとして提供する形です。
+その各ページに目的別でパーツ化されたUIを当てはめていくという感じです。
+PoCではこれまでにないアイデアが本当にいいものなのかを検証するものなので、基本的には何かのサービスとUIが同じになることはありません。しかし、とはいってもナビゲーションやダイアログといったある程度これはお約束というものはいくつか存在します。それらをテンプレートに任せるというのが私の考え方です。
+そういった使い方としてReactというのであれば納得もいきますし。
+分かり手になりたい 確かに技術者としてReactとか使いたいのは非常にわかる。もうjQueryにdom操作するロジック書きたくないよね。わかる。es3つらいよね。わかる。というかフロント界がカオスすぎんだよ。
+なのでどうすればもっとみんなが幸せになれるのか。ここはまだ詰め切れてないので私も考えていきたいところです。
+ちなみに私はAngular派です。&hellip;</p>
+    <a href="https://kuluna.github.io/blog/post/20170809/" title="Reactお兄さんと宗教戦争したはなし"> &raquo;</a>
+</article>
+
+        
+            <article class="post">
+    
+<h1><a href="https://kuluna.github.io/blog/post/20170803/" title="Google for Mobile I/O RECAP 2017">Google for Mobile I/O RECAP 2017</a></h1>
 
 <footer class="post-info"> <span class="post-meta"><time datetime="2017.08.03">2017.08.03</time>
 
@@ -60,7 +100,7 @@
  minSdkVersionが9から14になった Maven経由で取得できるようになった
 Gradle4.0ならさらに簡潔にかけるようになったようです  repositories { google() } dependecies { &hellip; }  25からの変更点 挙げると結構キリがないようですが、特にText &amp; Font系に変更があるようです。
 Fonts XML  R.font.font1.ttf で使える カスタムフォントをfontFamiliyとして登録できる  Downloadadable Fonts  Google Fontsが使える  Emoji (API 19+)  support libraryにemojiが追加  Auto sizing TextView  TextViewの大きさを決めた枠に合わせて自動的にtextSizeを変更する  DiamicAnimation  これまではDurationがメイン バネをひっぱってびよんびよんできる -&gt; SpringAnimation  Transition  Lolipopでしか使えなかったTransitionがICS以降でも使える ActivityTransitionはまだ  Vector  VectorDrawableを使うときに、変なFillになるのを治せる  小ネタ aapt:attr XMLの中にまったく別のXMLを定義できる。こいつのためだけに1つのXMLを書いてたみたいな時に使える&hellip;</p>
-    <a href="https://kuluna.github.io/blog/post/20170803/" title="Google for Mobile I/O RECAP 2017 1日目"> &raquo;</a>
+    <a href="https://kuluna.github.io/blog/post/20170803/" title="Google for Mobile I/O RECAP 2017"> &raquo;</a>
 </article>
 
         
@@ -136,27 +176,17 @@ if (env.&hellip;</p>
 </article>
 
         
-            <article class="post">
-    
-<h1><a href="https://kuluna.github.io/blog/post/20170717/" title="First commit.">First commit.</a></h1>
-
-<footer class="post-info"> <span class="post-meta"><time datetime="2017.07.17">2017.07.17</time>
-
-</span>
-</footer>
-
-    <p>これまではQiita等でいくつか技術的な内容を投稿してきましたが、 それ以外にも書く場所が欲しかったので、GitHub Pagesを使ってブログを書くことにしました。
-このサイトはHugoを使って作りました。ほんとはAngularとかで作ってみたかったのですが、まずは気軽に始めたかったので。
-まずは継続。&hellip;</p>
-    <a href="https://kuluna.github.io/blog/post/20170717/" title="First commit."> &raquo;</a>
-</article>
-
-        
         <div class="pagination">
 <nav>
 
-	<p class="counter"> 1  1</p>
+    
 
+	<p class="counter"> 1  2</p>
+
+
+	
+	<a class="btn older" href="/blog/post/page/2/" title=""> &raquo;</a>
+	
 
 </nav>
 </div>
