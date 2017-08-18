@@ -2,11 +2,15 @@ body {
   margin: 0;
 }
 
+img {
+  max-width: 100%;
+}
+
 .title-link {
   color: white;
   text-decoration: none;
 }
 
-img {
-  max-width: 100%;
+.pagination {
+  text-align: center;
 }

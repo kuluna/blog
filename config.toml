@@ -3,8 +3,7 @@ languageCode = "ja-jp"
 title = "kuluna.class"
 theme = "hugo-material-component-theme"
 publishDir = "docs"
-# Define how many pages appear per site
-paginate = 5
+hasCJKLanguage = true
 
 [params]
     site_author = "kuluna"
