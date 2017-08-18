@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <title>{{ if .IsNode}}{{ .Title }} &middot; {{end}}{{ .Site.Title }}</title>
+  <meta name="description" content="{{ .Site.Params.site_description }}">
+  <link rel="icon" href="{{ "favicon.ico" | absURL }}">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/theme.css">
+</head>
+<body>
+<header class="mdc-toolbar">
+  <div class="mdc-toolbar__row">
+    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+      <a href="{{ .Site.BaseURL }}" class="title-link"><span class="mdc-toolbar__title">{{ .Site.Title }}</span></a>
+    </section>
+  </div>
+</header>

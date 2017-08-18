@@ -1,0 +1,13 @@
+{{ partial "header" . }}
+
+<main>
+  <article>
+    <ul>
+      {{ range (.Paginator 10).Pages }}
+        {{ .Render "list" }}
+      {{ end }}
+    </ul>
+  </article>
+</main>
+
+{{ partial "footer" . }}

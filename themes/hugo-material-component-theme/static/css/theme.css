@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+}
+
+.title-link {
+  color: white;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}

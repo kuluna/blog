@@ -1,0 +1,16 @@
+{{ partial "header.html" . }}
+
+<nav>
+  <a href="{{ .Site.BaseURL }}" class="mdc-button mdc-button--raised" data-mdc-auto-init="MDCRipple">TOP</a>
+</nav>
+<article>
+  <header class="entry-header">
+    <span class="entry-date">{{ .Date }}</span>
+    <h1 class="entry-title">{{ .Title }}</h1>
+  </header>
+ 
+  <div class="entry-content">
+    <p>{{ .Content }}</p>
+  </div>
+</article>
+{{ partial "footer.html" . }}
