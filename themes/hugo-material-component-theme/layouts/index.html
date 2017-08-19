@@ -2,19 +2,17 @@
 
 <main>
   <article>
-    <ul>
-      {{ range (.Paginator 5).Pages }}
-        {{ .Render "list" }}
-      {{ end }}
-    </ul>
+    {{ range (.Paginator 5).Pages }}    
+      {{ .Render "list" }}
+    {{ end }}
   </article>
 
   {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-  <nav class="pagination">
+  <nav style="text-align: center;">
     {{ if .Paginator.HasPrev }}
     <a href="{{ .Paginator.Prev.URL }}" class="mdc-button">前へ</a>
     {{ end }}
-    <span class="current-page">Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
+    <span>Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
     {{ if .Paginator.HasNext }}
     <a href="{{ .Paginator.Next.URL }}" class="mdc-button">次へ</a>
     {{ end }}

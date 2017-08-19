@@ -1,20 +1,22 @@
 {{ partial "header.html" . }}
 
-<nav>
-  <a href="{{ .Site.BaseURL }}" class="mdc-button mdc-button--raised" data-mdc-auto-init="MDCRipple">TOP</a>
-</nav>
-<article>
-  <header class="entry-header">
-    <span class="entry-date">{{ .Date }}</span>
-    <h1 class="entry-title">{{ .Title }}</h1>
-  </header>
- 
-  <div class="entry-content">
+<main>
+  <nav>
+    <a href="{{ .Site.BaseURL }}" class="mdc-button" data-mdc-auto-init="MDCRipple">TOP</a>
+  </nav>
+  
+  <article class="mdc-card mdc-elevation--z6 default-padding">
+    <header>
+      <h1 class="entry-title">{{ .Title }}</h1>
+      <span class="entry-date">{{ .Date }}</span>
+    </header>
+    
     <p>{{ .Content }}</p>
-  </div>
-</article>
-<nav>
-  <a href="{{ .Site.BaseURL }}" class="mdc-button mdc-button--raised" data-mdc-auto-init="MDCRipple">TOP</a>
-</nav>
+
+  </article>
+  <nav>
+    <a href="{{ .Site.BaseURL }}" class="mdc-button" data-mdc-auto-init="MDCRipple">TOP</a>
+  </nav>
+</main>
 
 {{ partial "footer.html" . }}
