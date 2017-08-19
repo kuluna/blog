@@ -6,7 +6,6 @@
     <description>Recent content in Asp.net Core on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
     <lastBuildDate>Sat, 29 Jul 2017 18:24:32 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/categories/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
@@ -18,18 +17,7 @@
       <pubDate>Sat, 29 Jul 2017 18:24:32 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/post/20170729/</guid>
-      <description>GitHubで草を生やすために作っています。
-kuluna/macaron: Test sweet tool
-簡単にいうとテストケースをWeb上で作成し実施するWebアプリです。
-テストケース テスト一覧
-テスト作成
-テストケースを作成する項目はとてもシンプルにしています。Markdown形式で入力できるようにしています。
-テスト計画 対象のテストケースが今どれぐらいテストされているのかを見る画面です。開発中なのでいろいろ雑な表示です。
-テスト実施 上に現在実施中のテストが表示されて、切り替えて次々とテストを記録していく感じです。
-作ってて気づいた事 このレベルならExcelでよくね？
-確かに今の私の職場でもテスト仕様書はExcelで共有しています。
-Excelとなるとバージョン管理が大変だったり、だれかが開いていると他の人が編集できなかったりと不便極まりないので、しばらく自分で使ってみてWebならではの良さを盛り込めていければなーと考えています。
-もしWebのテスト管理で何か欲しい機能があったりしたらGitHub経由で教えていただけると大変うれしいですね。</description>
+      <description>GitHubで草を生やすために作っています。 kuluna/macaron: Test sweet tool 簡単にいうとテストケースをWeb上で作成し実施するWebアプリです。 テストケース テスト一</description>
     </item>
     
     <item>
@@ -38,19 +26,7 @@ Excelとなるとバージョン管理が大変だったり、だれかが開い
       <pubDate>Sun, 23 Jul 2017 11:37:28 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/post/20170723/</guid>
-      <description>従来のASP.NETではweb.configをたくさんいじってあれこれ設定していましたが、ASP.NET CoreからはほとんどをStartup.csに記述するようなりました。
-個人的にもそのほうがコンパイルエラーで設定ミスとかが分かるのでこっちのほうが好きですね。
-環境  .net core 1.1  HTTPSにリダイレクトする Rewriteのインストール HTTPでアクセスしたときにHTTPSへリダイレクトするのもStartup.csで設定するようになりました。
-まずはNugetからリダイレクトするライブラリをインストールします。
-NugetでMicrosoft.AspNetCore.Rewriteを検索してインストールします。あるいはcsprojに直接書いてもOKです。
-&amp;lt;ItemGroup&amp;gt; &amp;lt;PackageReference Include=&amp;quot;Microsoft.AspNetCore.Rewrite&amp;quot; Version=&amp;quot;1.0.2&amp;quot; /&amp;gt; &amp;lt;/ItemGroup&amp;gt;  csprojに直接書いた場合はdotnet restoreコマンドを忘れずに実行しましょう。
-リダイレクト設定 Startup.csで編集する箇所は2か所です。
-public void ConfigureServices(IServiceCollection services) { // Add framework services. services.AddMvc(); services.Configure&amp;lt;MvcOptions&amp;gt;(options =&amp;gt; { options.Filters.Add(new RequireHttpsAttribute()); }); }  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) { loggerFactory.AddConsole(Configuration.GetSection(&amp;quot;Logging&amp;quot;)); loggerFactory.AddDebug(); app.UseRewriter(new RewriteOptions().AddRedirectToHttps()); app.UseMvc(); }  上ではASP.NET Core全体にHTTPSを必須とする属性を追加します。
-下ではHTTPでアクセスしたときにHTTPSでリダイレクトするように設定をしています。
-Azure App ServicesではHTTPも受け付けますが、これでAzureにアップロードするとHTTPでアクセス時にHTTPSにリダイレクトされるようになります。
-Googleのチェックツールを使うとHTTPからHTTPSにリダイレクトできていることが検証できます。
-プロダクション時だけONにする Startup.csでは現在がどのモードで動作しているかが取得できるので、Production時だけの処理を簡単に書けます。
-if (env.</description>
+      <description>従来のASP.NETではweb.configをたくさんいじってあれこれ設定していましたが、ASP.NET CoreからはほとんどをStartu</description>
     </item>
     
   </channel>

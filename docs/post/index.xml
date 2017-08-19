@@ -6,7 +6,6 @@
     <description>Recent content in Posts on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
     <lastBuildDate>Wed, 09 Aug 2017 21:38:20 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
@@ -18,33 +17,7 @@
       <pubDate>Wed, 09 Aug 2017 21:38:20 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/post/20170809/</guid>
-      <description>とある会議でReactお兄さんとフロントエンド宗教戦争(大袈裟)をしてしまいました。
-会議の内容  お兄さんはPoC向けに簡単にフロントエンドのテンプレートを使える仕組みを作ろうとしている 出来上がったテンプレートはReactベースで作られている これをPoCでぜひ使ってほしいがいかがだろうか  PoCとは  POC 【 Proof Of Concept 】 概念実証
-http://e-words.jp/w/POC.html
-POCとは、新しい概念や理論、原理などが実現可能であることを示すための簡易な試行。一通り全体を作り上げる試作(プロトタイプ)の前段階で、要となる新しいアイデアなどの実現可能性のみを示すために行われる、不完全あるいは部分的なデモンストレーションなどを意味する。
- 簡単にいうとProttとかSketchのようなペーパープロトと比べて実際に操作でき、でも本開発するほどの力の入れ方ではないというなんとも微妙なプロトを作ります。
-Why React? フロントエンド界の動向は少しだけですがおさえているつもりです。なので私もReactワカラナイというわけではないです。
-確かにReactは導入実績も多いし、コミュニティや開発自体も非常に活発、わからないことはFAQサイトとかにもたくさん載っているでしょう。
-でも話を聞いて思ったのが「どうしてReactなんだろうか」という点でした。
-さらに作られたテンプレートを見て、これはどうなんだろうか？と思いました。
-package.jsonを見ると、Reactに始まりflux、babelにwebpackにmaterial-uiとなんともフル装備な感じでした。
-普通にReactで開発する分には大変開発効率を上げてくれる良いヤツらだと思うのですが、
-改めて最初に戻ると、 これほど重装備(主観)なものをPoCのテンプレートとして使うことを考えられた構成なのか？ ということです。
-実際に使う人って誰？ このテンプレを実際に使うのはReactに詳しい人だけではないという点が非常に重要です。ReactどころかjQueryまでしか使ったことがないという人もいるでしょう。
-そんな人に拡張子jsxのファイルを渡して、JavaScriptかと思いきやHTMLもあるという構造を見たらどう思うでしょうか。
-さらにはコンポーネントをビルドするためにwebpackを使っており、もちろんテンプレートの中にはさも当然のように webpack.config.js が存在します。断言します。必ずこのセリフを言う人が現れます。 これはなんだ と。
-PoCを開発する人は、ただ 部分的なデモンストレーション が作れるのであればそれで良いのですよ。
-みんなが使っているライブラリだったから 彼はそう説明しました。Reactはほぼデファクトであり、三大フロントエンドの一つであり、Reactは世界中で使われていると。確かに正しいです。
-彼の中では「みんな」とは世界中の人のことであり、一方私の考える「みんな」とは実際にPoCでこのテンプレを使う人のことを指していました。ここが私があれ？と思った部分だったということです。
-では何ならOKなのか ならjQueryなら良いのか？という話ではありません。大事なのは「何をテンプレートとして提供するか」です。あまりにも抽象的すぎるとほぼテンプレとしての役割は失われ、しかし目的別のように固めすぎると自由度が下がり使えないテンプレ扱いされてしまいます。
-私がテンプレートを作るとするならば、それはページと画面遷移を提供するテンプレート、そしてUIパーツの3つです。
-例えばMaster-&amp;gt;Detail形式。例えばハンバーガー方式、例えばタブ方式といった「各ページ」と、それらをつなぐ「ナビゲーション」をテンプレートとして提供する形です。
-その各ページに目的別でパーツ化されたUIを当てはめていくという感じです。
-PoCではこれまでにないアイデアが本当にいいものなのかを検証するものなので、基本的には何かのサービスとUIが同じになることはありません。しかし、とはいってもナビゲーションやダイアログといったある程度これはお約束というものはいくつか存在します。それらをテンプレートに任せるというのが私の考え方です。
-そういった使い方としてReactというのであれば納得もいきますし。
-分かり手になりたい 確かに技術者としてReactとか使いたいのは非常にわかる。もうjQueryにdom操作するロジック書きたくないよね。わかる。es3つらいよね。わかる。というかフロント界がカオスすぎんだよ。
-なのでどうすればもっとみんなが幸せになれるのか。ここはまだ詰め切れてないので私も考えていきたいところです。
-ちなみに私はAngular派です。</description>
+      <description>とある会議でReactお兄さんとフロントエンド宗教戦争(大袈裟)をしてしまいました。 会議の内容 お兄さんはPoC向けに簡単にフロントエンドのテ</description>
     </item>
     
     <item>
@@ -53,13 +26,7 @@ PoCではこれまでにないアイデアが本当にいいものなのかを�
       <pubDate>Thu, 03 Aug 2017 20:23:02 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/post/20170803/</guid>
-      <description>2017/08/03にGoogle主催のMobile向けイベントに参加してきました。招待制?なのか知り合いには誰一人招待状が届いておらず、結果私一人さみしく参加してきました。
-内容は題のとおりでGoogle I/Oをつまみつつ、Mobile向けの最新情報が紹介されていました。このイベントで初披露というものはなかったと思います。
-聞いてきたものをメモレベルですが書いていきます。後で資料を公開しますと言われたけど、どうもApp DOJOに登録しないと見れないっぽい？
-最新 Support Library Support Library 26.0.0のお話
- minSdkVersionが9から14になった Maven経由で取得できるようになった
-Gradle4.0ならさらに簡潔にかけるようになったようです  repositories { google() } dependecies { ... }  25からの変更点 挙げると結構キリがないようですが、特にText &amp;amp; Font系に変更があるようです。
-Fonts XML  R.font.font1.ttf で使える カスタムフォントをfontFamiliyとして登録できる  Downloadadable Fonts  Google Fontsが使える  Emoji (API 19+)  support libraryにemojiが追加  Auto sizing TextView  TextViewの大きさを決めた枠に合わせて自動的にtextSizeを変更する  DiamicAnimation  これまではDurationがメイン バネをひっぱってびよんびよんできる -&amp;gt; SpringAnimation  Transition  Lolipopでしか使えなかったTransitionがICS以降でも使える ActivityTransitionはまだ  Vector  VectorDrawableを使うときに、変なFillになるのを治せる  小ネタ aapt:attr XMLの中にまったく別のXMLを定義できる。こいつのためだけに1つのXMLを書いてたみたいな時に使える</description>
+      <description>2017/08/03にGoogle主催のMobile向けイベントに参加してきました。招待制?なのか知り合いには誰一人招待状が届いておらず、結</description>
     </item>
     
     <item>
@@ -68,14 +35,7 @@ Fonts XML  R.font.font1.ttf で使える カスタムフォントをfontFamiliy�
       <pubDate>Sun, 30 Jul 2017 15:25:01 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/post/20170730/</guid>
-      <description>ちゃんとよく見ればいいってだけの話です。
-Azure App Service ではデプロイする領域にSFTP(FTP)ではいることができます。デプロイパイプラインを組む前に、App Service へファイルを送信したいときに使えます。
-FTPログイン設定 Azureのポータルから設定したいApp Serviceを開き、 デプロイ資格情報 を選択します。
-FTPでログインするユーザー名とパスワードをここで作成します。
-概要に戻るとSFTPのアドレスができてますので、これをコピーします。あとユーザー名ですが、先ほどの azureftplogin ではなく、　macaron\azureftplogin なことに気を付けてください。
-頭にmacaronとついているのはこの App Service の名前がmacaronだからだと思います。
-あとはWindows環境であれば、エクスプローラーにSFTPのアドレスを貼り付けて、上のユーザー名と設定したパスワードを入力すればログインできます。
-site/wwwroot/ にデプロイして App Service を再起動すると反映されます。kuduを使うとこういったデプロイを自動でしてくれますが、FTPでのデプロイの場合はweb.configも自分で用意する必要がある点に注意してください。</description>
+      <description>ちゃんとよく見ればいいってだけの話です。 Azure App Service ではデプロイする領域にSFTP(FTP)ではいることができます。デプロイパイプラインを組む前に</description>
     </item>
     
     <item>
@@ -84,18 +44,7 @@ site/wwwroot/ にデプロイして App Service を再起動すると反映さ�
       <pubDate>Sat, 29 Jul 2017 18:24:32 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/post/20170729/</guid>
-      <description>GitHubで草を生やすために作っています。
-kuluna/macaron: Test sweet tool
-簡単にいうとテストケースをWeb上で作成し実施するWebアプリです。
-テストケース テスト一覧
-テスト作成
-テストケースを作成する項目はとてもシンプルにしています。Markdown形式で入力できるようにしています。
-テスト計画 対象のテストケースが今どれぐらいテストされているのかを見る画面です。開発中なのでいろいろ雑な表示です。
-テスト実施 上に現在実施中のテストが表示されて、切り替えて次々とテストを記録していく感じです。
-作ってて気づいた事 このレベルならExcelでよくね？
-確かに今の私の職場でもテスト仕様書はExcelで共有しています。
-Excelとなるとバージョン管理が大変だったり、だれかが開いていると他の人が編集できなかったりと不便極まりないので、しばらく自分で使ってみてWebならではの良さを盛り込めていければなーと考えています。
-もしWebのテスト管理で何か欲しい機能があったりしたらGitHub経由で教えていただけると大変うれしいですね。</description>
+      <description>GitHubで草を生やすために作っています。 kuluna/macaron: Test sweet tool 簡単にいうとテストケースをWeb上で作成し実施するWebアプリです。 テストケース テスト一</description>
     </item>
     
     <item>
@@ -104,19 +53,7 @@ Excelとなるとバージョン管理が大変だったり、だれかが開い
       <pubDate>Sun, 23 Jul 2017 11:37:28 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/post/20170723/</guid>
-      <description>従来のASP.NETではweb.configをたくさんいじってあれこれ設定していましたが、ASP.NET CoreからはほとんどをStartup.csに記述するようなりました。
-個人的にもそのほうがコンパイルエラーで設定ミスとかが分かるのでこっちのほうが好きですね。
-環境  .net core 1.1  HTTPSにリダイレクトする Rewriteのインストール HTTPでアクセスしたときにHTTPSへリダイレクトするのもStartup.csで設定するようになりました。
-まずはNugetからリダイレクトするライブラリをインストールします。
-NugetでMicrosoft.AspNetCore.Rewriteを検索してインストールします。あるいはcsprojに直接書いてもOKです。
-&amp;lt;ItemGroup&amp;gt; &amp;lt;PackageReference Include=&amp;quot;Microsoft.AspNetCore.Rewrite&amp;quot; Version=&amp;quot;1.0.2&amp;quot; /&amp;gt; &amp;lt;/ItemGroup&amp;gt;  csprojに直接書いた場合はdotnet restoreコマンドを忘れずに実行しましょう。
-リダイレクト設定 Startup.csで編集する箇所は2か所です。
-public void ConfigureServices(IServiceCollection services) { // Add framework services. services.AddMvc(); services.Configure&amp;lt;MvcOptions&amp;gt;(options =&amp;gt; { options.Filters.Add(new RequireHttpsAttribute()); }); }  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) { loggerFactory.AddConsole(Configuration.GetSection(&amp;quot;Logging&amp;quot;)); loggerFactory.AddDebug(); app.UseRewriter(new RewriteOptions().AddRedirectToHttps()); app.UseMvc(); }  上ではASP.NET Core全体にHTTPSを必須とする属性を追加します。
-下ではHTTPでアクセスしたときにHTTPSでリダイレクトするように設定をしています。
-Azure App ServicesではHTTPも受け付けますが、これでAzureにアップロードするとHTTPでアクセス時にHTTPSにリダイレクトされるようになります。
-Googleのチェックツールを使うとHTTPからHTTPSにリダイレクトできていることが検証できます。
-プロダクション時だけONにする Startup.csでは現在がどのモードで動作しているかが取得できるので、Production時だけの処理を簡単に書けます。
-if (env.</description>
+      <description>従来のASP.NETではweb.configをたくさんいじってあれこれ設定していましたが、ASP.NET CoreからはほとんどをStartu</description>
     </item>
     
     <item>
@@ -125,9 +62,7 @@ if (env.</description>
       <pubDate>Mon, 17 Jul 2017 00:11:38 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/post/20170717/</guid>
-      <description>これまではQiita等でいくつか技術的な内容を投稿してきましたが、 それ以外にも書く場所が欲しかったので、GitHub Pagesを使ってブログを書くことにしました。
-このサイトはHugoを使って作りました。ほんとはAngularとかで作ってみたかったのですが、まずは気軽に始めたかったので。
-まずは継続。</description>
+      <description>これまではQiita等でいくつか技術的な内容を投稿してきましたが、 それ以外にも書く場所が欲しかったので、GitHub Pagesを使ってブログ</description>
     </item>
     
   </channel>

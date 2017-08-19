@@ -6,7 +6,6 @@
     <description>Recent content in Android on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
     <lastBuildDate>Thu, 03 Aug 2017 20:23:02 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/categories/android/index.xml" rel="self" type="application/rss+xml" />
@@ -18,13 +17,7 @@
       <pubDate>Thu, 03 Aug 2017 20:23:02 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/post/20170803/</guid>
-      <description>2017/08/03にGoogle主催のMobile向けイベントに参加してきました。招待制?なのか知り合いには誰一人招待状が届いておらず、結果私一人さみしく参加してきました。
-内容は題のとおりでGoogle I/Oをつまみつつ、Mobile向けの最新情報が紹介されていました。このイベントで初披露というものはなかったと思います。
-聞いてきたものをメモレベルですが書いていきます。後で資料を公開しますと言われたけど、どうもApp DOJOに登録しないと見れないっぽい？
-最新 Support Library Support Library 26.0.0のお話
- minSdkVersionが9から14になった Maven経由で取得できるようになった
-Gradle4.0ならさらに簡潔にかけるようになったようです  repositories { google() } dependecies { ... }  25からの変更点 挙げると結構キリがないようですが、特にText &amp;amp; Font系に変更があるようです。
-Fonts XML  R.font.font1.ttf で使える カスタムフォントをfontFamiliyとして登録できる  Downloadadable Fonts  Google Fontsが使える  Emoji (API 19+)  support libraryにemojiが追加  Auto sizing TextView  TextViewの大きさを決めた枠に合わせて自動的にtextSizeを変更する  DiamicAnimation  これまではDurationがメイン バネをひっぱってびよんびよんできる -&amp;gt; SpringAnimation  Transition  Lolipopでしか使えなかったTransitionがICS以降でも使える ActivityTransitionはまだ  Vector  VectorDrawableを使うときに、変なFillになるのを治せる  小ネタ aapt:attr XMLの中にまったく別のXMLを定義できる。こいつのためだけに1つのXMLを書いてたみたいな時に使える</description>
+      <description>2017/08/03にGoogle主催のMobile向けイベントに参加してきました。招待制?なのか知り合いには誰一人招待状が届いておらず、結</description>
     </item>
     
   </channel>
