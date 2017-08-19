@@ -1,12 +1,9 @@
 baseurl = "https://kuluna.github.io/blog/"
 languageCode = "ja-jp"
 title = "kuluna.class"
-# Define how many pages appear per site
-paginate = 5
-theme = "hugo-minimalist-theme"
+theme = "hugo-material-component-theme"
 publishDir = "docs"
-# Enable gogle analytics by entering your tracking code
-googleAnalytics = ""
+hasCJKLanguage = true
 
 [params]
     site_author = "kuluna"
@@ -16,10 +13,6 @@ googleAnalytics = ""
     avatar = "favicon.png"
     header_background = "cover.jpg"
     header_title = "kuluna.class"
-    copyright = "Powered by [Hugo](http://gohugo.io)."
-
-    # Enable gogle analytics by entering your tracking code
-    google_analytics = ""
 
 [social]
     twitter   = "kuluna"

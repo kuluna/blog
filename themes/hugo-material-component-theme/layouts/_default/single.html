@@ -1,0 +1,22 @@
+{{ partial "header.html" . }}
+
+<main>
+  <nav>
+    <a href="{{ .Site.BaseURL }}" class="mdc-button" data-mdc-auto-init="MDCRipple">TOP</a>
+  </nav>
+  
+  <article class="mdc-card mdc-elevation--z6 default-padding">
+    <header>
+      <h1 class="entry-title">{{ .Title }}</h1>
+      <span class="entry-date">{{ .Date }}</span>
+    </header>
+    
+    <p>{{ .Content }}</p>
+
+  </article>
+  <nav>
+    <a href="{{ .Site.BaseURL }}" class="mdc-button" data-mdc-auto-init="MDCRipple">TOP</a>
+  </nav>
+</main>
+
+{{ partial "footer.html" . }}

@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+}
+
+nav {
+  margin: 16px 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+main {
+  max-width: 800px;
+  margin: auto;
+}
+
+.title-link {
+  color: white;
+  text-decoration: none;
+}
+
+.pagination {
+  text-align: center;
+}
+
+.default-margin {
+  margin: 16px;
+}
+
+.default-padding {
+  padding: 16px;
+}
+
