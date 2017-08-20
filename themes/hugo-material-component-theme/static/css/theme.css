@@ -15,6 +15,12 @@ main {
   margin: auto;
 }
 
+blockquote {
+  padding: 16px;
+  background-color: #f3f3f3;
+  border-radius: 4px;
+}
+
 .title-link {
   color: white;
   text-decoration: none;
