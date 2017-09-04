@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <title>{{ if .IsNode}}{{ .Title }} &middot; {{end}}{{ .Site.Title }}</title>
+  <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>  
   <meta name="description" content="{{ .Site.Params.site_description }}">
   <link rel="icon" href="{{ "favicon.ico" | absURL }}">
 
