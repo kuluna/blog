@@ -23,7 +23,7 @@
     <item>
       <title>Angular</title>
       <link>https://kuluna.github.io/blog/categories/angular/</link>
-      <pubDate>Wed, 09 Aug 2017 21:38:20 +0900</pubDate>
+      <pubDate>Mon, 04 Sep 2017 09:22:43 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/categories/angular/</guid>
       <description></description>
@@ -53,6 +53,15 @@
       <pubDate>Wed, 09 Aug 2017 21:38:20 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/categories/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Typescript</title>
+      <link>https://kuluna.github.io/blog/categories/typescript/</link>
+      <pubDate>Mon, 04 Sep 2017 09:22:43 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/categories/typescript/</guid>
       <description></description>
     </item>
     

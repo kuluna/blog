@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <title>TypeScriptでpromiseをawaitしながらcatchもする - kuluna.class</title>  
+  <meta name="description" content="Build any languages, Run anywhere.">
+  <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/theme.css">
+</head>
+<body>
+<header class="mdc-toolbar">
+  <div class="mdc-toolbar__row">
+    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+      <span class="mdc-toolbar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
+    </section>
+  </div>
+</header>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<main>
+  <nav>
+    <a href="https://kuluna.github.io/blog/" class="mdc-button" data-mdc-auto-init="MDCRipple">TOP</a>
+  </nav>
+
+  <article class="mdc-card mdc-elevation--z6 default-padding">
+    <header>
+      <h1 class="entry-title">TypeScriptでpromiseをawaitしながらcatchもする</h1>
+      <p class="entry-date">2017-09-04 09:22:43 &#43;0900 JST</p>
+      <p>
+        Categories:
+        
+          <a href="../../categories/angular">Angular</a>
+        
+          <a href="../../categories/typescript">TypeScript</a>
+        
+      </p>
+    </header>
+
+    <p>
+
+<p>TypeScriptには戻り値がpromiseの関数をC#のTaskのようにasync/awaitで書くことができます。<br />
+これによってコールバック地獄がなくなり、コードもまるで同期処理のときのようにすっきりさせることができます。</p>
+
+<pre><code class="language-js">// これが
+a() {
+  var result;
+  b().then(function(res) {
+    result = res;
+  });
+}
+
+// こうなる
+async a() {
+  const result = await b();
+}
+</code></pre>
+
+<p>こんな感じですね。すてき！</p>
+
+<h1 id="await中にcatchを使う">await中にcatchを使う</h1>
+
+<p>promiseをJavascriptで使うときは、成功時のthenとエラー時のcatchの2つのコールバックが利用できます。TypeScriptのawaitでは成功時はそのまま戻り値を格納することができますが、エラー時はそこで処理が止まってしまいます。<br />
+これを回避するにはC#と同じく<code>try-catch</code>で囲ってあげる必要がありました。</p>
+
+<pre><code class="language-js">async a() {
+  try {
+    const result = await b();
+  } catch (err) {
+    console.warn(err);
+  }
+}
+</code></pre>
+
+<p>うーんこの感じ。</p>
+
+<p>しかし、これを<code>try-catch</code>を使わずにエラー処理もできるようにする方法があります。</p>
+
+<pre><code class="language-js">async a() {
+  const result = await b().catch(e =&gt; { console.warn(e); });
+}
+</code></pre>
+
+<p>これはTypeScriptの共用体型(Union type)の機能によって実現できる書き方です。共用体型とは、2つ以上の型の特性を持たせることができる特殊な型で、元々型をもっていないJavaScriptのスーパーセットならではの機能です。</p>
+
+<p>例えば、</p>
+
+<pre><code class="language-js">const start: string | number = '0';
+const end: string | number = 10;
+</code></pre>
+
+<p>といったように、stringとnumberの共用体型はそのどちらも受け入れることができます。<br />
+ただし、この場合は足し算のような計算をさせることができません。なぜならnumberの可能性と同時にstringの可能性もあるからです。</p>
+
+<p>同じように、</p>
+
+<pre><code class="language-js">async a() {
+  const result = await b().catch(e =&gt; { console.warn(e); });
+}
+</code></pre>
+
+<p>これもpromiseによって返される値の型とcatchの戻り値、即ち上の場合void型の共用体型となります。<br />
+このvoidが厄介で、voidの可能性があるということはresultに対して何もできない(プロパティのアクセスすらできない)状態になります。</p>
+
+<h1 id="catchでpromiseと同じ型の値を返す">catchでpromiseと同じ型の値を返す</h1>
+
+<p>そこで解決策として、<code>await b()</code>の戻り値の型と<code>catch()</code>の戻り値の型を同じにしてあげれば共用体型でなくなり、resultにアクセスできるようになります。</p>
+
+<p>仮にb()の戻り値が<code>Promise&lt;number&gt;</code>だった場合は、</p>
+
+<pre><code class="language-js">async a() {
+  const result = await b().catch(e =&gt; {
+    console.warn(e);
+    return -1;
+  });
+
+  if (result &gt; 0) {
+    // hogehoge
+  }
+}
+</code></pre>
+
+<p>とすることで、resultの型がnumberになります。</p>
+
+<p>型があるという安心感、プライスレス。</p>
+</p>
+
+  </article>
+  <nav>
+    <a href="https://kuluna.github.io/blog/" class="mdc-button" data-mdc-auto-init="MDCRipple">TOP</a>
+  </nav>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<script>window.mdc.autoInit();</script>
+</body>
+</html>
+
