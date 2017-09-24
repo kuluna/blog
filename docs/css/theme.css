@@ -42,3 +42,9 @@ hr {
 .default-padding {
   padding: 16px;
 }
+
+a.card-link {
+  margin: 16px 0;
+  display: block;
+  text-decoration: none;
+}
