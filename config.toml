@@ -5,6 +5,10 @@ theme = "hugo-material-component-theme"
 publishDir = "docs"
 hasCJKLanguage = true
 
+## Use Sintax Highlight
+pygmentsCodefences = true
+pygmentsUseClasses = true
+
 [params]
     site_author = "kuluna"
     site_description = "Build any languages, Run anywhere."

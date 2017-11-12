@@ -8,6 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/syntax.css">
   <link rel="stylesheet" href="https://kuluna.github.io/blog/css/theme.css">
 </head>
 <body>
@@ -19,7 +20,6 @@
   </div>
 </header>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
 
 <main>
   <nav>
@@ -54,64 +54,49 @@
 
 <p>TypeScriptには戻り値がpromiseの関数をC#のTaskのようにasync/awaitで書くことができます。<br />
 これによってコールバック地獄がなくなり、コードもまるで同期処理のときのようにすっきりさせることができます。</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// これが
+</span><span class="c1"></span><span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="nx">b</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="nx">res</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="p">}</span>
 
-<pre><code class="language-js">// これが
-a() {
-  var result;
-  b().then(function(res) {
-    result = res;
-  });
-}
-
-// こうなる
-async a() {
-  const result = await b();
-}
-</code></pre>
-
+<span class="c1">// こうなる
+</span><span class="c1"></span><span class="kr">async</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">b</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
 <p>こんな感じですね。すてき！</p>
 
 <h1 id="await中にcatchを使う">await中にcatchを使う</h1>
 
 <p>promiseをJavascriptで使うときは、成功時のthenとエラー時のcatchの2つのコールバックが利用できます。TypeScriptのawaitでは成功時はそのまま戻り値を格納することができますが、エラー時はそこで処理が止まってしまいます。<br />
 これを回避するにはC#と同じく<code>try-catch</code>で囲ってあげる必要がありました。</p>
-
-<pre><code class="language-js">async a() {
-  try {
-    const result = await b();
-  } catch (err) {
-    console.warn(err);
-  }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">async</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">b</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <p>うーんこの感じ。</p>
 
 <p>しかし、これを<code>try-catch</code>を使わずにエラー処理もできるようにする方法があります。</p>
-
-<pre><code class="language-js">async a() {
-  const result = await b().catch(e =&gt; { console.warn(e); });
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">async</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">b</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span> <span class="p">});</span>
+<span class="p">}</span></code></pre></div>
 <p>これはTypeScriptの共用体型(Union type)の機能によって実現できる書き方です。共用体型とは、2つ以上の型の特性を持たせることができる特殊な型で、元々型をもっていないJavaScriptのスーパーセットならではの機能です。</p>
 
 <p>例えば、</p>
-
-<pre><code class="language-js">const start: string | number = '0';
-const end: string | number = 10;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">start</span><span class="o">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span><span class="p">;</span>
+<span class="k">const</span> <span class="nx">end</span><span class="o">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span></code></pre></div>
 <p>といったように、stringとnumberの共用体型はそのどちらも受け入れることができます。<br />
 ただし、この場合は足し算のような計算をさせることができません。なぜならnumberの可能性と同時にstringの可能性もあるからです。</p>
 
 <p>同じように、</p>
-
-<pre><code class="language-js">async a() {
-  const result = await b().catch(e =&gt; { console.warn(e); });
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">async</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">b</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span> <span class="p">});</span>
+<span class="p">}</span></code></pre></div>
 <p>これもpromiseによって返される値の型とcatchの戻り値、即ち上の場合void型の共用体型となります。<br />
 このvoidが厄介で、voidの可能性があるということはresultに対して何もできない(プロパティのアクセスすらできない)状態になります。</p>
 
@@ -120,19 +105,16 @@ const end: string | number = 10;
 <p>そこで解決策として、<code>await b()</code>の戻り値の型と<code>catch()</code>の戻り値の型を同じにしてあげれば共用体型でなくなり、resultにアクセスできるようになります。</p>
 
 <p>仮にb()の戻り値が<code>Promise&lt;number&gt;</code>だった場合は、</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">async</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">b</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">});</span>
 
-<pre><code class="language-js">async a() {
-  const result = await b().catch(e =&gt; {
-    console.warn(e);
-    return -1;
-  });
-
-  if (result &gt; 0) {
-    // hogehoge
-  }
-}
-</code></pre>
-
+  <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// hogehoge
+</span><span class="c1"></span>  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <p>とすることで、resultの型がnumberになります。</p>
 
 <p>型があるという安心感、プライスレス。</p>
@@ -144,8 +126,6 @@ const end: string | number = 10;
   </nav>
 </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 <script>window.mdc.autoInit();</script>
 </body>
