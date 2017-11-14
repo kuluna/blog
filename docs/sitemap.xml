@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kuluna.github.io/blog/post/20171114/</loc>
+    <lastmod>2017-11-14T22:19:33+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kuluna.github.io/blog/post/20171111/</loc>
     <lastmod>2017-11-11T16:57:55+09:00</lastmod>
   </url>
@@ -90,7 +95,7 @@
   
   <url>
     <loc>https://kuluna.github.io/blog/post/</loc>
-    <lastmod>2017-11-11T16:57:55+09:00</lastmod>
+    <lastmod>2017-11-14T22:19:33+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -113,7 +118,13 @@
   
   <url>
     <loc>https://kuluna.github.io/blog/</loc>
-    <lastmod>2017-11-11T16:57:55+09:00</lastmod>
+    <lastmod>2017-11-14T22:19:33+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kuluna.github.io/blog/categories/%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/</loc>
+    <lastmod>2017-11-14T22:19:33+09:00</lastmod>
     <priority>0</priority>
   </url>
   

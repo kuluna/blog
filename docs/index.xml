@@ -6,10 +6,19 @@
     <description>Recent content on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 11 Nov 2017 16:57:55 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 14 Nov 2017 22:19:33 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>個人的に仕事しやすいUIデザイナーさん</title>
+      <link>https://kuluna.github.io/blog/post/20171114/</link>
+      <pubDate>Tue, 14 Nov 2017 22:19:33 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20171114/</guid>
+      <description>どういうデザイナーとだと仕事しやすいか - Konifar&amp;rsquo;s ZATSU という記事を読みました。 ちょうどスマートフォンのUIデザイナーをしている方と一緒のプロジェクトで</description>
+    </item>
     
     <item>
       <title>Controllerを超えたデータのやり取り(Android, iOS)</title>
