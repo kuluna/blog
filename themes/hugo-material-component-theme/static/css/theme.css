@@ -16,6 +16,7 @@ main {
 }
 
 blockquote {
+  font-size: small;
   padding: 16px;
   background-color: #f3f3f3;
   border-radius: 4px;
