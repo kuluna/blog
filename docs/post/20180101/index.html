@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <title>明けましておめでとうございます &amp; 年末年始アプリ開発その1 - kuluna.class</title>
+  <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta property="og:title" content="kuluna.class">
+
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/theme.css">
+</head>
+<body>
+<header class="mdc-toolbar">
+  <div class="mdc-toolbar__row">
+    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+      <span class="mdc-toolbar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
+    </section>
+  </div>
+</header>
+
+
+<main>
+  <nav>
+    <a href="javascript:history.back();" class="mdc-button" data-mdc-auto-init="MDCRipple">BACK</a>
+  </nav>
+
+  <article class="mdc-card mdc-elevation--z6 default-padding">
+    <header>
+      <h1 class="entry-title">明けましておめでとうございます &amp; 年末年始アプリ開発その1</h1>
+      <p class="entry-date">2018-01-01 19:39:35 &#43;0900 JST</p>
+      <p>
+        Categories:
+        
+          <a href="../../categories/android">Android</a>
+        
+      </p>
+      
+      <div class="socials">
+        
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="kuluna">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        
+        <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        
+        <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en">Pocket</a>
+        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+      </div>
+    </header>
+
+    <p>
+
+<p>明けましておめでとうございます。<br />
+前年はブログ更新ぼちぼちといった感じですが、今年も消滅しない程度の更新を続けていけるよう頑張っていきたいと思います。</p>
+
+<p>さて年末になり、私はいつも実家に帰省しているのですが、せっかくゆっくりできるこの短い時間を使って何かアプリを作ろうかと考えた次第でございます。</p>
+
+<h1 id="コンセプト">コンセプト</h1>
+
+<p>私がいつもアプリ開発で気を付けていることは、アプリ開発はスピード勝負の短期決戦ということです。<br />
+特に個人開発において一番の敵は <strong>「飽きる」</strong> ことです。なかなかアプリが完成しないとだんだんとモチベーションが下がってきてしまうので、この年末年始の休みだけで作れそうなアプリを作ることにしました。</p>
+
+<p>その際に重要となるのが <strong>アプリのコンセプト</strong> です。</p>
+
+<ul>
+<li>何に困っていて</li>
+<li>そのために何をするためのアプリなのか</li>
+<li>そしてそのアプリを自分が作る意味とは？</li>
+</ul>
+
+<p>この3つを最初に決めることです。<br />
+今回私がアプリ開発を始めるにあたって上のことを整理するためにメモ帳に落書きをしました。</p>
+
+<p><img src="../../images/2018-01-01/memo.jpg" alt="メモ" /></p>
+
+<p>このメモを整理すると、</p>
+
+<ul>
+<li>はてぶをもっとサクサク読みたい</li>
+<li>はてぶの気になる記事やブコメがすぐ読めるような機能があるスマホアプリを開発する</li>
+<li>モチベーションは <strong>自分のため</strong> と <strong>Android最新技術の勉強をするため</strong></li>
+</ul>
+
+<p>となります。<br />
+ここまで明確になると、作るべきアプリの機能や、逆に <strong>作らなくて良い機能</strong> も明確になり、短期間で集中してアプリを作ることができるのです。</p>
+
+<h1 id="スケッチ">スケッチ</h1>
+
+<p>さてメモの左欄に汚い落書きがありますが、これはアプリのイメージを自分の中で固めるために思いついたデザイン案を落書きしたものです。<br />
+とにかくエイヤァでいきなりアプリを作り始めるのもまぁまぁよいかもしれませんが、私は作るアプリがどんな感じになるのかを最初に落書きしていろいろ妄想する、といったことを行っています。</p>
+
+<p>これ短期間で開発するのにこんな時間あるの？となりそうですが、いざ実際にアプリを開発しながらあれやこれやとデザインの試行錯誤をするのは結構大変です。<br />
+そのため私はある程度スケッチで数パターン考えてみて、その中から一番よさそうなものをまずは作ってみるというやり方をしています。急がば回れですね。</p>
+
+<h1 id="清書">清書</h1>
+
+<p>じゃぁいよいよアプリ開発か！と思いきやまだやりません。この後にPCで先ほどの落書きを1枚だけ清書します。</p>
+
+<p>これは落書きだとなんだかいい感じに見えるけどいざ実際にやってみたらなんか微妙になったという経験、みなさんもあるのではないでしょうか？<br />
+なのでここで一回、実際自分のデザインがどういうアプリになるのかを清書したイメージで再確認するのです。</p>
+
+<p><img src="../../images/2018-01-01/cards.png" alt="カードレイアウト" /></p>
+
+<p>私がこのアプリを作ろうして一番気にしているのはリストに表示されるカードレイアウトでした。タイトルとか画像はその時のホッテントリにきたやつをテキトーに拝借しました。清書にはPowerPointを使いました。</p>
+
+<p>落書きを基にいろいろ調整してみたものが左上の初期版、<br />
+カードが大きすぎるかなと思って小さくしてみたのが右上のV2、<br />
+情報量が少ないと思ったので拡張してみたのが右下のV3です。</p>
+
+<p>これと最近のSNS系アプリを比較してみるとV3でもそんなに一覧性は悪くないかなと思いました。<br />
+リストの一覧性より、その記事が気になったり、そのブコメを読んでみたいという気持ちになりやすくなるように、その判断材料をリストの中に入れたほうがUXとしても良いと思い、最終的にはV3のデザインでいってみようということにしました。</p>
+
+<h1 id="おわりに">おわりに</h1>
+
+<p>今日でコンセプトでデザインカンプの作成まで終わりました。明日から2日間しかなですが、開発がんばってみようと思います。</p>
+</p>
+
+  </article>
+  <nav>
+    <a href="https://kuluna.github.io/blog/" class="mdc-button" data-mdc-auto-init="MDCRipple">HOME</a>
+  </nav>
+</main>
+
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<script>window.mdc.autoInit();</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42303570-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+
