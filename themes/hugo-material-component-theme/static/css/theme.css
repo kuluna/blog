@@ -1,9 +1,22 @@
+blockquote {
+  font-size: small;
+  padding: 16px;
+  background-color: #f3f3f3;
+  border-radius: 4px;
+}
+
 body {
   margin: 0;
 }
 
-nav {
-  margin: 16px 0;
+code {
+  padding: 4px;
+  color: orangered;
+}
+
+hr {
+  width: 30%;
+  border: 1px solid #bbb;
 }
 
 img {
@@ -15,16 +28,17 @@ main {
   margin: auto;
 }
 
-blockquote {
-  font-size: small;
-  padding: 16px;
-  background-color: #f3f3f3;
-  border-radius: 4px;
+nav {
+  margin: 16px 0;
 }
 
-hr {
-  width: 30%;
-  border: 1px solid #bbb;
+pre {
+  overflow-x: auto;
+  padding: 8px;
+}
+
+pre > code {
+  padding: 0
 }
 
 .title-link {

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kuluna.github.io/blog/post/20180107/</loc>
+    <lastmod>2018-01-07T17:45:44+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kuluna.github.io/blog/post/20180101/</loc>
     <lastmod>2018-01-01T19:39:35+09:00</lastmod>
   </url>
@@ -74,7 +79,7 @@
   
   <url>
     <loc>https://kuluna.github.io/blog/categories/android/</loc>
-    <lastmod>2018-01-01T19:39:35+09:00</lastmod>
+    <lastmod>2018-01-07T17:45:44+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -98,7 +103,7 @@
   
   <url>
     <loc>https://kuluna.github.io/blog/categories/</loc>
-    <lastmod>2018-01-01T19:39:35+09:00</lastmod>
+    <lastmod>2018-01-07T17:45:44+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -116,7 +121,7 @@
   
   <url>
     <loc>https://kuluna.github.io/blog/post/</loc>
-    <lastmod>2018-01-01T19:39:35+09:00</lastmod>
+    <lastmod>2018-01-07T17:45:44+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -139,7 +144,7 @@
   
   <url>
     <loc>https://kuluna.github.io/blog/</loc>
-    <lastmod>2018-01-01T19:39:35+09:00</lastmod>
+    <lastmod>2018-01-07T17:45:44+09:00</lastmod>
     <priority>0</priority>
   </url>
   
