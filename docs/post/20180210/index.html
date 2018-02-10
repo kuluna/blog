@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <title>年末年始アプリ開発その3 - kuluna.class</title>
+  <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta property="og:title" content="kuluna.class">
+
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/theme.css">
+</head>
+<body>
+<header class="mdc-toolbar">
+  <div class="mdc-toolbar__row">
+    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+      <span class="mdc-toolbar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
+    </section>
+  </div>
+</header>
+
+
+<main>
+  <nav>
+    <a href="javascript:history.back();" class="mdc-button" data-mdc-auto-init="MDCRipple">BACK</a>
+  </nav>
+
+  <article class="mdc-card mdc-elevation--z6 default-padding">
+    <header>
+      <h1 class="entry-title">年末年始アプリ開発その3</h1>
+      <p class="entry-date">2018-02-10 13:35:00 &#43;0900 JST</p>
+      <p>
+        Categories:
+        
+          <a href="../../categories/android">Android</a>
+        
+      </p>
+      
+      <div class="socials">
+        
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="kuluna">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        
+        <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        
+        <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en">Pocket</a>
+        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+      </div>
+    </header>
+
+    <p><p>年末年始？知らない子ですね。</p>
+
+<p>なかなか時間がとれず開発が停滞していたのですが、1月下旬あたりから少し余裕が取れたので、少しず～つですが進めていました。</p>
+
+<p><blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">おーええやん <a href="https://t.co/6JOdiWNKFI">pic.twitter.com/6JOdiWNKFI</a></p>&mdash; kuluna (@kuluna) <a href="https://twitter.com/kuluna/status/959731469089308673?ref_src=twsrc%5Etfw">2018年2月3日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>CoodinatorLayoutを使ってスクロール時にActionBarを消した処理を入れてみました。<br />
+2列に表示されているリストはRecyclerViewのLayoutManagerを <code>StaggeredGridLayoutManager</code> をすることで、高さが可変なGridLayoutを表示することができます。</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">recyclerView</span><span class="p">.</span><span class="n">layoutManager</span> <span class="p">=</span> <span class="n">StaggeredGridLayoutManager</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">StaggeredGridLayoutManager</span><span class="p">.</span><span class="n">VERTICAL</span><span class="p">)</span></code></pre></div>
+<p>たったこれだけであのレイアウトになるんですね。すごい。</p>
+
+<p><blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">あっ、これすごく良い <a href="https://t.co/V6wqisssrc">pic.twitter.com/V6wqisssrc</a></p>&mdash; kuluna (@kuluna) <a href="https://twitter.com/kuluna/status/959985334804037633?ref_src=twsrc%5Etfw">2018年2月4日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>こちらは設定でJavaScriptを実行しないようにできるモードを追加してみたものです。明らかにロードの時間が違いますね。<br />
+AndroidのWebViewはデフォルトでJavaScriptが無効になっています。</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">webView</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">run</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="n">javaScriptEnabled</span> <span class="p">=</span> <span class="k">true</span> <span class="p">}</span></code></pre></div>
+<p>これでJavaScriptが有効になるのですが、あえて無効のままにするオプションを追加してみました。<br />
+最近のWebはJavaScriptにあまり頼らなくてもリッチな表示ができているので、ある程度のサイトはこれで読み込み速度を大幅に向上させることができます。一応メニューからブラウザで開く機能もつけたので、より詳細にページを見たい場合はブラウザで開くことができます。</p>
+
+<p><blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ダークテーマにしてみたのと、ブコメをさくっと見られるモードを用意しました。良さげ。 <a href="https://t.co/dR7HXjolwU">pic.twitter.com/dR7HXjolwU</a></p>&mdash; kuluna (@kuluna) <a href="https://twitter.com/kuluna/status/960104832966180864?ref_src=twsrc%5Etfw">2018年2月4日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>このあたりから画面もFragmentで分割するようにしました。ダークテーマですがどうもRecyclerViewで表示するViewにはデフォルトでアプリのテーマが設定されないようなので、XMLにthemeを追記することでダークテーマになりました。</p>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;android.support.v7.widget.CardView</span>
+        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+        <span class="na">android:layout_marginBottom=</span><span class="s">&#34;4dp&#34;</span>
+        <span class="na">android:layout_marginEnd=</span><span class="s">&#34;4dp&#34;</span>
+        <span class="na">android:layout_marginStart=</span><span class="s">&#34;4dp&#34;</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">&#34;4dp&#34;</span>
+        <span class="na">android:foreground=</span><span class="s">&#34;?android:attr/selectableItemBackground&#34;</span>
+        <span class="na">android:theme=</span><span class="s">&#34;@style/AppTheme&#34;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/android.support.v7.widget.CardView&gt;</span></code></pre></div>
+<p>あんまり深く考えずに、テーマが適用されてない箇所があったらとりあえずこのテーマでヨロ！って感じで設定しておけばいいんだと思います。</p>
+
+<p><blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">今日一日アプリを使ってみて、コメントからBackキーを押した時に一覧に戻ってしまうのがすごく微妙だったので、コメントを非表示にするだけにしてみました。 <a href="https://t.co/bXdYET2M50">pic.twitter.com/bXdYET2M50</a></p>&mdash; kuluna (@kuluna) <a href="https://twitter.com/kuluna/status/960515820215418880?ref_src=twsrc%5Etfw">2018年2月5日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>ここは普通にFragmentManagerのbackstackを・・・とやろうと思ったのですが、そうするとFragmentを毎回生成することになるので単純にブコメ表示するFragmentをshow/hideするだけにしています。そうすることで表示を切り替えても読み込みが発生せずサクサクと表示されるようになりました。</p>
+
+<p>ここまでで9割ほど欲しい機能が実装終わった感じなので、あとは設定画面を少し追加すればストアに配布してみようかと思っています。</p>
+</p>
+
+  </article>
+  <nav>
+    <a href="https://kuluna.github.io/blog/" class="mdc-button" data-mdc-auto-init="MDCRipple">HOME</a>
+  </nav>
+</main>
+
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<script>window.mdc.autoInit();</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42303570-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+
