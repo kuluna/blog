@@ -6,10 +6,19 @@
     <description>Recent content on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 10 Feb 2018 13:35:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 04 Mar 2018 14:46:38 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AQUOS sense liteはType-Cオーディオに対応していない</title>
+      <link>https://kuluna.github.io/blog/post/20180304/</link>
+      <pubDate>Sun, 04 Mar 2018 14:46:38 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20180304/</guid>
+      <description>購入したもの Elecom Type-C to 3.5mm音声変換ケーブル - AD-C35WH AQUOS sense liteは端末上部にイヤホンジャックがあるため、非常に使いづらいです。 そこで端末下部にあ</description>
+    </item>
     
     <item>
       <title>年末年始アプリ開発その3</title>
