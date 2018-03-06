@@ -6,10 +6,19 @@
     <description>Recent content in Gadget on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 04 Mar 2018 14:46:38 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 06 Mar 2018 22:15:46 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/categories/gadget/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Google Home miniに左右のボタンを入れ替えるオプションが追加されていた</title>
+      <link>https://kuluna.github.io/blog/post/20180306/</link>
+      <pubDate>Tue, 06 Mar 2018 22:15:46 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20180306/</guid>
+      <description>Google Home miniは電源ケーブルを奥に向かって設置すると向かって左が音量-、右が音量+となるのですが、壁掛け等で電源ケーブルが手前にくるような配置</description>
+    </item>
     
     <item>
       <title>AQUOS sense liteはType-Cオーディオに対応していない</title>
