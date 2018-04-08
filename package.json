@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "hugo",
-    "start": "hugo server --watch",
-    "lint": "textlint"
+    "new": "hugo new",
+    "start": "hugo server --watch"
   }
 }

@@ -1,10 +1,7 @@
+{{ $ctx := . }}
 {{ partial "header.html" . }}
 
 <main>
-  <nav>
-    <a href="javascript:history.back();" class="mdc-button" data-mdc-auto-init="MDCRipple">BACK</a>
-  </nav>
-
   <article class="mdc-card mdc-elevation--z6 default-padding">
     <header>
       <h1 class="entry-title">{{ .Title }}</h1>
@@ -12,7 +9,7 @@
       <p>
         Categories:
         {{ range .Params.categories }}
-          <a href="../../categories/{{ . | urlize }}">{{ . }}</a>
+          <a href="{{ $ctx.Site.BaseURL }}categories/{{ . | urlize }}">{{ . }}</a>
         {{ end }}
       </p>
       <!-- share SNS -->
@@ -30,9 +27,6 @@
     <p>{{ .Content }}</p>
 
   </article>
-  <nav>
-    <a href="{{ .Site.BaseURL }}" class="mdc-button" data-mdc-auto-init="MDCRipple">HOME</a>
-  </nav>
 </main>
 
 {{ partial "footer.html" . }}

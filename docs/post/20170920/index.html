@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ja">
 <head>
@@ -31,10 +32,6 @@
 
 
 <main>
-  <nav>
-    <a href="javascript:history.back();" class="mdc-button" data-mdc-auto-init="MDCRipple">BACK</a>
-  </nav>
-
   <article class="mdc-card mdc-elevation--z6 default-padding">
     <header>
       <h1 class="entry-title">AngularのRoute Guardsにログイン情報を保持させる</h1>
@@ -42,7 +39,7 @@
       <p>
         Categories:
         
-          <a href="../../categories/angular">Angular</a>
+          <a href="https://kuluna.github.io/blog/categories/angular">Angular</a>
         
       </p>
       
@@ -84,14 +81,16 @@ AngularにはRouting Guardsという仕組みがあり、これを使うとAngul
   <span class="nx">canActivate</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p>これはサンプルそのままですが、この場合は常にログイン状態であることを返します。<br />
 もちろん作ったAuthGuardはapp.module.tsに登録しましょう。</p>
 
 <p>あとはルーティングでこのAuthGuardを使います。</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">adminRoutes</span><span class="o">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">AdminComponent</span><span class="p">,</span> <span class="nx">canActivate</span><span class="o">:</span> <span class="p">[</span><span class="nx">AuthGuard</span><span class="p">]</span> <span class="p">}</span>
-<span class="p">];</span></code></pre></div>
+<span class="p">];</span>
+</code></pre></div>
 <p>adminページを開くと普通に見ることができます。では上のcanActiveメソッドでfalseを返してみるとどうでしょう。adminが開けなくなります。<br />
 これはAngularのRoute Guardsという仕組みです。</p>
 
@@ -156,7 +155,8 @@ AngularにはRouting Guardsという仕組みがあり、これを使うとAngul
   <span class="nx">getObservable</span><span class="p">()</span><span class="o">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">userSubject</span><span class="p">;</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p>追加したのは<code>userSubject</code>というSubjectオブジェクトです。Subjectはrxjsのライブラリで、ストリームに値を流す時に使います。<br />
 これが<code>checkAsync()</code>メソッドが呼ばれるたびにストリームにログイン情報が流れていきます。<br />
 つまりこのストリームを各コンポーネントが受け取ればログイン情報を共有することができます。</p>
@@ -170,9 +170,10 @@ AngularにはRouting Guardsという仕組みがあり、これを使うとAngul
       <span class="k">this</span><span class="p">.</span><span class="nx">login</span> <span class="o">=</span> <span class="nx">login</span><span class="p">;</span>
     <span class="p">});</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p>としておけば、HTML側で</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="err">*</span><span class="na">ngIf</span><span class="o">=</span><span class="s">&#34;login.name&#34;</span><span class="p"></span><span class="p">&gt;</span>{{login.name}}<span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="err">*</span><span class="na">ngIf</span><span class="o">=</span><span class="s">&#34;login.name&#34;</span><span class="p">&gt;</span>{{login.name}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <p>とするだけです。<br />
 Router Guardによってログイン確認が行われるので各コンポーネントはObservableをsubscribeするだけでOKです。</p>
 
@@ -182,9 +183,6 @@ Router Guardによってログイン確認が行われるので各コンポー�
 </p>
 
   </article>
-  <nav>
-    <a href="https://kuluna.github.io/blog/" class="mdc-button" data-mdc-auto-init="MDCRipple">HOME</a>
-  </nav>
 </main>
 
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>

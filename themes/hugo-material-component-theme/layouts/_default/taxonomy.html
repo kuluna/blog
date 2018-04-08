@@ -1,10 +1,7 @@
 {{ partial "header.html" . }}
 
 <main>
-  {{ range .Data.Pages }}
-  <li>
-    <a href="{{ .Permalink }}">{{ .Title }}</a>
-  </li>
-  {{ end }}
+  {{ .Render "list" }}
 </main>
+
 {{ partial "footer" . }}

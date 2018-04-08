@@ -1,10 +1,33 @@
-<a href="{{ .Permalink }}" class="card-link">
-  <div class="mdc-card default-padding mdc-ripple-surface" tabindex="0">
-    <header>
-      <h3>{{ .Title }}</h3>
-      <p style="color: black; font-size: small;">{{ .Date }}</p>
-    </header>
-    <p style="color: black;">{{ .Summary }}...</p>
-    <span style="text-decoration: underline; font-size: small;">記事を読む</span>
-  </div>
-</a>
+<article>
+  {{ range (.Paginator 5).Pages }}    
+    <a href="{{ .Permalink }}" class="card-link">
+      <div class="mdc-card default-padding mdc-ripple-surface" tabindex="0">
+        <header>
+          <h3>{{ .Title }}</h3>
+          <p style="color: black; font-size: small;">
+            {{ .Date }}
+            <br>
+            Categories:
+            {{ with .Params.categories }}
+              {{range .}} {{ . }} {{ end }}
+            {{ end }}
+          </p>
+        </header>
+        <p style="color: black;">{{ .Summary }}...</p>
+        <span style="text-decoration: underline; font-size: small;">記事を読む</span>
+      </div>
+    </a>
+  {{ end }}
+</article>
+
+{{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+<nav style="text-align: center;">
+  {{ if .Paginator.HasPrev }}
+  <a href="{{ .Paginator.Prev.URL }}" class="mdc-button">前へ</a>
+  {{ end }}
+  <span>Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
+  {{ if .Paginator.HasNext }}
+  <a href="{{ .Paginator.Next.URL }}" class="mdc-button">次へ</a>
+  {{ end }}
+</nav>
+{{ end }}

@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ja">
 <head>
@@ -31,10 +32,6 @@
 
 
 <main>
-  <nav>
-    <a href="javascript:history.back();" class="mdc-button" data-mdc-auto-init="MDCRipple">BACK</a>
-  </nav>
-
   <article class="mdc-card mdc-elevation--z6 default-padding">
     <header>
       <h1 class="entry-title">ASP.NET Coreで常にHTTPSにリダイレクトする</h1>
@@ -42,7 +39,7 @@
       <p>
         Categories:
         
-          <a href="../../categories/asp.net-core">ASP.NET Core</a>
+          <a href="https://kuluna.github.io/blog/categories/asp.net-core">ASP.NET Core</a>
         
       </p>
       
@@ -84,24 +81,24 @@ Nugetで<code>Microsoft.AspNetCore.Rewrite</code>を検索してインストー�
 <h2 id="リダイレクト設定">リダイレクト設定</h2>
 
 <p>Startup.csで編集する箇所は2か所です。</p>
-<div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs">public void ConfigureServices(IServiceCollection services)
-{
-    // Add framework services.
-    services.AddMvc();
+<div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">void</span> <span class="n">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Add framework services.
+</span><span class="c1"></span>    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
     
-    services.Configure&lt;MvcOptions&gt;(options =&gt;
-    {
-        options.Filters.Add(new RequireHttpsAttribute());
-    });
-}</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs">public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-{
-    loggerFactory.AddConsole(Configuration.GetSection(&#34;Logging&#34;));
-    loggerFactory.AddDebug();
+    <span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="p">&lt;</span><span class="n">MvcOptions</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">options</span><span class="p">.</span><span class="n">Filters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">RequireHttpsAttribute</span><span class="p">());</span>
+    <span class="p">});</span>
+<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">void</span> <span class="n">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">loggerFactory</span><span class="p">.</span><span class="n">AddConsole</span><span class="p">(</span><span class="n">Configuration</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&#34;Logging&#34;</span><span class="p">));</span>
+    <span class="n">loggerFactory</span><span class="p">.</span><span class="n">AddDebug</span><span class="p">();</span>
 
-    app.UseRewriter(new RewriteOptions().AddRedirectToHttps());
+    <span class="n">app</span><span class="p">.</span><span class="n">UseRewriter</span><span class="p">(</span><span class="k">new</span> <span class="n">RewriteOptions</span><span class="p">().</span><span class="n">AddRedirectToHttps</span><span class="p">());</span>
 
-    app.UseMvc();
-}</code></pre></div>
+    <span class="n">app</span><span class="p">.</span><span class="n">UseMvc</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
 <p>上ではASP.NET Core全体にHTTPSを必須とする属性を追加します。<br />
 下ではHTTPでアクセスしたときにHTTPSでリダイレクトするように設定をしています。</p>
 
@@ -114,10 +111,10 @@ Nugetで<code>Microsoft.AspNetCore.Rewrite</code>を検索してインストー�
 <h2 id="プロダクション時だけonにする">プロダクション時だけONにする</h2>
 
 <p>Startup.csでは現在がどのモードで動作しているかが取得できるので、Production時だけの処理を簡単に書けます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs">if (env.IsProduction())
-{
-    app.UseRewriter(new RewriteOptions().AddRedirectToHttps());
-}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs"><span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">IsProduction</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">UseRewriter</span><span class="p">(</span><span class="k">new</span> <span class="n">RewriteOptions</span><span class="p">().</span><span class="n">AddRedirectToHttps</span><span class="p">());</span>
+<span class="p">}</span></code></pre></div>
 <p>またはappsettings.jsonの値を見るようにしても良いと思います。</p>
 
 <h1 id="参考">参考</h1>
@@ -128,9 +125,6 @@ Nugetで<code>Microsoft.AspNetCore.Rewrite</code>を検索してインストー�
 </p>
 
   </article>
-  <nav>
-    <a href="https://kuluna.github.io/blog/" class="mdc-button" data-mdc-auto-init="MDCRipple">HOME</a>
-  </nav>
 </main>
 
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
