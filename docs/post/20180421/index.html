@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html lang="ja">
+<head>
+  <title>Android用カレンダーライブラリを公開しました - kuluna.class</title>
+  <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta property="og:title" content="kuluna.class">
+
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/theme.css">
+</head>
+<body>
+<header class="mdc-toolbar">
+  <div class="mdc-toolbar__row">
+    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+      <span class="mdc-toolbar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
+    </section>
+    <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+      <a href="https://twitter.com/kuluna" class="mdc-toolbar__icon">
+        <img src="https://kuluna.github.io/blog/images/twitter.png" />
+      </a>
+      <a href="https://github.com/kuluna" class="mdc-toolbar__icon">
+        <img src="https://kuluna.github.io/blog/images/github.png" />
+      </a>
+      <a href="https://qiita.com/kuluna" class="mdc-toolbar__icon">Qiita</a>
+    </section>
+  </div>
+</header>
+
+
+<main>
+  <article class="mdc-card mdc-elevation--z6 default-padding">
+    <header>
+      <h1 class="entry-title">Android用カレンダーライブラリを公開しました</h1>
+      <p class="entry-date">2018-04-21 22:46:22 &#43;0900 JST</p>
+      <p>
+        Categories:
+        
+          <a href="https://kuluna.github.io/blog/categories/android">Android</a>
+        
+      </p>
+      
+      <div class="socials">
+        
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="kuluna">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        
+        <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        
+        <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en">Pocket</a>
+        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+      </div>
+    </header>
+
+    <p><p>こんなの。 <a href="https://github.com/kuluna/CalendarViewPager">CalendarViewPager - GitHub</a></p>
+
+<p><img src="https://raw.githubusercontent.com/kuluna/CalendarViewPager/master/docs/cast.gif" alt="view" /></p>
+
+<p>AndroidのカレンダーライブラリでカスタムViewを差し込めるものがほとんどなかったので勢いで自作しました。</p>
+
+<p><a href="https://github.com/roomorama/Caldroid">Caldroid</a> はカスタムViewを使えるのですが最終更新が3年前とちょっと不安だったのと、機能はたくさんあるけどほとんど使わない、最終更新日が2年前とちょっと心配だったので、勉強がてら自分の欲しいライブラリを公開しました。</p>
+
+<p>jcenterに登録しましたので、build.gradleに1行足すだけで追加できます。</p>
+
+<pre><code>implementation 'jp.kuluna:calendarviewpager:1.0.0'
+</code></pre>
+
+<p>GitHubのソースを見ていただければわかりますが、ViewPager、PagerAdapter、そしてRecyclerViewをそれぞれ拡張して作ったものです。<br />
+コードの量も多くないと思いますので、もっとこうしたほうがいい、こういう機能が欲しい、イケてる実装があるという方はGitHubへかむかむ。</p>
+</p>
+
+  </article>
+</main>
+
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<script>window.mdc.autoInit();</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42303570-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+

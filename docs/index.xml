@@ -6,10 +6,19 @@
     <description>Recent content on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 08 Apr 2018 11:02:42 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 21 Apr 2018 22:46:22 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android用カレンダーライブラリを公開しました</title>
+      <link>https://kuluna.github.io/blog/post/20180421/</link>
+      <pubDate>Sat, 21 Apr 2018 22:46:22 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20180421/</guid>
+      <description>こんなの。 CalendarViewPager - GitHub AndroidのカレンダーライブラリでカスタムViewを差し込めるものがほとんどなかったので勢いで自作しました。 Caldroid はカスタム</description>
+    </item>
     
     <item>
       <title>Google Home miniでいつでもラジオ体操ができるライフハック</title>
