@@ -6,10 +6,19 @@
     <description>Recent content in Posts on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 21 Apr 2018 22:46:22 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 12 May 2018 12:46:08 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Windows10 April 2018 Updateで追加されたUTF-8モードを使う</title>
+      <link>https://kuluna.github.io/blog/post/20180512/</link>
+      <pubDate>Sat, 12 May 2018 12:46:08 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20180512/</guid>
+      <description>Windows10恒例の大型アップデートです。いろいろUIが変わっていますが、1つ開発者にとってうれしい機能が追加されました。それがUTF-</description>
+    </item>
     
     <item>
       <title>Android用カレンダーライブラリを公開しました</title>
