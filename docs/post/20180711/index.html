@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <title>Webでテスト管理できるツールを作ろうとしている - kuluna.class</title>
+  <title>人柱にならないWindows Update - kuluna.class</title>
   <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -34,14 +34,12 @@
 <main>
   <article class="mdc-card mdc-elevation--z6 default-padding">
     <header>
-      <h1 class="entry-title">Webでテスト管理できるツールを作ろうとしている</h1>
-      <p class="entry-date">2017-07-29 18:24:32 &#43;0900 JST</p>
+      <h1 class="entry-title">人柱にならないWindows Update</h1>
+      <p class="entry-date">2018-07-11 22:13:11 &#43;0900 JST</p>
       <p>
         Categories:
         
-          <a href="https://kuluna.github.io/blog/categories/asp.net-core">ASP.NET Core</a>
-        
-          <a href="https://kuluna.github.io/blog/categories/angular">Angular</a>
+          <a href="https://kuluna.github.io/blog/categories/windows">Windows</a>
         
       </p>
       
@@ -54,44 +52,29 @@
       </div>
     </header>
 
-    <p>
+    <p><p>なにかとトラブルを起こしたり起こさなかったりする毎月恒例行儀のWindows Update。<br />
+配信は基本米国時間の第2火曜日と決まっているようですが、デフォルトでは自動更新となっているため、気が付いたら適用されていたというケースも多いのではないでしょうか。</p>
 
-<p>GitHubで草を生やすために作っています。</p>
+<p>このWindows Update、中には再起不能になったこともあるパッチが出たことも何度かあり、それが発覚するとMicrosoftは配信をストップすることもありました。<br />
+つまりWindows Updateの配信日から数日たって停止されないパッチはある程度信頼できるといえるのではないでしょうか。</p>
 
-<p><a href="https://github.com/kuluna/macaron">kuluna/macaron: Test <code>sweet</code> tool</a></p>
+<p>実はWindows10からはまさにこの「配信日から何日後に適用するか」を設定できるようになっています。</p>
 
-<p>簡単にいうとテストケースをWeb上で作成し実施するWebアプリです。</p>
+<p>スタート -&gt; 設定 -&gt; 更新とセキュリティ</p>
 
-<h1 id="テストケース">テストケース</h1>
+<p><img src="../../images/2018-07-11/update1.png" alt="" /></p>
 
-<p>テスト一覧<br />
-<img src="../../images/2017-07-29/cases.png" alt="テスト一覧" /></p>
+<p>Windows Update -&gt; 詳細オプション</p>
 
-<p>テスト作成<br />
-<img src="../../images/2017-07-29/case_edit.png" alt="テスト作成" /></p>
+<p><img src="../../images/2018-07-11/update2.png" alt="" /></p>
 
-<p>テストケースを作成する項目はとてもシンプルにしています。Markdown形式で入力できるようにしています。</p>
+<p>ここに2つの設定項目があります。0は配信当日に受け取ることができるというものなので、配信から2日間様子を見たいときはここを2に設定します。</p>
 
-<h1 id="テスト計画">テスト計画</h1>
+<p><img src="../../images/2018-07-11/update3.png" alt="" /></p>
 
-<p><img src="../../images/2017-07-29/plan.png" alt="テスト計画" /></p>
+<p>2つのうちセキュリティパッチは下になるので、セキュリティパッチだけは気持ち早めに適用したいなんて制御もできます。</p>
 
-<p>対象のテストケースが今どれぐらいテストされているのかを見る画面です。開発中なのでいろいろ雑な表示です。</p>
-
-<h1 id="テスト実施">テスト実施</h1>
-
-<p><img src="../../images/2017-07-29/run.png" alt="テスト実施" /></p>
-
-<p>上に現在実施中のテストが表示されて、切り替えて次々とテストを記録していく感じです。</p>
-
-<h1 id="作ってて気づいた事">作ってて気づいた事</h1>
-
-<p><strong>このレベルならExcelでよくね？</strong></p>
-
-<p>確かに今の私の職場でもテスト仕様書はExcelで共有しています。<br />
-Excelとなるとバージョン管理が大変だったり、だれかが開いていると他の人が編集できなかったりと不便極まりないので、しばらく自分で使ってみてWebならではの良さを盛り込めていければなーと考えています。</p>
-
-<p>もしWebのテスト管理で何か欲しい機能があったりしたらGitHub経由で教えていただけると大変うれしいですね。</p>
+<p>これで配信初日に<del>人柱</del>トラブルを受けるリスクがかなり下がると思います。過去に痛い目に遭ったことがある方はぜひ設定してみてください。</p>
 </p>
 
   </article>

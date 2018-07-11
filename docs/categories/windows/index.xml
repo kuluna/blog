@@ -6,10 +6,19 @@
     <description>Recent content in Windows on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 12 May 2018 12:46:08 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 11 Jul 2018 22:13:11 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/categories/windows/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>人柱にならないWindows Update</title>
+      <link>https://kuluna.github.io/blog/post/20180711/</link>
+      <pubDate>Wed, 11 Jul 2018 22:13:11 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20180711/</guid>
+      <description>なにかとトラブルを起こしたり起こさなかったりする毎月恒例行儀のWindows Update。 配信は基本米国時間の第2火曜日と決まっているようで</description>
+    </item>
     
     <item>
       <title>Windows10 April 2018 Updateで追加されたUTF-8モードを使う</title>
