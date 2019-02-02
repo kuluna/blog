@@ -1,0 +1,128 @@
+
+<!doctype html>
+<html lang="ja">
+<head>
+  <title>KotlinのLocal Function - kuluna.class</title>
+  <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta property="og:title" content="kuluna.class">
+
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/theme.css">
+</head>
+<body>
+<header class="mdc-toolbar">
+  <div class="mdc-toolbar__row">
+    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+      <span class="mdc-toolbar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
+    </section>
+    <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+      <a href="https://twitter.com/kuluna" class="mdc-toolbar__icon">
+        <img src="https://kuluna.github.io/blog/images/twitter.png" />
+      </a>
+      <a href="https://github.com/kuluna" class="mdc-toolbar__icon">
+        <img src="https://kuluna.github.io/blog/images/github.png" />
+      </a>
+      <a href="https://qiita.com/kuluna" class="mdc-toolbar__icon">Qiita</a>
+    </section>
+  </div>
+</header>
+
+
+<main>
+  <article class="mdc-card mdc-elevation--z6 default-padding">
+    <header>
+      <h1 class="entry-title">KotlinのLocal Function</h1>
+      <p class="entry-date">2019-02-02 17:37:47 &#43;0900 JST</p>
+      <p>
+        Categories:
+        
+          <a href="https://kuluna.github.io/blog/categories/android">Android</a>
+        
+      </p>
+      
+      <div class="socials">
+        
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="kuluna">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        
+        <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en">Pocket</a>
+        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+      </div>
+    </header>
+
+    <p><p>人間の設計というのはワガママで、このへんまとめて一つの関数にできるぐらいなんだけど、ここでしか使わないんだよなぁ・・・という時があります。<br />
+そんな時に使えるのがKotlinの <strong>Local Function</strong> というものです。</p>
+
+<p>簡単にいうと、関数の中に関数を定義できます。</p>
+
+<p>例えばAPIにデータを更新かけに行く時、APIのレスポンスを待ってUIの更新をすることが多いでしょう。
+ですが、APIのレスポンスを待たずにUIの更新をかければユーザーは待たされることなくユーザー体験をより良いものとすることができます。</p>
+
+<p>この時のUI処理はどちらも同じことをやるでしょう。これが1行で済めば良いのですが、たまに値の変換やソートをかける必要がある場合、同じ処理を2回書かなければならなくなります。</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">update</span><span class="p">(</span><span class="n">udateData</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// APIを待たずにUI反映
+</span><span class="c1"></span>  <span class="n">hoge</span><span class="p">(</span><span class="n">udateData</span><span class="p">)</span>
+  <span class="n">huga</span><span class="p">(</span><span class="n">udateData</span><span class="p">)</span>
+
+  <span class="n">api</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">updateData</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span> <span class="p">-&gt;</span>
+    <span class="n">response</span><span class="p">.</span><span class="n">ok</span><span class="o">?.</span><span class="n">let</span>  <span class="p">{</span> <span class="k">data</span> <span class="p">-&gt;</span>
+      <span class="c1">// APIのレスポンスをUIに反映
+</span><span class="c1"></span>      <span class="n">hoge</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+      <span class="n">huga</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">response</span><span class="p">.</span><span class="n">error</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span>
+      <span class="c1">// エラー処理
+</span><span class="c1"></span>    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>ではこれをLocal Functionでまとめてみましょう。<br />
+Local Functionは呼び出す時より前に定義する必要があります。</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">update</span><span class="p">(</span><span class="n">udateData</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// このへんがLocal Function
+</span><span class="c1"></span>  <span class="k">fun</span> <span class="nf">updateUI</span><span class="p">(</span><span class="k">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">hoge</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+    <span class="n">huga</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="c1">// APIを待たずにUI反映
+</span><span class="c1"></span>  <span class="n">updateUI</span><span class="p">(</span><span class="n">updateData</span><span class="p">)</span>
+
+  <span class="n">api</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">updateData</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span> <span class="p">-&gt;</span>
+    <span class="n">response</span><span class="p">.</span><span class="n">ok</span><span class="o">?.</span><span class="n">let</span>  <span class="p">{</span> <span class="k">data</span> <span class="p">-&gt;</span>
+      <span class="c1">// APIのレスポンスをUIに反映
+</span><span class="c1"></span>      <span class="n">updateUI</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">response</span><span class="p">.</span><span class="n">error</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span>
+      <span class="c1">// エラー処理
+</span><span class="c1"></span>    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>このLocal Functionはスコープがupdate()の中なので、これより外の関数やクラスはupdateUIを呼び出すことはできません。まさにこの関数限定の関数という感じですね。</p>
+
+<p>公式のリファレンスには特にバージョンいくつからと書いてないのでもしかしたら1.0.0の時点でLocal Functionが使えてたのかもしれません。<br />
+<a href="https://kotlinlang.org/docs/reference/functions.html#local-functions">Functions/ infix, vararg, tailrec - Kotlin Programming Language</a></p>
+</p>
+
+  </article>
+</main>
+
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<script>window.mdc.autoInit();</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42303570-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+

@@ -6,10 +6,19 @@
     <description>Recent content on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 31 Dec 2018 21:52:48 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 02 Feb 2019 17:37:47 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>KotlinのLocal Function</title>
+      <link>https://kuluna.github.io/blog/post/20190202/</link>
+      <pubDate>Sat, 02 Feb 2019 17:37:47 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20190202/</guid>
+      <description>人間の設計というのはワガママで、このへんまとめて一つの関数にできるぐらいなんだけど、ここでしか使わないんだよなぁ・・・という時があります。 そ</description>
+    </item>
     
     <item>
       <title>2018年の振り返りと2019年の目標</title>

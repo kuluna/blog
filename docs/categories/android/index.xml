@@ -6,10 +6,19 @@
     <description>Recent content in Android on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 06 Nov 2018 21:21:05 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 02 Feb 2019 17:37:47 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/categories/android/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>KotlinのLocal Function</title>
+      <link>https://kuluna.github.io/blog/post/20190202/</link>
+      <pubDate>Sat, 02 Feb 2019 17:37:47 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20190202/</guid>
+      <description>人間の設計というのはワガママで、このへんまとめて一つの関数にできるぐらいなんだけど、ここでしか使わないんだよなぁ・・・という時があります。 そ</description>
+    </item>
     
     <item>
       <title>技術書典5で配布した本を【私も】国立国会図書館に納本した</title>
