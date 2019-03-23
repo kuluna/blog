@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kuluna.github.io/blog/post/20190323/</loc>
+    <lastmod>2019-03-23T16:05:07+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kuluna.github.io/blog/post/20190202/</loc>
     <lastmod>2019-02-02T17:37:47+09:00</lastmod>
   </url>
@@ -214,7 +219,7 @@
   
   <url>
     <loc>https://kuluna.github.io/blog/post/</loc>
-    <lastmod>2019-02-02T17:37:47+09:00</lastmod>
+    <lastmod>2019-03-23T16:05:07+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -236,6 +241,12 @@
   </url>
   
   <url>
+    <loc>https://kuluna.github.io/blog/categories/vscode/</loc>
+    <lastmod>2019-03-23T16:05:07+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kuluna.github.io/blog/categories/windows/</loc>
     <lastmod>2018-07-11T22:13:11+09:00</lastmod>
     <priority>0</priority>
@@ -243,7 +254,7 @@
   
   <url>
     <loc>https://kuluna.github.io/blog/</loc>
-    <lastmod>2019-02-02T17:37:47+09:00</lastmod>
+    <lastmod>2019-03-23T16:05:07+09:00</lastmod>
     <priority>0</priority>
   </url>
   
