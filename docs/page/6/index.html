@@ -12,26 +12,44 @@
   <link rel="stylesheet" href="https://kuluna.github.io/blog/css/theme.css">
 </head>
 <body>
-<header class="mdc-toolbar">
-  <div class="mdc-toolbar__row">
-    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-      <span class="mdc-toolbar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
+<header class="mdc-top-app-bar" style="top: 0px;">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <span class="mdc-top-app-bar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
     </section>
-    <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
-      <a href="https://twitter.com/kuluna" class="mdc-toolbar__icon">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+      <a href="https://twitter.com/kuluna" class="mdc-top-app-bar__action-item mdc-icon-button">
         <img src="https://kuluna.github.io/blog/images/twitter.png" />
       </a>
-      <a href="https://github.com/kuluna" class="mdc-toolbar__icon">
+      <a href="https://github.com/kuluna" class="mdc-top-app-bar__action-item mdc-icon-button">
         <img src="https://kuluna.github.io/blog/images/github.png" />
       </a>
-      <a href="https://qiita.com/kuluna" class="mdc-toolbar__icon">Qiita</a>
+      <a href="https://qiita.com/kuluna" class="mdc-top-app-bar__action-item mdc-button">Qiita</a>
     </section>
   </div>
 </header>
 
 
-<main>
+<main class="mdc-top-app-bar--fixed-adjust">
   <article>
+      
+    <a href="https://kuluna.github.io/blog/post/20170904/" class="card-link">
+      <div class="mdc-card default-padding mdc-ripple-surface" tabindex="0">
+        <header>
+          <h3>TypeScriptでpromiseをawaitしながらcatchもする</h3>
+          <p style="color: black; font-size: small;">
+            2017-09-04 09:22:43 &#43;0900 JST
+            <br>
+            Categories:
+            
+               Angular  TypeScript 
+            
+          </p>
+        </header>
+        <p style="color: black;">TypeScriptには戻り値がpromiseの関数をC#のTaskのようにasync/awaitで書くことができます。 これによってコールバ...</p>
+        <span style="text-decoration: underline; font-size: small;">記事を読む</span>
+      </div>
+    </a>
       
     <a href="https://kuluna.github.io/blog/post/20170830/" class="card-link">
       <div class="mdc-card default-padding mdc-ripple-surface" tabindex="0">
@@ -104,24 +122,6 @@
         <span style="text-decoration: underline; font-size: small;">記事を読む</span>
       </div>
     </a>
-      
-    <a href="https://kuluna.github.io/blog/post/20170729/" class="card-link">
-      <div class="mdc-card default-padding mdc-ripple-surface" tabindex="0">
-        <header>
-          <h3>Webでテスト管理できるツールを作ろうとしている</h3>
-          <p style="color: black; font-size: small;">
-            2017-07-29 18:24:32 &#43;0900 JST
-            <br>
-            Categories:
-            
-               ASP.NET Core  Angular 
-            
-          </p>
-        </header>
-        <p style="color: black;">GitHubで草を生やすために作っています。 kuluna/macaron: Test sweet tool 簡単にいうとテストケースをWeb上で作成し実施するWebアプリです。 テストケース テスト一...</p>
-        <span style="text-decoration: underline; font-size: small;">記事を読む</span>
-      </div>
-    </a>
   
 </article>
 
@@ -140,7 +140,6 @@
 </main>
 
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-<script>window.mdc.autoInit();</script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

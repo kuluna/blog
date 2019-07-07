@@ -12,26 +12,44 @@
   <link rel="stylesheet" href="https://kuluna.github.io/blog/css/theme.css">
 </head>
 <body>
-<header class="mdc-toolbar">
-  <div class="mdc-toolbar__row">
-    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-      <span class="mdc-toolbar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
+<header class="mdc-top-app-bar" style="top: 0px;">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <span class="mdc-top-app-bar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
     </section>
-    <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
-      <a href="https://twitter.com/kuluna" class="mdc-toolbar__icon">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+      <a href="https://twitter.com/kuluna" class="mdc-top-app-bar__action-item mdc-icon-button">
         <img src="https://kuluna.github.io/blog/images/twitter.png" />
       </a>
-      <a href="https://github.com/kuluna" class="mdc-toolbar__icon">
+      <a href="https://github.com/kuluna" class="mdc-top-app-bar__action-item mdc-icon-button">
         <img src="https://kuluna.github.io/blog/images/github.png" />
       </a>
-      <a href="https://qiita.com/kuluna" class="mdc-toolbar__icon">Qiita</a>
+      <a href="https://qiita.com/kuluna" class="mdc-top-app-bar__action-item mdc-button">Qiita</a>
     </section>
   </div>
 </header>
 
 
-<main>
+<main class="mdc-top-app-bar--fixed-adjust">
   <article>
+      
+    <a href="https://kuluna.github.io/blog/post/20190707/" class="card-link">
+      <div class="mdc-card default-padding mdc-ripple-surface" tabindex="0">
+        <header>
+          <h3>不動産のアップリンクス御中</h3>
+          <p style="color: black; font-size: small;">
+            2019-07-07 22:17:58 &#43;0900 JST
+            <br>
+            Categories:
+            
+               Spam 
+            
+          </p>
+        </header>
+        <p style="color: black;">はじめは御社との取引が終わったので、これで良いと思っていましたが、 御社が他の方と会う約束があるというのを思い出し、これ以上私の時のようなひど...</p>
+        <span style="text-decoration: underline; font-size: small;">記事を読む</span>
+      </div>
+    </a>
       
     <a href="https://kuluna.github.io/blog/post/20190428/" class="card-link">
       <div class="mdc-card default-padding mdc-ripple-surface" tabindex="0">
@@ -104,24 +122,6 @@
         <span style="text-decoration: underline; font-size: small;">記事を読む</span>
       </div>
     </a>
-      
-    <a href="https://kuluna.github.io/blog/post/20181106/" class="card-link">
-      <div class="mdc-card default-padding mdc-ripple-surface" tabindex="0">
-        <header>
-          <h3>技術書典5で配布した本を【私も】国立国会図書館に納本した</h3>
-          <p style="color: black; font-size: small;">
-            2018-11-06 21:21:05 &#43;0900 JST
-            <br>
-            Categories:
-            
-               Android 
-            
-          </p>
-        </header>
-        <p style="color: black;">きっかけはこの記事。 技術書典5で頒布した本を国立国会図書館に納本した これを見て、せっかくなので私も納本しにいきました。 30日過ぎてるけど これ...</p>
-        <span style="text-decoration: underline; font-size: small;">記事を読む</span>
-      </div>
-    </a>
   
 </article>
 
@@ -138,7 +138,6 @@
 </main>
 
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-<script>window.mdc.autoInit();</script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
