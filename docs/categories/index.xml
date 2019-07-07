@@ -6,10 +6,28 @@
     <description>Recent content in Categories on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 02 Feb 2019 17:37:47 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 06 May 2019 18:10:55 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>REST API</title>
+      <link>https://kuluna.github.io/blog/categories/rest-api/</link>
+      <pubDate>Mon, 06 May 2019 18:10:55 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/categories/rest-api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VSCode</title>
+      <link>https://kuluna.github.io/blog/categories/vscode/</link>
+      <pubDate>Sat, 23 Mar 2019 16:05:07 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/categories/vscode/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Android</title>
@@ -21,38 +39,20 @@
     </item>
     
     <item>
-      <title>Angular</title>
-      <link>https://kuluna.github.io/blog/categories/angular/</link>
-      <pubDate>Sat, 30 Sep 2017 12:16:21 +0900</pubDate>
+      <title>Poem</title>
+      <link>https://kuluna.github.io/blog/categories/poem/</link>
+      <pubDate>Mon, 31 Dec 2018 21:52:48 +0900</pubDate>
       
-      <guid>https://kuluna.github.io/blog/categories/angular/</guid>
+      <guid>https://kuluna.github.io/blog/categories/poem/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Asp.net Core</title>
-      <link>https://kuluna.github.io/blog/categories/asp.net-core/</link>
-      <pubDate>Sat, 29 Jul 2017 18:24:32 +0900</pubDate>
+      <title>Windows</title>
+      <link>https://kuluna.github.io/blog/categories/windows/</link>
+      <pubDate>Wed, 11 Jul 2018 22:13:11 +0900</pubDate>
       
-      <guid>https://kuluna.github.io/blog/categories/asp.net-core/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Azure</title>
-      <link>https://kuluna.github.io/blog/categories/azure/</link>
-      <pubDate>Wed, 30 Aug 2017 09:05:56 +0900</pubDate>
-      
-      <guid>https://kuluna.github.io/blog/categories/azure/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Design</title>
-      <link>https://kuluna.github.io/blog/categories/design/</link>
-      <pubDate>Tue, 14 Nov 2017 22:19:33 +0900</pubDate>
-      
-      <guid>https://kuluna.github.io/blog/categories/design/</guid>
+      <guid>https://kuluna.github.io/blog/categories/windows/</guid>
       <description></description>
     </item>
     
@@ -75,7 +75,16 @@
     </item>
     
     <item>
-      <title>Ios</title>
+      <title>Design</title>
+      <link>https://kuluna.github.io/blog/categories/design/</link>
+      <pubDate>Tue, 14 Nov 2017 22:19:33 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/categories/design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iOS</title>
       <link>https://kuluna.github.io/blog/categories/ios/</link>
       <pubDate>Sat, 11 Nov 2017 16:57:55 +0900</pubDate>
       
@@ -84,11 +93,29 @@
     </item>
     
     <item>
-      <title>Poem</title>
-      <link>https://kuluna.github.io/blog/categories/poem/</link>
-      <pubDate>Mon, 31 Dec 2018 21:52:48 +0900</pubDate>
+      <title>Angular</title>
+      <link>https://kuluna.github.io/blog/categories/angular/</link>
+      <pubDate>Sat, 30 Sep 2017 12:16:21 +0900</pubDate>
       
-      <guid>https://kuluna.github.io/blog/categories/poem/</guid>
+      <guid>https://kuluna.github.io/blog/categories/angular/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TypeScript</title>
+      <link>https://kuluna.github.io/blog/categories/typescript/</link>
+      <pubDate>Mon, 04 Sep 2017 09:22:43 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/categories/typescript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azure</title>
+      <link>https://kuluna.github.io/blog/categories/azure/</link>
+      <pubDate>Wed, 30 Aug 2017 09:05:56 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/categories/azure/</guid>
       <description></description>
     </item>
     
@@ -102,29 +129,11 @@
     </item>
     
     <item>
-      <title>Typescript</title>
-      <link>https://kuluna.github.io/blog/categories/typescript/</link>
-      <pubDate>Mon, 04 Sep 2017 09:22:43 +0900</pubDate>
+      <title>ASP.NET Core</title>
+      <link>https://kuluna.github.io/blog/categories/asp.net-core/</link>
+      <pubDate>Sat, 29 Jul 2017 18:24:32 +0900</pubDate>
       
-      <guid>https://kuluna.github.io/blog/categories/typescript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Vscode</title>
-      <link>https://kuluna.github.io/blog/categories/vscode/</link>
-      <pubDate>Sat, 23 Mar 2019 16:05:07 +0900</pubDate>
-      
-      <guid>https://kuluna.github.io/blog/categories/vscode/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Windows</title>
-      <link>https://kuluna.github.io/blog/categories/windows/</link>
-      <pubDate>Wed, 11 Jul 2018 22:13:11 +0900</pubDate>
-      
-      <guid>https://kuluna.github.io/blog/categories/windows/</guid>
+      <guid>https://kuluna.github.io/blog/categories/asp.net-core/</guid>
       <description></description>
     </item>
     

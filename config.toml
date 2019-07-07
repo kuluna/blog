@@ -4,6 +4,7 @@ title = "kuluna.class"
 theme = "hugo-material-component-theme"
 publishDir = "docs"
 hasCJKLanguage = true
+disableHugoGeneratorInject = true
 
 ## Use Sintax Highlight
 pygmentsCodefences = true
