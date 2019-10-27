@@ -6,10 +6,19 @@
     <description>Recent content in Posts on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 23 Sep 2019 18:01:16 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 27 Oct 2019 13:18:09 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android Dev Summit2019とiOS DC2019でチェックした動画</title>
+      <link>https://kuluna.github.io/blog/post/20191027/</link>
+      <pubDate>Sun, 27 Oct 2019 13:18:09 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20191027/</guid>
+      <description>チェックしたものと所感をそれぞれ書いていきます。 気になる動画はまだいくつかあるのでそれも見終わったら追記します。 Android Dev Summit 2019 What&amp;rsquo;s New in Android Studio 3.5のお</description>
+    </item>
     
     <item>
       <title>技術書典7 振り返り</title>
