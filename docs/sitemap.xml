@@ -3,14 +3,14 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kuluna.github.io/blog/post/20191027/</loc>
+    <loc>https://kuluna.github.io/blog/categories/android/</loc>
     <lastmod>2019-10-27T13:18:09+09:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kuluna.github.io/blog/categories/android-ios/</loc>
+    <loc>https://kuluna.github.io/blog/post/20191027/</loc>
     <lastmod>2019-10-27T13:18:09+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -21,6 +21,12 @@
   
   <url>
     <loc>https://kuluna.github.io/blog/post/</loc>
+    <lastmod>2019-10-27T13:18:09+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kuluna.github.io/blog/categories/ios/</loc>
     <lastmod>2019-10-27T13:18:09+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -79,12 +85,6 @@
   <url>
     <loc>https://kuluna.github.io/blog/post/20190323/</loc>
     <lastmod>2019-03-23T16:05:07+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kuluna.github.io/blog/categories/android/</loc>
-    <lastmod>2019-02-02T17:37:47+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -220,12 +220,6 @@
   <url>
     <loc>https://kuluna.github.io/blog/post/20171111/</loc>
     <lastmod>2017-11-11T16:57:55+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kuluna.github.io/blog/categories/ios/</loc>
-    <lastmod>2017-11-11T16:57:55+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
