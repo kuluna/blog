@@ -22,3 +22,7 @@ pygmentsUseClasses = true
 [social]
     twitter   = "kuluna"
     github    = "kuluna"
+
+## Allow HTML Tags
+[markup.goldmark.renderer]
+    unsafe = true
