@@ -74,98 +74,75 @@
       </div>
     </header>
 
-    <p>
-
-<p>Webから一気にスマホのネイティブの話に変わるのですが、理由の一つとして開発環境が10月からスマホになりました。<br />
-元々どっちでもイケる派なのでスキル的には問題ないのですが、それでもネイティブはしばらく現場から離れていたので、感覚を取り戻すのには苦労しました。<br />
+    <p><p>Webから一気にスマホのネイティブの話に変わるのですが、理由の一つとして開発環境が10月からスマホになりました。<br>
+元々どっちでもイケる派なのでスキル的には問題ないのですが、それでもネイティブはしばらく現場から離れていたので、感覚を取り戻すのには苦労しました。<br>
 書いててこれは便利だなというのがあったので紹介します。</p>
-
 <h1 id="controller間の通信">Controller間の通信</h1>
-
 <p>私がネイティブ書いていた頃はSDKでこんな仕組みがあるなんて知らずに苦労した覚えがあります。</p>
-
-<p>どういうときにこれが必要かというと、深くネストした子Controllerの情報を親Controllerが欲しい時とかですね。<br />
+<p>どういうときにこれが必要かというと、深くネストした子Controllerの情報を親Controllerが欲しい時とかですね。<br>
 あとはアプリ起動時にプッシュ通知が届いたときに、今開いているControllerで処理をしたいという時です。</p>
-
 <p>AndroidやiOSにはControllerにそれぞれライフサイクルというものがあり、Controllerクラスをずっとメモリに保持しておけば良い、必要な時のそのクラスのプロパティに代入すれば良いという甘い考えは通用しません。</p>
-
 <p>通信ができるようになるとどういった点で便利になるかというと、</p>
-
 <ul>
 <li>値を伝番するためのインターフェース(プロトコル)をたくさん作る必要がない</li>
 <li>結合度を弱め、テストしやすくなる</li>
 </ul>
-
 <p>特にテストしやすくなるのは最近の開発の傾向としても是非ともといった感じです。</p>
-
 <h2 id="androidの場合">Androidの場合</h2>
-
-<p>Androidには昔からBroadcastという仕組みを使って通信を行うことが可能でした。しかし元々は他のアプリに対してBroadcastというインターフェースで通信をするためのものでした。<br />
+<p>Androidには昔からBroadcastという仕組みを使って通信を行うことが可能でした。しかし元々は他のアプリに対してBroadcastというインターフェースで通信をするためのものでした。<br>
 これをアプリ内のみに限定する方法があり、これを使えば簡単にActivityやFragment間通信ができます。AIDLなんて最初からなかったんや！</p>
-
-<p>それを行ってくれるのが <code>LocalBroadcastManager</code> です。<br />
+<p>それを行ってくれるのが <code>LocalBroadcastManager</code> です。<br>
 なんとこれSupport Libraryで提供されているので全てのAndroidバージョンで使えます。</p>
-
 <h3 id="送信側">送信側</h3>
-
-<p>用意するのはIntentのみです。IntentはBundleを入れる器として使います。<br />
+<p>用意するのはIntentのみです。IntentはBundleを入れる器として使います。<br>
 そのIntentをLocalBroadcastManagerでブロードキャストします。</p>
 <div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">body</span> <span class="p">=</span> <span class="s">&#34;AAA&#34;</span>
-<span class="k">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="s">&#34;channel&#34;</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span> <span class="n">putExtra</span><span class="p">(</span><span class="s">&#34;body&#34;</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span> <span class="p">}</span>
-<span class="n">LocalBroadcastManager</span><span class="p">.</span><span class="n">getInstance</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">).</span><span class="n">sendBroadcastSync</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span></code></pre></div>
-<p>まずIntentのコンストラクタにStringを渡します。これは受信側でフィルターとして使えます。<br />
+<span class="k">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="s">&#34;channel&#34;</span><span class="p">)</span><span class="p">.</span><span class="n">apply</span> <span class="p">{</span> <span class="n">putExtra</span><span class="p">(</span><span class="s">&#34;body&#34;</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span> <span class="p">}</span>
+<span class="n">LocalBroadcastManager</span><span class="p">.</span><span class="n">getInstance</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">)</span><span class="p">.</span><span class="n">sendBroadcastSync</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+</code></pre></div><p>まずIntentのコンストラクタにStringを渡します。これは受信側でフィルターとして使えます。<br>
 あとはこのIntentにBundleをつめて、Broadcastして終わり！</p>
-
 <h3 id="受信側">受信側</h3>
-
 <p>まずは受信するレシーバーを作成します。</p>
-<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"> <span class="k">private</span> <span class="k">val</span> <span class="py">broadcast</span> <span class="p">=</span> <span class="k">object</span> <span class="err">: </span><span class="nc">BroadcastReceiver</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"> <span class="k">private</span> <span class="k">val</span> <span class="py">broadcast</span> <span class="p">=</span> <span class="k">object</span> <span class="err">:</span><span class="err"> </span><span class="nc">BroadcastReceiver</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">onReceive</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s">&#34;log&#34;</span><span class="p">,</span> <span class="n">intent</span><span class="p">.</span><span class="n">getStringExtra</span><span class="p">(</span><span class="s">&#34;body&#34;</span><span class="p">))</span>
+        <span class="n">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s">&#34;log&#34;</span><span class="p">,</span> <span class="n">intent</span><span class="p">.</span><span class="n">getStringExtra</span><span class="p">(</span><span class="s">&#34;body&#34;</span><span class="p">)</span><span class="p">)</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-<p>Intentなので受け取りやすいですね。<br />
+<span class="p">}</span>
+</code></pre></div><p>Intentなので受け取りやすいですね。<br>
 次にレシーバーを使って待ち受け状態にします。</p>
-
 <p>基本的にはonResumeで待ち受けて、onPauseで解除すると良いでしょう。</p>
-<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onResume</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">.</span><span class="n">onResume</span><span class="p">()</span>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onResume</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">.</span><span class="n">onResume</span><span class="p">(</span><span class="p">)</span>
     <span class="c1">// subscribe
-</span><span class="c1"></span>    <span class="n">LocalBroadcastManager</span><span class="p">.</span><span class="n">getInstance</span><span class="p">(</span><span class="n">context</span><span class="o">!!</span><span class="p">).</span><span class="n">registerReceiver</span><span class="p">(</span><span class="n">broadcast</span><span class="p">,</span> <span class="n">IntentFilter</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span> <span class="n">addAction</span><span class="p">(</span><span class="s">&#34;channel&#34;</span><span class="p">)</span> <span class="p">})</span>
+</span><span class="c1"></span>    <span class="n">LocalBroadcastManager</span><span class="p">.</span><span class="n">getInstance</span><span class="p">(</span><span class="n">context</span><span class="o">!!</span><span class="p">)</span><span class="p">.</span><span class="n">registerReceiver</span><span class="p">(</span><span class="n">broadcast</span><span class="p">,</span> <span class="n">IntentFilter</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">apply</span> <span class="p">{</span> <span class="n">addAction</span><span class="p">(</span><span class="s">&#34;channel&#34;</span><span class="p">)</span> <span class="p">}</span><span class="p">)</span>
 <span class="p">}</span>
 
- <span class="k">override</span> <span class="k">fun</span> <span class="nf">onPause</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">.</span><span class="n">onPause</span><span class="p">()</span>
+ <span class="k">override</span> <span class="k">fun</span> <span class="nf">onPause</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">.</span><span class="n">onPause</span><span class="p">(</span><span class="p">)</span>
     <span class="c1">// unsubsidised
-</span><span class="c1"></span>    <span class="n">LocalBroadcastManager</span><span class="p">.</span><span class="n">getInstance</span><span class="p">(</span><span class="n">context</span><span class="o">!!</span><span class="p">).</span><span class="n">unregisterReceiver</span><span class="p">(</span><span class="n">broadcast</span><span class="p">)</span>
- <span class="p">}</span></code></pre></div>
-<p>これで送信されるたびに上のBroadcastReceiverが反応します。あとは煮るなり焼くなりお好きにどうぞ。</p>
-
+</span><span class="c1"></span>    <span class="n">LocalBroadcastManager</span><span class="p">.</span><span class="n">getInstance</span><span class="p">(</span><span class="n">context</span><span class="o">!!</span><span class="p">)</span><span class="p">.</span><span class="n">unregisterReceiver</span><span class="p">(</span><span class="n">broadcast</span><span class="p">)</span>
+ <span class="p">}</span>
+</code></pre></div><p>これで送信されるたびに上のBroadcastReceiverが反応します。あとは煮るなり焼くなりお好きにどうぞ。</p>
 <h2 id="iosの場合">iOSの場合</h2>
-
 <p>iOSにはNotificationCenter経由で送受信ができます。よくよくドキュメント見てみると割と初期から使えてたみたいですね。</p>
-
 <h3 id="送信側-1">送信側</h3>
-
 <p>Androidと同じくあっさり送れます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">body</span> <span class="p">=</span> <span class="s">&#34;AAA&#34;</span>
-<span class="n">NotificationCenter</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">Notification</span><span class="p">.</span><span class="n">Name</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="s">&#34;channel&#34;</span><span class="p">),</span> <span class="n">object</span><span class="p">:</span> <span class="n">body</span><span class="p">)</span></code></pre></div>
-<p>おわり。らくちん。</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">body</span> <span class="p">=</span> <span class="s">&#34;</span><span class="s">AAA</span><span class="s">&#34;</span>
+<span class="n">NotificationCenter</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">Notification</span><span class="p">.</span><span class="n">Name</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="s">&#34;</span><span class="s">channel</span><span class="s">&#34;</span><span class="p">)</span><span class="p">,</span> <span class="n">object</span><span class="p">:</span> <span class="n">body</span><span class="p">)</span>
+</code></pre></div><p>おわり。らくちん。</p>
 <h3 id="受信側-1">受信側</h3>
-<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kc">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
-    <span class="n">NotificationCenter</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="kc">self</span><span class="p">,</span> <span class="n">selector</span><span class="p">:</span> <span class="k">#selector</span><span class="p">(</span><span class="n">ViewController</span><span class="p">.</span><span class="n">onReceive</span><span class="p">(</span><span class="n">notification</span><span class="p">:)),</span> <span class="n">name</span><span class="p">:</span> <span class="n">Notification</span><span class="p">.</span><span class="n">Name</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="s">&#34;channel&#34;</span><span class="p">),</span> <span class="n">object</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kc">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">(</span><span class="p">)</span>
+    <span class="n">NotificationCenter</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="kc">self</span><span class="p">,</span> <span class="n">selector</span><span class="p">:</span> <span class="k">#selector</span><span class="p">(</span><span class="n">ViewController</span><span class="p">.</span><span class="n">onReceive</span><span class="p">(</span><span class="n">notification</span><span class="p">:</span><span class="p">)</span><span class="p">)</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Notification</span><span class="p">.</span><span class="n">Name</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="s">&#34;</span><span class="s">channel</span><span class="s">&#34;</span><span class="p">)</span><span class="p">,</span> <span class="n">object</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="nf">onRecieve</span><span class="p">(</span><span class="n">notification</span><span class="p">:</span> <span class="n">Notification</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="kd">let</span> <span class="nv">body</span> <span class="p">=</span> <span class="n">notification</span><span class="p">.</span><span class="n">object</span> <span class="k">as</span><span class="p">?</span> <span class="nb">String</span> <span class="p">{</span>
         <span class="bp">print</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-<p>iOS9以降であればObserverを解除する必要がなくなったようです。なのでviewDidLoadで1回だけ登録しましょう。<br />
+<span class="p">}</span>
+</code></pre></div><p>iOS9以降であればObserverを解除する必要がなくなったようです。なのでviewDidLoadで1回だけ登録しましょう。<br>
 これで送信されるたびにonRecieve関数が呼ばれるようになります。</p>
-
 <p>Android、iOSともにこれをうまく使うことでロジックの分離がしやすくなり、関数の中をビジネスロジックのみにすることができます。</p>
 </p>
 

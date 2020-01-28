@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Event on kuluna.class</title>
@@ -6,10 +6,19 @@
     <description>Recent content in Event on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 23 Sep 2019 18:01:16 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jan 2020 10:45:17 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/categories/event/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>東方Projectのクラシックコンサートに行ってきました</title>
+      <link>https://kuluna.github.io/blog/post/20200127/</link>
+      <pubDate>Tue, 28 Jan 2020 10:45:17 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20200127/</guid>
+      <description>東京オペラシティで開催された東方ProjectのゲームBGMクラシックコンサートに行ってきました。 幻想郷の交響楽団 - 夢現つ嘯風弄月 - 東方Pr</description>
+    </item>
     
     <item>
       <title>技術書典7 振り返り</title>

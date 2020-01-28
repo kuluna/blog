@@ -72,29 +72,17 @@
       </div>
     </header>
 
-    <p>
-
-<p>ちゃんとよく見ればいいってだけの話です。</p>
-
+    <p><p>ちゃんとよく見ればいいってだけの話です。</p>
 <p>Azure App Service ではデプロイする領域にSFTP(FTP)ではいることができます。デプロイパイプラインを組む前に、App Service へファイルを送信したいときに使えます。</p>
-
 <h1 id="ftpログイン設定">FTPログイン設定</h1>
-
-<p><img src="../../images/2017-07-30/1.png" alt="デプロイ" /></p>
-
-<p>Azureのポータルから設定したいApp Serviceを開き、 <strong>デプロイ資格情報</strong> を選択します。<br />
+<p><img src="../../images/2017-07-30/1.png" alt="デプロイ"></p>
+<p>Azureのポータルから設定したいApp Serviceを開き、 <strong>デプロイ資格情報</strong> を選択します。<br>
 FTPでログインするユーザー名とパスワードをここで作成します。</p>
-
-<p><img src="../../images/2017-07-30/2.png" alt="URL" /></p>
-
+<p><img src="../../images/2017-07-30/2.png" alt="URL"></p>
 <p>概要に戻るとSFTPのアドレスができてますので、これをコピーします。あとユーザー名ですが、先ほどの <strong>azureftplogin</strong> ではなく、　<strong>macaron\azureftplogin</strong> なことに気を付けてください。</p>
-
 <p>頭にmacaronとついているのはこの App Service の名前がmacaronだからだと思います。</p>
-
 <p>あとはWindows環境であれば、エクスプローラーにSFTPのアドレスを貼り付けて、上のユーザー名と設定したパスワードを入力すればログインできます。</p>
-
-<p><img src="../../images/2017-07-30/3.png" alt="Login" /></p>
-
+<p><img src="../../images/2017-07-30/3.png" alt="Login"></p>
 <p><code>site/wwwroot/</code> にデプロイして App Service を再起動すると反映されます。kuduを使うとこういったデプロイを自動でしてくれますが、FTPでのデプロイの場合はweb.configも自分で用意する必要がある点に注意してください。</p>
 </p>
 

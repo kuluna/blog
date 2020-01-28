@@ -72,74 +72,55 @@
       </div>
     </header>
 
-    <p>
-
-<p>従来のASP.NETではweb.configをたくさんいじってあれこれ設定していましたが、ASP.NET CoreからはほとんどをStartup.csに記述するようなりました。<br />
+    <p><p>従来のASP.NETではweb.configをたくさんいじってあれこれ設定していましたが、ASP.NET CoreからはほとんどをStartup.csに記述するようなりました。<br>
 個人的にもそのほうがコンパイルエラーで設定ミスとかが分かるのでこっちのほうが好きですね。</p>
-
 <h1 id="環境">環境</h1>
-
 <ul>
 <li>.net core 1.1</li>
 </ul>
-
 <h1 id="httpsにリダイレクトする">HTTPSにリダイレクトする</h1>
-
 <h2 id="rewriteのインストール">Rewriteのインストール</h2>
-
 <p>HTTPでアクセスしたときにHTTPSへリダイレクトするのもStartup.csで設定するようになりました。</p>
-
-<p>まずはNugetからリダイレクトするライブラリをインストールします。<br />
+<p>まずはNugetからリダイレクトするライブラリをインストールします。<br>
 Nugetで<code>Microsoft.AspNetCore.Rewrite</code>を検索してインストールします。あるいはcsprojに直接書いてもOKです。</p>
-<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;ItemGroup&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;ItemGroup</span><span class="nt">&gt;</span>
     <span class="nt">&lt;PackageReference</span> <span class="na">Include=</span><span class="s">&#34;Microsoft.AspNetCore.Rewrite&#34;</span> <span class="na">Version=</span><span class="s">&#34;1.0.2&#34;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/ItemGroup&gt;</span></code></pre></div>
-<p>csprojに直接書いた場合は<code>dotnet restore</code>コマンドを忘れずに実行しましょう。</p>
-
+<span class="nt">&lt;/ItemGroup&gt;</span>
+</code></pre></div><p>csprojに直接書いた場合は<code>dotnet restore</code>コマンドを忘れずに実行しましょう。</p>
 <h2 id="リダイレクト設定">リダイレクト設定</h2>
-
 <p>Startup.csで編集する箇所は2か所です。</p>
 <div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">void</span> <span class="n">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="c1">// Add framework services.
-</span><span class="c1"></span>    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
+</span><span class="c1"></span>    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
     
-    <span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="p">&lt;</span><span class="n">MvcOptions</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="p">&lt;</span><span class="n">MvcOptions</span><span class="p">&gt;</span><span class="p">(</span><span class="n">options</span> <span class="p">=</span><span class="p">&gt;</span>
     <span class="p">{</span>
-        <span class="n">options</span><span class="p">.</span><span class="n">Filters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">RequireHttpsAttribute</span><span class="p">());</span>
-    <span class="p">});</span>
+        <span class="n">options</span><span class="p">.</span><span class="n">Filters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">RequireHttpsAttribute</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
+    <span class="p">}</span><span class="p">)</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">void</span> <span class="n">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="n">loggerFactory</span><span class="p">.</span><span class="n">AddConsole</span><span class="p">(</span><span class="n">Configuration</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&#34;Logging&#34;</span><span class="p">));</span>
-    <span class="n">loggerFactory</span><span class="p">.</span><span class="n">AddDebug</span><span class="p">();</span>
+    <span class="n">loggerFactory</span><span class="p">.</span><span class="n">AddConsole</span><span class="p">(</span><span class="n">Configuration</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&#34;Logging&#34;</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
+    <span class="n">loggerFactory</span><span class="p">.</span><span class="n">AddDebug</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
 
-    <span class="n">app</span><span class="p">.</span><span class="n">UseRewriter</span><span class="p">(</span><span class="k">new</span> <span class="n">RewriteOptions</span><span class="p">().</span><span class="n">AddRedirectToHttps</span><span class="p">());</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">UseRewriter</span><span class="p">(</span><span class="k">new</span> <span class="n">RewriteOptions</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">AddRedirectToHttps</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
 
-    <span class="n">app</span><span class="p">.</span><span class="n">UseMvc</span><span class="p">();</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">UseMvc</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>上ではASP.NET Core全体にHTTPSを必須とする属性を追加します。<br />
+</code></pre></div><p>上ではASP.NET Core全体にHTTPSを必須とする属性を追加します。<br>
 下ではHTTPでアクセスしたときにHTTPSでリダイレクトするように設定をしています。</p>
-
 <p>Azure App ServicesではHTTPも受け付けますが、これでAzureにアップロードするとHTTPでアクセス時にHTTPSにリダイレクトされるようになります。</p>
-
 <p><a href="https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=ja">Googleのチェックツール</a>を使うとHTTPからHTTPSにリダイレクトできていることが検証できます。</p>
-
-<p><img src="../../images/2017-07-23/1.png" alt="Lighthouse" /></p>
-
+<p><img src="../../images/2017-07-23/1.png" alt="Lighthouse"></p>
 <h2 id="プロダクション時だけonにする">プロダクション時だけONにする</h2>
-
 <p>Startup.csでは現在がどのモードで動作しているかが取得できるので、Production時だけの処理を簡単に書けます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs"><span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">IsProduction</span><span class="p">())</span>
+<div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs"><span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">IsProduction</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="n">app</span><span class="p">.</span><span class="n">UseRewriter</span><span class="p">(</span><span class="k">new</span> <span class="n">RewriteOptions</span><span class="p">().</span><span class="n">AddRedirectToHttps</span><span class="p">());</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">UseRewriter</span><span class="p">(</span><span class="k">new</span> <span class="n">RewriteOptions</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">AddRedirectToHttps</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>またはappsettings.jsonの値を見るようにしても良いと思います。</p>
-
+</code></pre></div><p>またはappsettings.jsonの値を見るようにしても良いと思います。</p>
 <h1 id="参考">参考</h1>
-
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/aspnet/core/security/enforcing-ssl">Enforcing SSL in an ASP.NET Core app</a></li>
 </ul>
