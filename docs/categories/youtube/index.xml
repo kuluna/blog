@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>YouTube on kuluna.class</title>
+    <link>https://kuluna.github.io/blog/categories/youtube/</link>
+    <description>Recent content in YouTube on kuluna.class</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Thu, 27 Feb 2020 11:43:56 +0900</lastBuildDate>
+    
+	<atom:link href="https://kuluna.github.io/blog/categories/youtube/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>朝起きられないたつのこでもあさココをLiveで見る方法</title>
+      <link>https://kuluna.github.io/blog/post/20200227/</link>
+      <pubDate>Thu, 27 Feb 2020 11:43:56 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20200227/</guid>
+      <description>世の中にはあさココLIVEという危険ドラッグものがあってですね。 この動画を作っているのが桐生ココというVTuberさんなのですが、私はそれは</description>
+    </item>
+    
+  </channel>
+</rss>

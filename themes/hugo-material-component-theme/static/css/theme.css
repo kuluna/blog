@@ -18,6 +18,10 @@ h1 {
   font-family: sans-serif;
 }
 
+h3.serif {
+  font-family: sans-serif;
+}
+
 hr {
   width: 30%;
   border: 1px solid #bbb;

@@ -6,10 +6,19 @@
     <description>Recent content in Android on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 27 Oct 2019 13:18:09 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 27 Feb 2020 11:43:56 +0900</lastBuildDate>
     
 	<atom:link href="https://kuluna.github.io/blog/categories/android/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>朝起きられないたつのこでもあさココをLiveで見る方法</title>
+      <link>https://kuluna.github.io/blog/post/20200227/</link>
+      <pubDate>Thu, 27 Feb 2020 11:43:56 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20200227/</guid>
+      <description>世の中にはあさココLIVEという危険ドラッグものがあってですね。 この動画を作っているのが桐生ココというVTuberさんなのですが、私はそれは</description>
+    </item>
     
     <item>
       <title>Android Dev Summit2019とiOS DC2019でチェックした動画</title>
