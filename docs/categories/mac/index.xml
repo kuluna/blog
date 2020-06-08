@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mac on kuluna.class</title>
+    <link>https://kuluna.github.io/blog/categories/mac/</link>
+    <description>Recent content in Mac on kuluna.class</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Mon, 08 Jun 2020 11:11:22 +0900</lastBuildDate>
+    
+	<atom:link href="https://kuluna.github.io/blog/categories/mac/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mac版Remote Desktopで音を出すとフリーズする</title>
+      <link>https://kuluna.github.io/blog/post/20200608/</link>
+      <pubDate>Mon, 08 Jun 2020 11:11:22 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20200608/</guid>
+      <description>原因はよくわからないが対処法を見つけたので共有します。 Mac版のリモートデスクトップを使っているとたまにフリーズすることがあります。それがW</description>
+    </item>
+    
+  </channel>
+</rss>
