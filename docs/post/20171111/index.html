@@ -96,8 +96,8 @@
 <h3 id="送信側">送信側</h3>
 <p>用意するのはIntentのみです。IntentはBundleを入れる器として使います。<br>
 そのIntentをLocalBroadcastManagerでブロードキャストします。</p>
-<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">body</span> <span class="p">=</span> <span class="s">&#34;AAA&#34;</span>
-<span class="k">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="s">&#34;channel&#34;</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span> <span class="n">putExtra</span><span class="p">(</span><span class="s">&#34;body&#34;</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span> <span class="p">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">body</span> <span class="p">=</span> <span class="s2">&#34;AAA&#34;</span>
+<span class="k">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="s2">&#34;channel&#34;</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span> <span class="n">putExtra</span><span class="p">(</span><span class="s2">&#34;body&#34;</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span> <span class="p">}</span>
 <span class="n">LocalBroadcastManager</span><span class="p">.</span><span class="n">getInstance</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">).</span><span class="n">sendBroadcastSync</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
 </code></pre></div><p>まずIntentのコンストラクタにStringを渡します。これは受信側でフィルターとして使えます。<br>
 あとはこのIntentにBundleをつめて、Broadcastして終わり！</p>
@@ -105,7 +105,7 @@
 <p>まずは受信するレシーバーを作成します。</p>
 <div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"> <span class="k">private</span> <span class="k">val</span> <span class="py">broadcast</span> <span class="p">=</span> <span class="k">object</span> <span class="err">: </span><span class="nc">BroadcastReceiver</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">onReceive</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s">&#34;log&#34;</span><span class="p">,</span> <span class="n">intent</span><span class="p">.</span><span class="n">getStringExtra</span><span class="p">(</span><span class="s">&#34;body&#34;</span><span class="p">))</span>
+        <span class="n">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;log&#34;</span><span class="p">,</span> <span class="n">intent</span><span class="p">.</span><span class="n">getStringExtra</span><span class="p">(</span><span class="s2">&#34;body&#34;</span><span class="p">))</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><p>Intentなので受け取りやすいですね。<br>
@@ -114,7 +114,7 @@
 <div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onResume</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">.</span><span class="n">onResume</span><span class="p">()</span>
     <span class="c1">// subscribe
-</span><span class="c1"></span>    <span class="n">LocalBroadcastManager</span><span class="p">.</span><span class="n">getInstance</span><span class="p">(</span><span class="n">context</span><span class="o">!!</span><span class="p">).</span><span class="n">registerReceiver</span><span class="p">(</span><span class="n">broadcast</span><span class="p">,</span> <span class="n">IntentFilter</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span> <span class="n">addAction</span><span class="p">(</span><span class="s">&#34;channel&#34;</span><span class="p">)</span> <span class="p">})</span>
+</span><span class="c1"></span>    <span class="n">LocalBroadcastManager</span><span class="p">.</span><span class="n">getInstance</span><span class="p">(</span><span class="n">context</span><span class="o">!!</span><span class="p">).</span><span class="n">registerReceiver</span><span class="p">(</span><span class="n">broadcast</span><span class="p">,</span> <span class="n">IntentFilter</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span> <span class="n">addAction</span><span class="p">(</span><span class="s2">&#34;channel&#34;</span><span class="p">)</span> <span class="p">})</span>
 <span class="p">}</span>
 
  <span class="k">override</span> <span class="k">fun</span> <span class="nf">onPause</span><span class="p">()</span> <span class="p">{</span>

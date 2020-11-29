@@ -128,7 +128,7 @@
 
 <span class="k">class</span> <span class="nc">RetrofitLiveData</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">private</span> <span class="k">val</span> <span class="py">call</span><span class="p">:</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">:</span> <span class="n">LiveData</span><span class="p">&lt;</span><span class="n">ResponseBody</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;(),</span> <span class="n">Callback</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">onActive</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(!</span><span class="n">call</span><span class="p">.</span><span class="n">isCanceled</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="n">call</span><span class="p">.</span><span class="n">isExecuted</span><span class="p">)</span> <span class="n">call</span><span class="p">.</span><span class="n">enqueue</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">call</span><span class="p">.</span><span class="n">isCanceled</span> <span class="o">&amp;&amp;</span> <span class="p">!</span><span class="n">call</span><span class="p">.</span><span class="n">isExecuted</span><span class="p">)</span> <span class="n">call</span><span class="p">.</span><span class="n">enqueue</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
     <span class="p">}</span>
 
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">onFailure</span><span class="p">(</span><span class="n">call</span><span class="p">:</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Throwable</span><span class="p">?)</span> <span class="p">{</span>
@@ -136,7 +136,7 @@
 </span><span class="c1"></span>    <span class="p">}</span>
 
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">onResponse</span><span class="p">(</span><span class="n">call</span><span class="p">:</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?,</span> <span class="n">response</span><span class="p">:</span> <span class="n">Response</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="o">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">isSuccessful</span><span class="p">)</span> <span class="p">{</span>
                 <span class="n">value</span> <span class="p">=</span> <span class="n">ResponseBody</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">body</span><span class="p">(),</span> <span class="k">null</span><span class="p">)</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -152,15 +152,15 @@
 <p>ResponseBodyというクラスを用意していますが、これはLiveDataの仕様でsubscribeしたときのコールバック関数が1つしかないためです。その1つのコールバックに成功したときと失敗したときの両方のレスポンスが受け取れるようにしています。</p>
 <p>次にRetrofitでAPIを叩く準備をします。</p>
 <div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">interface</span> <span class="nc">Api</span> <span class="p">{</span>
-    <span class="n">@GET</span><span class="p">(</span><span class="s">&#34;/entry/jsonlite/&#34;</span><span class="p">)</span>
-    <span class="k">fun</span> <span class="nf">getComments</span><span class="p">(</span><span class="n">@Query</span><span class="p">(</span><span class="s">&#34;url&#34;</span><span class="p">)</span> <span class="n">url</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">CommentResponse</span><span class="p">&gt;</span>
+    <span class="nd">@GET</span><span class="p">(</span><span class="s2">&#34;/entry/jsonlite/&#34;</span><span class="p">)</span>
+    <span class="k">fun</span> <span class="nf">getComments</span><span class="p">(</span><span class="nd">@Query</span><span class="p">(</span><span class="s2">&#34;url&#34;</span><span class="p">)</span> <span class="n">url</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">CommentResponse</span><span class="p">&gt;</span>
 <span class="p">}</span>
 
 <span class="k">object</span> <span class="nc">ApiClient</span> <span class="p">{</span>
     <span class="k">val</span> <span class="py">hatena</span><span class="p">:</span> <span class="n">Api</span>
         <span class="k">get</span><span class="p">()</span> <span class="p">{</span>
             <span class="k">val</span> <span class="py">retrofit</span> <span class="p">=</span> <span class="n">Retrofit</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
-                    <span class="p">.</span><span class="n">baseUrl</span><span class="p">(</span><span class="s">&#34;http://b.hatena.ne.jp&#34;</span><span class="p">)</span>
+                    <span class="p">.</span><span class="n">baseUrl</span><span class="p">(</span><span class="s2">&#34;http://b.hatena.ne.jp&#34;</span><span class="p">)</span>
                     <span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="n">OkHttpClient</span><span class="p">())</span>
                     <span class="p">.</span><span class="n">addConverterFactory</span><span class="p">(</span><span class="n">MoshiConverterFactory</span><span class="p">.</span><span class="n">create</span><span class="p">())</span>
                     <span class="p">.</span><span class="n">build</span><span class="p">()</span>
@@ -171,9 +171,9 @@
 最後にActivityで呼び出します。</p>
 <div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-    <span class="p">...</span>
+    <span class="o">..</span><span class="p">.</span>
 
-    <span class="n">RetrofitLiveData</span><span class="p">(</span><span class="n">ApiClient</span><span class="p">.</span><span class="n">hatena</span><span class="p">.</span><span class="n">getComments</span><span class="p">(</span><span class="s">&#34;http://www.bunkakeihack.com/entry/2018/01/06/200800&#34;</span><span class="p">)).</span><span class="n">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Observer</span> <span class="p">{</span>
+    <span class="n">RetrofitLiveData</span><span class="p">(</span><span class="n">ApiClient</span><span class="p">.</span><span class="n">hatena</span><span class="p">.</span><span class="n">getComments</span><span class="p">(</span><span class="s2">&#34;http://www.bunkakeihack.com/entry/2018/01/06/200800&#34;</span><span class="p">)).</span><span class="n">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Observer</span> <span class="p">{</span>
         <span class="c1">// it.body
 </span><span class="c1"></span>        <span class="c1">// it.error
 </span><span class="c1"></span>    <span class="p">})</span>

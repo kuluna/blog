@@ -6,11 +6,7 @@
     <description>Recent content in ASP.NET Core on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 29 Jul 2017 18:24:32 +0900</lastBuildDate>
-    
-	<atom:link href="https://kuluna.github.io/blog/categories/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 29 Jul 2017 18:24:32 +0900</lastBuildDate><atom:link href="https://kuluna.github.io/blog/categories/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Webでテスト管理できるツールを作ろうとしている</title>
       <link>https://kuluna.github.io/blog/post/20170729/</link>

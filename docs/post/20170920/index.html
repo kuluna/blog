@@ -125,8 +125,8 @@ AngularにはRouting Guardsという仕組みがあり、これを使うとAngul
 
   <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">api</span><span class="o">:</span> <span class="nx">Api</span><span class="p">,</span> <span class="kr">private</span> <span class="nx">router</span><span class="o">:</span> <span class="nx">Router</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
 
-  <span class="nx">async</span> <span class="nx">canActivate</span><span class="p">()</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">login</span><span class="o">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkAsync</span><span class="p">();</span>
+  <span class="kr">async</span> <span class="nx">canActivate</span><span class="p">()</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">login</span><span class="o">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="kr">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkAsync</span><span class="p">();</span>
 
     <span class="c1">// ログインしていない場合rootに飛ばす
 </span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">login</span><span class="p">.</span><span class="nx">token</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
@@ -140,8 +140,8 @@ AngularにはRouting Guardsという仕組みがあり、これを使うとAngul
 </span><span class="cm">   * ログイン状態を確認します。
 </span><span class="cm">   * ログイン状態ならログイン情報が取得でき、未ログインの場合は空のオブジェクトが渡されます。
 </span><span class="cm">   */</span>
-  <span class="nx">async</span> <span class="nx">checkAsync</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">login</span><span class="o">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">check</span><span class="p">().</span><span class="nx">toPromise</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nx">User</span><span class="p">());</span>
+  <span class="kr">async</span> <span class="nx">checkAsync</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">login</span><span class="o">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="kr">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">check</span><span class="p">().</span><span class="nx">toPromise</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nx">User</span><span class="p">());</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">userSubject</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nx">login</span><span class="p">);</span>
 
     <span class="k">return</span> <span class="nx">login</span><span class="p">;</span>
