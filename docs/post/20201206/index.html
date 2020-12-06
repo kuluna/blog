@@ -1,0 +1,233 @@
+
+<!doctype html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+  <title>自動テストとPuppeteerとPage Object Patternの話 - kuluna.class</title>
+  <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <meta property="og:title" content="自動テストとPuppeteerとPage Object Patternの話 - kuluna.class">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kuluna.github.io/blog/post/20201206/">
+  
+  <meta property="og:description" content="この記事はソフトウェアテスト Advent Calendar 2020 8日目の記事となります。E2EテストのライブラリとしてPuppetterと、テストコードを書くときに意識し..." />
+  
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/theme.css">
+</head>
+<body>
+<header class="mdc-top-app-bar" style="top: 0px;">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <span class="mdc-top-app-bar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
+    </section>
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+      <a href="https://twitter.com/kuluna" class="mdc-top-app-bar__action-item mdc-icon-button">
+        <img src="https://kuluna.github.io/blog/images/twitter.png" />
+      </a>
+      <a href="https://github.com/kuluna" class="mdc-top-app-bar__action-item mdc-icon-button">
+        <img src="https://kuluna.github.io/blog/images/github.png" />
+      </a>
+      <a href="https://qiita.com/kuluna" class="mdc-top-app-bar__action-item mdc-button">Qiita</a>
+    </section>
+  </div>
+</header>
+
+
+<main class="mdc-top-app-bar--fixed-adjust">
+  <article class="mdc-card mdc-elevation--z6 default-padding">
+    <header>
+      <h1 class="entry-title">自動テストとPuppeteerとPage Object Patternの話</h1>
+      <p class="entry-date">2020-12-06 13:12:16 &#43;0900 JST</p>
+      <p>
+        Categories:
+        
+          <a href="https://kuluna.github.io/blog/categories/test">Test</a>
+        
+      </p>
+      
+      <div class="socials">
+        
+        <button id="button_share" style="visibility: hidden;" class="mdc-button" onclick="share()">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">Share</span>
+        </button>
+        <script>
+          window.addEventListener('load', function() {
+            if (navigator.share) {
+              document.getElementById('button_share').style.visibility = 'visible';
+            }
+          })
+          function share() {
+            
+            if (navigator.share) {
+              navigator.share({ text: document.title, url: location.href });
+            }
+          }
+        </script>
+      </div>
+    </header>
+
+    <p><p>この記事は<a href="https://qiita.com/advent-calendar/2020/softwaretesting">ソフトウェアテスト Advent Calendar 2020 8日目</a>の記事となります。E2EテストのライブラリとしてPuppetterと、テストコードを書くときに意識したPage Object Patternについてまとめます。</p>
+<h1 id="今回書くスコープ">今回書くスコープ</h1>
+<p>今回はPuppetterをPage Object Patternで書く場合にフォーカスしますので、Puppetterでないといけないとかそういったことはないです。最近だとMicrosortから、Puppetterと同じ使いやすさでSafariにも対応した<a href="https://github.com/microsoft/playwright">Playwright</a>というのも出ています。</p>
+<p>テストコードを書く言語はTypeScriptとしています。</p>
+<h1 id="page-object-patternとは">Page Object Patternとは</h1>
+<p>Page Object Patternはその名の通りあるWebページの中にある要素をオブジェクトとして定義し、そのオブジェクトを経由してテストを実行するための実装パターンです。より詳しい定義はSeleniumのページを見ると良いでしょう。<br>
+<a href="https://www.selenium.dev/documentation/ja/guidelines_and_recommendations/page_object_models/">ページオブジェクトモデル - Selenium</a></p>
+<p>例えば掛け算をするUIを例にします。<br>
+2つの入力ボックスと1つのボタンと1つのラベルがあり、ボタンを押すと2つの入力ボックスに入力された値を掛け算し、最後に計算結果をラベルに出力します。</p>
+<p><img src="../../images/2020-12-06/page_sample.png" alt=""></p>
+<p>この画面へのテストとして以下のE2Eテストを行います。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作</th>
+<th style="text-align:center">期待値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">左の入力に100を、右の入力に1.1を入れて計算ボタンを押す</td>
+<td style="text-align:center">110と表示されること</td>
+</tr>
+</tbody>
+</table>
+<p>普通に書くならこんな感じでしょう。</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="kr">type</span><span class="p">(</span><span class="s1">&#39;input[1]&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="kr">type</span><span class="p">(</span><span class="s1">&#39;input[2]&#39;</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="nx">$eval</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">textContent</span><span class="p">);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;110&#39;</span><span class="p">);</span>
+</code></pre></div><p>上の例の場合はそもそもテスト仕様もよくないのですが、このテストコードにはいくつかの問題があります。何を検証したいのかわからないですし、なぜその入力値にしたのかもわかりません。</p>
+<p>お察しかと思いますが、こちらは消費税を含めた金額の計算を行う画面のテストです。ですがこれだけのコードでは税を計算するという意図が全く読み取れず、なぜか100と1.1をテストパターンに採用しているという状態です。数値から推測はできますが、もしこの画面が本当にただの掛け算アプリで、適当にこの値にしましただったらなんでこんな紛らわしいテストにしたんじゃとブチギレ必死でしょう。そんな紛らわしい状態になっているのが問題なのです。</p>
+<p>これをPage Object Patternを使ってリファクタしてみます。<br>
+まずPage ObjectというからにはこのページをObjectとして定義します。このページでは掛け算をすることができるので、2つの入力値を受け取って計算する関数と、計算結果を確認する関数を作成します。</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Page</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;puppeteer&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CalcPage</span> <span class="p">{</span>
+    <span class="kr">constructor</span><span class="p">(</span><span class="kr">public</span> <span class="nx">page</span>: <span class="kt">Page</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="kr">async</span> <span class="nx">calc</span><span class="p">(</span><span class="nx">x</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">y</span>: <span class="kt">number</span><span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">void</span><span class="p">&gt;</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="kr">type</span><span class="p">(</span><span class="s1">&#39;input[1]&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="p">);</span>
+        <span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="kr">type</span><span class="p">(</span><span class="s1">&#39;input[2]&#39;</span><span class="p">,</span> <span class="nx">y</span><span class="p">);</span>
+        <span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kr">async</span> <span class="nx">assertShowCalcedValue</span><span class="p">(</span><span class="nx">value</span>: <span class="kt">number</span><span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">void</span><span class="p">&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">calcedValue</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="nx">$eval</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">textContent</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">calcedValue</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>これを実際にテストする場合はこの2つの関数を呼び出すだけとなります。</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">calcPage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CalcPage</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">calcPage</span><span class="p">.</span><span class="nx">calc</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">calcPage</span><span class="p">.</span><span class="nx">assertShowCalcedValue</span><span class="p">(</span><span class="mi">110</span><span class="p">);</span>
+</code></pre></div><p>テストコードからはDOMの操作が一切なくなり、手続きベースのテストコードにリファクタできました。オブジェクト化によってDOMの操作がカプセル化されました。これでもいいかもしれませんが、やはり何を計算するのかという大事な観点まではオブジェクトの振る舞いとして定義しきれていません。そこでさらにリファクタしてみます。</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Page</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;puppeteer&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CalcPage</span> <span class="p">{</span>
+    <span class="kr">constructor</span><span class="p">(</span><span class="kr">public</span> <span class="nx">page</span>: <span class="kt">Page</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="kr">async</span> <span class="nx">calcTax</span><span class="p">(</span><span class="nx">price</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">options</span><span class="o">:</span> <span class="p">{</span> <span class="nx">reducedTax</span>: <span class="kt">boolean</span> <span class="p">})</span><span class="o">:</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">void</span><span class="p">&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">taxRate</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">reducedTax</span> <span class="o">?</span> <span class="nx">1.08</span> : <span class="kt">1.1</span><span class="p">;</span>
+        <span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="kr">type</span><span class="p">(</span><span class="s1">&#39;input[1]&#39;</span><span class="p">,</span> <span class="nx">price</span><span class="p">);</span>
+        <span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="kr">type</span><span class="p">(</span><span class="s1">&#39;input[2]&#39;</span><span class="p">,</span> <span class="nx">taxRate</span><span class="p">);</span>
+
+        <span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="kr">async</span> <span class="nx">assertShowCalcedPrice</span><span class="p">(</span><span class="nx">taxIncludedPrice</span>: <span class="kt">number</span><span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">void</span><span class="p">&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">calcedPrice</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="nx">$eval</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">textContent</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">calcedPrice</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">taxIncludedPrice</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>これをテストで呼び出すとこうなります。</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">calcPage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CalcPage</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">calcPage</span><span class="p">.</span><span class="nx">calcTax</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="p">{</span> <span class="nx">reducedTax</span>: <span class="kt">false</span> <span class="p">});</span>
+<span class="k">await</span> <span class="nx">calcPage</span><span class="p">.</span><span class="nx">assertShowCalcedPrice</span><span class="p">(</span><span class="mi">110</span><span class="p">);</span>
+</code></pre></div><p>大きく変えたのは関数名と引数です。まずcalc関数は明確に税計算をするものとしてcalcTax関数にリネームしました。さらに引数にオプションを渡せるようにしました。これは対象商品が軽減税率を適用するかどうかをboolean値として渡すオブジェクトです。なら引数に直接booleanを渡せばいいのではと思うかもしれませんが、こう書くことによって呼び出し側で意図的にこのプロパティ名に対する値を指定するという書き方にできます。<br>
+1.08や1.1を渡すのではなく軽減税率を適用するかどうかを聞くことで明確に<strong>税の計算である</strong>という意図が含まれるようになっています。</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="k">await</span> <span class="nx">calcPage</span><span class="p">.</span><span class="nx">calcTax</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="c1">// こちらのほうがfalseが何を指しているのかがわかりやすい
+</span><span class="c1"></span><span class="k">await</span> <span class="nx">calcPage</span><span class="p">.</span><span class="nx">calcTax</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="p">{</span> <span class="nx">reducedTax</span>: <span class="kt">false</span> <span class="p">});</span>
+</code></pre></div><p>税を計算するということは金額にまつわるものとなるため、assert関数名もValueからPriceにリネームしています。</p>
+<p>改めて比較してみましょう。</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="kr">type</span><span class="p">(</span><span class="s1">&#39;input[1]&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="kr">type</span><span class="p">(</span><span class="s1">&#39;input[2]&#39;</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">puppetter</span><span class="p">.</span><span class="nx">$eval</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">textContent</span><span class="p">);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;110&#39;</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">calcPage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CalcPage</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">calcPage</span><span class="p">.</span><span class="nx">calcTax</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="p">{</span> <span class="nx">reducedTax</span>: <span class="kt">false</span> <span class="p">});</span>
+<span class="k">await</span> <span class="nx">calcPage</span><span class="p">.</span><span class="nx">assertShowCalcedPrice</span><span class="p">(</span><span class="mi">110</span><span class="p">);</span>
+</code></pre></div><p>どちらが保守性の高いテストコードかは一目瞭然ですよね。え、上の方がわかりやすい？もしかして君はDOMパーサーかな？<br>
+冗談はさておき、ここまでいくと今度はテストの意図に対してUIが乖離しているように感じます。なので開発チームにUX改善を提案しましょう。</p>
+<h1 id="なぜpage-objectにするのか">なぜPage Objectにするのか</h1>
+<p>一言で言えばそれはもう<strong>保守</strong>のためです。それだけです。Page Object Patternはテストコードを書く面倒さをさらに面倒にすることを引き換えに保守に全てガン振りしたようなものです。</p>
+<p>あなたの書いたコードはあなたによって永遠にメンテナンスされるとは限りません。</p>
+<p>特にテスト自動化において避けるべきは<strong>テスト失敗を放置しない</strong>ことです。E2Eテストはびっくりするほどテストが失敗ます。DOMの変更はもちろん、タイムアウトだったりバージョン差異だったり逆に待たなさすぎて落ちたりします。</p>
+<p>テスト失敗が続くとだんだんと自動テスト自体への信頼が下がり、やがてあってないようなものとしてチームから無視されてしまいます。あなたの手が空いていれば対応できるかもしれませんが、その時のに保守性の低いコードの修正コストやあなたが手一杯で他の人が修正するケースの場合を考えれば、テストコードというのは初めから高い保守性を必要とするものであると考えられます。</p>
+<p>つまりPage Object Patternは作るのが大変だが、作った後のテスト自体の保守性、ひいてはテストへの信頼性をあげるために導入すべきであるというのが私の考えです。</p>
+<h2 id="テストコードがテストシナリオになる">テストコードがテストシナリオになる</h2>
+<p>PageをObjectにするということは、Pageというものが抽象化されるということです。先ほどの例ではまずDOMへのアクセスがカプセル化され、やがて目的をもって操作するという関数にリファクタされました。これなら普段E2Eテストを書かないようなエンジニアにとっても自動テストで何のテストをしているのかがわかります。何のテストをしているのかがわかれば、メンテするときもその関数の中の実装だけメンテすれば良いということになります。</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="k">await</span> <span class="nx">calcPage</span><span class="p">.</span><span class="nx">calcTax</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="p">{</span> <span class="nx">reducedTax</span>: <span class="kt">false</span> <span class="p">});</span>
+<span class="k">await</span> <span class="nx">calcPage</span><span class="p">.</span><span class="nx">assertShowCalcedPrice</span><span class="p">(</span><span class="mi">110</span><span class="p">);</span>
+</code></pre></div><p>これで2行目のテストが失敗すれば税計算後の期待が違うということは一目瞭然でしょう。となればassertShowCalcedPriceの関数を見ればOKなのです。</p>
+<h1 id="メソッドチェーンにすべきか">メソッドチェーンにすべきか</h1>
+<p>例えばログイン画面でログインボタンを押した後にトップページに戻るというシナリオの場合、clickLoginButton関数の戻り値にTopPageオブジェクトが返ってくるとかなり嬉しいです。戻り値によって次にどのページに遷移するのかというのを示すことができます。</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">clickLoginButton</span><span class="p">()</span><span class="o">:</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">TopPage</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+    <span class="kr">const</span> <span class="nx">topPage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TopPage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">);</span>
+    <span class="c1">// Page Object Patterなら何を持ってトップページの描画を完了とするかもTopPageの中で定義できる
+</span><span class="c1"></span>    <span class="k">await</span> <span class="nx">topPage</span><span class="p">.</span><span class="nx">waitForRender</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">topPage</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">topPage</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">loginPage</span><span class="p">.</span><span class="nx">clickLoginButton</span><span class="p">();</span>
+<span class="c1">// TopPageにclickLoginButtonは実装されてないのでエラーになる
+</span><span class="c1"></span><span class="k">await</span> <span class="nx">topPage</span><span class="p">.</span><span class="nx">clickLoginButton</span><span class="p">();</span>
+</code></pre></div><p>Page Object Patternは型をうまく使うことによってページ単位でできること・できないことを定義できます。となれば何かしらの操作に対してPage Objectを返すことによってメソッドチェーンによるテストシナリオもできます。</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// こんな風にできるんやろなぁ...
+</span><span class="c1"></span><span class="k">await</span> <span class="nx">loginPage</span><span class="p">.</span><span class="nx">clickLoginButton</span><span class="p">()</span>
+               <span class="p">.</span><span class="nx">assertShowTopPage</span><span class="p">();</span>
+               <span class="p">.</span><span class="nx">scrollToBottom</span><span class="p">();</span>
+               <span class="p">.</span><span class="nx">clickContactLink</span><span class="p">();</span>
+               <span class="p">...</span>
+</code></pre></div><p>これができると、メソッド=やることなのでさらにめちゃくちゃ読みやすくなります。が、しかし&hellip;&hellip;!</p>
+<p>PuppetterはあくまでDev Toolsのラッパーであるため、実際にその処理を実行するのはChroniumやFirefoxといったブラウザです。Puppeteerの関数のほとんどは戻り値がPromise型、つまり非同期処理となります。<br>
+これをメソッドチェーンで書く場合は非同期処理も考慮に入れなければなりません。またチェーンで繋ぐという性質上、非同期処理と同期処理をチェーンで繋ぐことはできないため、同期処理をPromiseでラップする必要があります。ということで実際はPromiseのチェーンを使うことになります。</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">loginPage</span><span class="p">.</span><span class="nx">clickLoginButton</span><span class="p">()</span>
+         <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">top</span> <span class="p">=&gt;</span> <span class="nx">top</span><span class="p">.</span><span class="nx">assertShowTopPage</span><span class="p">())</span>
+         <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">top</span> <span class="p">=&gt;</span> <span class="nx">top</span><span class="p">.</span><span class="nx">scrollToBottom</span><span class="p">())</span>
+         <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">top</span> <span class="p">=&gt;</span> <span class="nx">top</span><span class="p">.</span><span class="nx">clickContactLink</span><span class="p">())</span>
+         <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">contact</span> <span class="p">=&gt;</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">assertShowPage</span><span class="p">())</span>
+         <span class="p">...</span>
+</code></pre></div><p>await祭りもPromiseチェーンも書く量は正直あまり変わらない気がするのでお好みで好きなスタイルにすればいいかなと思います。</p>
+<h1 id="まとめ">まとめ</h1>
+<p>Page Object Patternは正直めちゃくちゃ大変です。とにかくコード量が増えます。中にはテストに対してそこまで力を入れるべきではないと考える人もいるかもしれませんが、せっかく作ったテストを長く使われ続けるようにするためにも、少なくとも私はこれからもPage Object Patternを使ってE2Eテストを書くことでしょう。</p>
+<h1 id="参考資料">参考資料</h1>
+<p><a href="https://qiita.com/tumo-jp/items/541810ce77b1bdf56750">Page Object Patternを使うな、というCypress公式記事を読んで思ったこと - Qiita</a></p>
+</p>
+
+  </article>
+</main>
+
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42303570-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+
