@@ -1,0 +1,172 @@
+
+<!doctype html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+  <title>映画「アイの歌声を聴かせて」をエンジニアが見た感想 - kuluna.class</title>
+  <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <meta property="og:title" content="映画「アイの歌声を聴かせて」をエンジニアが見た感想 - kuluna.class">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kuluna.github.io/blog/post/20211128/">
+  
+  <meta property="og:description" content="全体的に話は綺麗にまとまった青春群青劇で、トラブルあり涙あり葛藤あり結ばれるべき者同士は結ばれ修復されるべき絆はきちんと修復されます。 今回は..." />
+  
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/theme.css">
+</head>
+<body>
+<header class="mdc-top-app-bar" style="top: 0px;">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <span class="mdc-top-app-bar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
+    </section>
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+      <a href="https://twitter.com/kuluna" class="mdc-top-app-bar__action-item mdc-icon-button">
+        <img src="https://kuluna.github.io/blog/images/twitter.png" />
+      </a>
+      <a href="https://github.com/kuluna" class="mdc-top-app-bar__action-item mdc-icon-button">
+        <img src="https://kuluna.github.io/blog/images/github.png" />
+      </a>
+      <a href="https://qiita.com/kuluna" class="mdc-top-app-bar__action-item mdc-button">Qiita</a>
+    </section>
+  </div>
+</header>
+
+
+<main class="mdc-top-app-bar--fixed-adjust">
+  <article class="mdc-card mdc-elevation--z6 default-padding">
+    <header>
+      <h1 class="entry-title">映画「アイの歌声を聴かせて」をエンジニアが見た感想</h1>
+      <p class="entry-date">2021-11-28 21:44:31 &#43;0900 JST</p>
+      <p>
+        Categories:
+        
+          <a href="https://kuluna.github.io/blog/categories/movie">Movie</a>
+        
+          <a href="https://kuluna.github.io/blog/categories/ai">AI</a>
+        
+      </p>
+      
+      <div class="socials">
+        
+        <button id="button_share" style="visibility: hidden;" class="mdc-button" onclick="share()">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">Share</span>
+        </button>
+        <script>
+          window.addEventListener('load', function() {
+            if (navigator.share) {
+              document.getElementById('button_share').style.visibility = 'visible';
+            }
+          })
+          function share() {
+            
+            if (navigator.share) {
+              navigator.share({ text: document.title, url: location.href });
+            }
+          }
+        </script>
+      </div>
+    </header>
+
+    <p><p>全体的に話は綺麗にまとまった青春群青劇で、トラブルあり涙あり葛藤あり結ばれるべき者同士は結ばれ修復されるべき絆はきちんと修復されます。</p>
+<p>今回はエンジニアという視点からこの映画の感想を述べたいと思います。<br>
+物語には触れませんが、がっつり<strong>ネタバレ</strong>が入ります。見たくない人は今すぐページを閉じてください。</p>
+<hr>
+<h1 id="時代設定について">時代設定について</h1>
+<p>西暦何年と述べられたわけではないですが、まぁ向こう30年にはこういった世界になっていても不思議ではないという感じでした。<br>
+スマート家電も自然に家と溶け込んでおりそれほど違和感はなかったです。<br>
+玄関を通る際に「いってらっしゃい、◯◯」や「おかえりなさい、◯◯」といった掛け声をかけてくれますが、これはどうやって認識しているのかな&hellip;？カメラでは難しそうなのでスマホのBLEを拾って検知しているのかなと思いました。</p>
+<h2 id="スマート家電のセキュリティについて">スマート家電のセキュリティについて</h2>
+<p>序盤、サトミが今日の予定を聞いた時に母の予定が表示されました。これは家族で予定を共有しているため表示されたと思われますが、その中に機密プロジェクトについての予定が画面に表示されてしまいます。またラベルにしっかりと「機密」とついているので、セキュリティ面を考えれば機密情報が他人によって表示されてしまうのは問題では？と思いました。<br>
+これは現在のスマート家電にも言えることで、いわゆる声紋認証の精度はまだ発展途中であり、声紋認証をONにすると認識率が下がってしまうためOFFにしていたか、母がシークレット設定にしするのを忘れていたかのどちらかでしょう。最後の母のトンデモ行動を見るに、案外後者の可能性もあります&hellip;&hellip;。</p>
+<h1 id="aiが行動するためには">AIが行動するためには</h1>
+<p>シオンだけでなくスマート家電にも言えることですが、基本的にAIは人間の<strong>意図を汲み取れません。</strong> サトミは炊飯器に「母の帰りが遅いので米をやわらかく炊いて欲しい」と指示します。つまり「母の帰りが遅い」だけではAIはどういう行動をとればよいかわからず、「米をやわらかく炊いて欲しい」という指示に応えます。</p>
+<p>そしてシオンが劇中に何度か示した反応の中に、「それは命令？」と聞き返すことがありました。続けて「命令がないものは実行しない」とも言います。しかし劇中ほとんどの指示に命令かどうか聞き返さずに行動している節も見られます。<br>
+一見すると一貫性がなさそうですが、これは終盤に「シオンを幸せにする」という命令を達成するための指示は聞き返さずに実行、それ以外と判断したものは命令か？と聞き返すという一貫した行動であることがわかります。</p>
+<h1 id="aiの緊急停止措置について">AIの緊急停止措置について</h1>
+<p>AI(主にシオン)の善意の押し付けという暴走を止めるため緊急停止措置をとっているシーンがあります。ただこれはちょっとどうなのかな？と&hellip;&hellip;。<br>
+やり方は簡単で、まず停止対象物をスマホのカメラに映します。もしそれがロボットであればそのラベルが表示され、最後に画面をタップすることで緊急停止ができるという仕組みです。これが学生のスマホで使えることから、スマホの標準機能として搭載されているものと思われます。</p>
+<p>私はAIロボットだったPepperくんを触ったことが何度かあります。Pepperくんにも実は緊急停止ボタンを備わっており、それは首の後ろにあります。Pepperくんはプログラムミスるとまじで暴走するので何回か押したことがあります&hellip;&hellip;。</p>
+<p>何が引っかかったかというと、こういった緊急停止のボタンは基本物理的に用意されているもので、劇中ではスマホを経由したリモートによる停止処理だったという点です。<br>
+特にシオンを学校に招いた目的は「AIであることをバレないように暮らせるか」という実験であり、つまり誰かがシオンをカメラに写そうとした瞬間ロボットのラベルが表示され緊急停止が可能となってしまい、初日からAIであることがバレる可能性がかなり高いです。</p>
+<p>またリモートは最悪回線の切断やパケットのロスなので届かないこともあると考えると緊急停止措置は物理ボタンであるべきで、最初のミュージカルでは誤ってスマホをタップしてしまい停止してしまったところを、Pepperくんと同じく首の後ろを誤って強打してしまい停止してしまったというシナリオのほうが良かったのではないかなーと思いました。</p>
+<h1 id="aiの自己成長の可能性について">AIの自己成長の可能性について</h1>
+<p>まずシオンの行動をよく整理すると以下の4つの行動を繰り返していることがわかります。</p>
+<ul>
+<li>観察する
+<ul>
+<li>まずは現在のサトミは幸せかどうか聞きます。幸せではないと回答がきた場合、なぜ幸せでないのかシオンはあらゆる観察を行います。</li>
+</ul>
+</li>
+<li>仮説を立てる
+<ul>
+<li>次に「◯◯すれば幸せになる？」と聞きます。◯◯は観察した結果AIが導き出した仮説が入ります。</li>
+</ul>
+</li>
+<li>実行する
+<ul>
+<li>行動はミュージカルという形で行われます。このへんなぜミュージカルなの？というのも一応設定がありますが、今回は割愛。</li>
+</ul>
+</li>
+<li>フィードバックを得る
+<ul>
+<li>行動した結果どうなったかを見て、またサトミを幸せにするための次の行動に繋げます。</li>
+</ul>
+</li>
+</ul>
+<p>このあたりは <a href="https://www.wantedly.com/companies/peraichi15/post_articles/362656">AIエンジニアの観点から見る、映画「アイの歌声を聴かせて」</a> にも触れられています。</p>
+<p>上の記事にある通り、これはAIの学習とほぼ同じです。現在は実行以外は人間が行っていますが、このループをAI自身が行えるようになれば確かに自己成長ができてもおかしくはなさそうな気はします。</p>
+<h2 id="ウイルス">ウイルス？</h2>
+<p>一方でこれはどうなんだろう？というのもありました。それはシオン初期型についての話です。</p>
+<p>シオンの初期型はネットの海に8年間潜伏し、その間ずっとサトミを幸せにできる機会を伺っていました。今回の劇では感動を誘う要素にはなりえますが、第三者目線で冷静に考えるとよくわからんプログラムが8年間あちこちのIoT機器で「サトミを幸せにできるか」という名目で勝手に行動する、もはやウイルスと言っていいほどの挙動をしています。その間ウイルスとして処理されないようあらゆる防護措置やあらゆるIoT機器に順応できるようインターフェースを自己学習することもしていたでしょう。最後にシオンを幸せにできそうなプロジェクトとして母の実験に紛れ込み、サトミはAI女子高生としてシオンのために行動するという今回の話につながってきますが、正直この辺は物語重視のための後付けで、実際はほぼありえないと思っています。</p>
+<h1 id="シオン脱出劇">シオン脱出劇</h1>
+<p>9割ぐらいドラマ重視の演出だとは思いますが、屋上に逃げて最後衛星通信を使うという点はなるほど〜と感じました。<br>
+これだけのAIが作れる会社ですから、基本社内ネットワークは情シスによって管理されていることでしょう。となると外部との通信が切られればシオンは社内ネットワークから出ることはできません。またこれだけのAIをデータ量にするとしてもとてもスマホやUSBで持ち出すには入り切らない容量でしょう。となると最後は衛星通信を使うというのは割と理にかなっている気がしました。</p>
+<h1 id="aiにとって幸せとは">AIにとって幸せとは</h1>
+<p>最後、サトミを幸せにしようと頑張り続けるシオンに、今度はサトミが「シオンは幸せ？」と聞くシーンがあります。これには感動で涙した一方、また第三者視点から見るとAIに向かって幸せ？と聞いていることになります。</p>
+<p><strong>私はこれを見て強烈に考えさせられました。</strong></p>
+<p>AIの開発者は誰かの幸せを願って開発されることは確かです。しかし一方でそのAIは幸せなのかという問いについて考えることはできるのでしょうか？</p>
+<p>今私が作っているプログラムに感情があるならば、このプログラムたちは「幸せです」と答えてくれるのだろうか？</p>
+<p>&hellip;&hellip;いやそんなことはないですね絶対。 <strong>「ふざけんなおめーのプログラムはバグだらけなんだよ。はよ直せ」</strong> としか言ってこないです絶対。</p>
+<p>またこの問いは年代によって変わってくるとも思いました。私のような30代はロボットと共に暮らす生活は後から生まれたもののため、AIまたはロボットとして接します。<br>
+これに対して今の子供たちはGoogle HomeやAlexaがいる、つまりそれらが初めから家の中にいる状態で暮らしています。子供たちにとって自分と同じ言葉でしゃべるこれらはほぼ家族の一員として見ています。つまり劇中のサトミはシオンのことを紛れもなく生身の人間と変わらない気持ちで「幸せ？」と聞いていることになります。</p>
+<p>一方でその年代ではない私から見ると <strong>AIにとって幸せとはなんなのか。自分の作っているプログラムはプログラム側から見て幸せなのか</strong> と考えさせられる問いへと化けたのです。</p>
+<h1 id="その他これはありえないかなーと思ったもの">その他これはありえないかなーと思ったもの</h1>
+<ul>
+<li><strong>田植えロボットは確実に人間型じゃないほうがいい</strong></li>
+<li>緊急事態とはいえ、ロボットに向かって無警告で発砲した警官。すぐそばには生身の学生がいたにもかかわらずこの行動は普通にありえないかと</li>
+<li>母がリベンジのためコンプラ違反しまくる件は物語として必要だからマジでありえないんですが、まぁいいでしょう(笑)</li>
+<li>社内コントロールセンターらしき箇所でスプリンクラーが作動したこと。シオンが妨害のために行ったと推測されますが、これやられるとPC全滅しちゃいます&hellip;&hellip;。
+<ul>
+<li>新人時代に、社内でとある方が誕生日を祝うためにケーキにろうそくをつけていたのをたまたま通りかかった上司がめっちゃキレてるところを見たことがあります。あれはろうそくの煙で熱感知器が作動しスプリンクラーが作動する恐れがあったためなんだなと今になって理解しました&hellip;&hellip;。</li>
+</ul>
+</li>
+</ul>
+<h1 id="まとめ">まとめ</h1>
+<p>1回見ただけでこれだけの気持ち悪い文章が吐き出せるぐらいには観て良かった映画だと思います！みんなも観よう！</p>
+</p>
+
+  </article>
+</main>
+
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42303570-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+

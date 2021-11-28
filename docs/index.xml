@@ -6,7 +6,16 @@
     <description>Recent content on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 06 Dec 2020 13:12:16 +0900</lastBuildDate><atom:link href="https://kuluna.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Nov 2021 21:44:31 +0900</lastBuildDate><atom:link href="https://kuluna.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>映画「アイの歌声を聴かせて」をエンジニアが見た感想</title>
+      <link>https://kuluna.github.io/blog/post/20211128/</link>
+      <pubDate>Sun, 28 Nov 2021 21:44:31 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20211128/</guid>
+      <description>全体的に話は綺麗にまとまった青春群青劇で、トラブルあり涙あり葛藤あり結ばれるべき者同士は結ばれ修復されるべき絆はきちんと修復されます。 今回は</description>
+    </item>
+    
     <item>
       <title>自動テストとPuppeteerとPage Object Patternの話</title>
       <link>https://kuluna.github.io/blog/post/20201206/</link>
