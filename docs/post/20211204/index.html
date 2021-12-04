@@ -1,0 +1,157 @@
+
+<!doctype html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+  <title>ゲーム開発ブログにCi-enを採用した理由 - kuluna.class</title>
+  <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <meta property="og:title" content="ゲーム開発ブログにCi-enを採用した理由 - kuluna.class">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kuluna.github.io/blog/post/20211204/">
+  
+  <meta property="og:description" content="ゲーム制作者が自由な記事を作るアドベントカレンダー 12/4の記事です！ https://adventar.org/calendars/6783 ゲーム開発中に開発ブログを書いている方はたくさんいらっしゃると思いま..." />
+  
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/theme.css">
+</head>
+<body>
+<header class="mdc-top-app-bar" style="top: 0px;">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <span class="mdc-top-app-bar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
+    </section>
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+      <a href="https://twitter.com/kuluna" class="mdc-top-app-bar__action-item mdc-icon-button">
+        <img src="https://kuluna.github.io/blog/images/twitter.png" />
+      </a>
+      <a href="https://github.com/kuluna" class="mdc-top-app-bar__action-item mdc-icon-button">
+        <img src="https://kuluna.github.io/blog/images/github.png" />
+      </a>
+      <a href="https://qiita.com/kuluna" class="mdc-top-app-bar__action-item mdc-button">Qiita</a>
+    </section>
+  </div>
+</header>
+
+
+<main class="mdc-top-app-bar--fixed-adjust">
+  <article class="mdc-card mdc-elevation--z6 default-padding">
+    <header>
+      <h1 class="entry-title">ゲーム開発ブログにCi-enを採用した理由</h1>
+      <p class="entry-date">2021-12-04 09:15:37 &#43;0900 JST</p>
+      <p>
+        Categories:
+        
+          <a href="https://kuluna.github.io/blog/categories/game">Game</a>
+        
+      </p>
+      
+      <div class="socials">
+        
+        <button id="button_share" style="visibility: hidden;" class="mdc-button" onclick="share()">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">Share</span>
+        </button>
+        <script>
+          window.addEventListener('load', function() {
+            if (navigator.share) {
+              document.getElementById('button_share').style.visibility = 'visible';
+            }
+          })
+          function share() {
+            
+            if (navigator.share) {
+              navigator.share({ text: document.title, url: location.href });
+            }
+          }
+        </script>
+      </div>
+    </header>
+
+    <p><p>ゲーム制作者が自由な記事を作るアドベントカレンダー　12/4の記事です！
+<a href="https://adventar.org/calendars/6783">https://adventar.org/calendars/6783</a></p>
+<p>ゲーム開発中に開発ブログを書いている方はたくさんいらっしゃると思いますが、今日は私が開発中のゲームの開発ブログにCi-enを選んだ理由についてお話しします。<br>
+今回は開発ブログについて焦点をあてるため、製作中のゲームについての内容は含みません。</p>
+<h1 id="ci-enとは">Ci-enとは</h1>
+<p><a href="https://ci-en.dlsite.com/about/supporter">https://ci-en.dlsite.com/about/supporter</a></p>
+<p><img src="../../images/2021-12-04/ci-en_1.png" alt=""></p>
+<p>Ci-enはその名前のまま支援型のブログです。支援型とは通常のブログ形式に加えてお布施ができる機能を持ったものです。<br>
+例えば月額500円を継続的にお布施したり、特定の記事に対してチップのようなものを支払うことでクリエイターにお金を渡すことができます。</p>
+<p>似たようなものにPixivのFANBOXやとらのあなのFantiaがあります。FANBOXなどはイラストに特化している一方でCi-enは幅広い創作活動をターゲットとしています。</p>
+<p>お布施プランを用意する場合、たいていはリターンとしてプラン加入者限定のコンテンツを配ります。例えば限定イラストだったり、ゲームであれば先行体験版をDLできるリンクなどをリターンにしています。</p>
+<p><img src="../../images/2021-12-04/ci-en_2.png" alt=""></p>
+<h1 id="なぜci-enを選んだか">なぜCi-enを選んだか</h1>
+<p>一番の決め手はゲーム販売のプラットフォームにDLSiteを選んだからです。<br>
+DLSiteは同人ゲームを扱っているプラットフォームとしては国内で一番でかい(DLSiteもそう主帳している)マーケットプレイスです。</p>
+<p><img src="../../images/2021-12-04/dlsite_1.png" alt=""></p>
+<p>このDLSiteとCi-enは運営している会社が一緒なため、セットで使うと相互に良いことがあります。例えばゲームの紹介ページに自動的にCi-enのリンクが貼られたり、またはその逆のリンクも用意されていたりします。またCi-enでクーポンを作成することで自分のゲームを割引させるといったこともできます。</p>
+<p>もちろんお布施によるモチベーションアップ<del>や若干の開発費用回収</del>も狙えるのでは？？と思いました。</p>
+<p>では今度はなぜDLSiteを選んだかに深ぼっていきましょう。</p>
+<h2 id="なぜdlsiteを選んだか">なぜDLSiteを選んだか</h2>
+<p>製作中のゲームについての内容には触れないと言いましたが、前提として話しておきたいことがあるのでそこだけお話しします。</p>
+<p>ソシャゲの中でめちゃくちゃハマったゲームがありまして、こんなゲームを自分でも作ってみたいな〜〜〜と思ったのがゲーム開発のきっかけでした。</p>
+<p><strong>ただゲームを作るからにはちゃんと売りたい！</strong></p>
+<p>ということで、開発費用が回収できるぐらい売る！という目標を立てました。<br>
+そこでまず<strong>ターゲットをPCにしました。</strong> 理由はリスペクト元のゲームがソシャゲなため、スマホで出しても本家のほうが面白いのでそっちのほうが良いとなるのは当たり前だと思ったからです。<br>
+なのでPCゲームの販売サイトに載せてもらうためにDLSiteを候補としました。</p>
+<p>もちろんDLSite以外にもPCゲーム販売サイトはあります。有名なのはDMMでしょうか。もちろんDMMとも比較をした結果、私はDLSiteを選びました。</p>
+<ol>
+<li>表現の規制に関する注意事項がDMMと比べて相対的にゆるかった</li>
+<li>DMMは低価格帯での手数料がDLSiteと比較して高い<br>
+<a href="https://shirakamisauto.hatenablog.com/entry/2016/06/22/081727">参考 - https://shirakamisauto.hatenablog.com/entry/2016/06/22/081727</a></li>
+<li>発売後も多言語化やデバッグサポートなど、オプションでゲームを広げられそうと感じた</li>
+</ol>
+<p>またゲーム専用ではないですが同人サークル販売に特化したBOOTHというサービスもあります。<a href="https://kuluna.booth.pm">私が書いた技術書の薄い本</a>の委託販売はこちらでお世話になっております🙇‍♀️<br>
+BOOTHは手数料が一番安いものの、サポート含め全て自己責任です。何より同人ゲームを買うか〜ってなった時にまずBOOTHは開かないと思ったので、今回の候補からは外れました。</p>
+<h1 id="ci-enを使う時に気を付けること">Ci-enを使う時に気を付けること</h1>
+<p>ここからは実際に私がCi-enでブログを運用していて気づいたこと、気をつけなきゃと思ったことを書きます。</p>
+<p><strong>初めは新着サークルとして注目されやすいが、徐々にハイライトされるのが難しい</strong></p>
+<p>割と目に見えて、だんだん閲覧数が減ってきます。私が始めたのは今年の10月ですが、開設当初は新着クリエイターとしてハイライトされていたため、初回の記事では363もの閲覧数(Ci-enのシステムによる集計)があったのに対し、11/28に投稿した記事では106と1/3ほどに減っています。</p>
+<p>Ci-enではパーソナルリコメンド機能が弱く、強いサークルが常にランキング上位で注目され、それ以外のサークルはなかなか日の目を見ることが難しく感じます。</p>
+<p><strong>一番ベストなのは開設と同時にDLSiteでゲーム販売すること</strong></p>
+<p>ゲームをまだ出してないサークルのブログとゲーム発売済みのサークルのブログではフォロー数、いいね数ともに一回り違います。Ci-enではこの数でランキングされるため、純粋に強いサークルがハイライトされ続ける仕組みになっています。</p>
+<p>またCi-enで投銭しようとする時の判断基準として、このサークルは自分に見合ったリターンを継続的に出してくれるかが気になると思います。特にゲームとなれば自分の好みのジャンルかどうかも重要です。<br>
+まだゲームを出していないサークルと販売済みのサークルでは安心感が違ってくるでしょう。</p>
+<p>ゲーム次第にもなるが、かわいい女の子をヘッダーや記事のサムネにおけるかどうかで初動はかなり変わると思います。</p>
+<p>Ci-enではR-18のコンテンツも扱うことができるため、かわいい女の子を期待して見てくれる人が多いように感じます。</p>
+<p><strong>有償プランはしっかりとリターンを設計すること</strong></p>
+<p>当然といえば当然ですが、これは有償プランの設計に非常に重要な観点です。<br>
+まずなんのリターンもなしにプランに加入してくれる人がいるとは思わないでください。自分が投銭する側になって考えれば当然のことです。</p>
+<p>では何をリターンにするかという話になりますが、望ましいのは <strong>低コストで継続的に提供できるもの</strong> になります。なぜかというとプランは月額制のため、常にプランに加入し続けてもらうには最低でも月に1回以上はリターンを提供する必要があるからです。</p>
+<p>特に問題になってくるのはリターンに <strong>自分一人では作れないもの</strong> を指定してしまう場合です。自分一人で生み出せるものは最低限材料費のみで済みますし、自分の時間だけをうまく捻出すれば継続的なリターンが可能です。しかし自分一人では作れないものにしてしまうとこれらの制御がとても難しくなります。</p>
+<p>特に自分一人では作れないものとなるとコストの鶏卵問題が発生します。<br>
+プランで得られた資金をもとにリターンを提供したいと考えます。この時N人以上がプランに加入することでリターンが提供できるとなった場合、N人未満しか集まらなかった時にリターンが提供できなくなります。<br>
+そうなると先にコストを用意する必要がありそうですが、ではそのコストはどこから捻出するのか、そして結局N人以上加入してくれるかはまた別の問題となってしまいます。</p>
+<p>なのでリターンには例え加入者が1人でも100人でも同じコストで提供できるものが望ましいです。</p>
+<p>PixivのFANBOXでは最初からイラストに特化しているため基本的にはリターンはそのクリエイターの限定イラストになります。当然そのクリエイターが自ら製作するわけですから上記の問題は発生しません。<br>
+しかし例えば私のようなゲーム開発しかできないエンジニアがCi-enでリターンを用意しようとなると話は別です。エンジニアが読者の望む限定コンテンツを月1回以上配る？？？？どういうこと？？？となってしまいます。</p>
+<p>なので自分も実はまだ有償プランを開始できていません&hellip;&hellip;。</p>
+<h1 id="まとめ">まとめ</h1>
+<p>イラスト系だと流石にFANBOXやFantiaに軍配が上がりそうだが、それ以外で支援型ブログの開設を考えている人はCi-enおすすめだと思います！</p>
+<p>使われないとは思いますが&hellip;..招待コードを貼り付けておきます。</p>
+<p><code>KbEDyhC7VzahdyH</code></p>
+<p>これを使うと有償プランの手数料が割引されます。</p>
+</p>
+
+  </article>
+</main>
+
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42303570-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+

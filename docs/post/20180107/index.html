@@ -106,7 +106,7 @@
 <li>Retrofit 2.3.0</li>
 </ul>
 <p>まずはライブラリをインポートします。Gradle4で<code>compile</code>から<code>implementation</code>に変わったようです。</p>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">apply</span> <span class="n">plugin</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">kotlin</span><span class="o">-</span><span class="n">kapt</span><span class="err">&#39;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">apply</span> <span class="n">plugin</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">kotlin</span><span class="o">-</span><span class="n">kapt</span><span class="err">&#39;</span>
 
 <span class="n">dependencies</span> <span class="o">{</span>
   <span class="n">implementation</span> <span class="err">&#39;</span><span class="n">com</span><span class="o">.</span><span class="na">squareup</span><span class="o">.</span><span class="na">retrofit2</span><span class="o">:</span><span class="n">retrofit</span><span class="o">:</span><span class="n">2</span><span class="o">.</span><span class="na">3</span><span class="o">.</span><span class="na">0</span><span class="err">&#39;</span>
@@ -116,7 +116,7 @@
 <span class="o">}</span>
 </code></pre></div><p>Gradle4で<code>compile</code>から<code>implementation</code>に変わったようです。何故。</p>
 <p>次にLiveDataとRetrofitを橋渡しするクラスを用意します。</p>
-<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">data</span> <span class="k">class</span> <span class="nc">ResponseBody</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">data</span> <span class="k">class</span> <span class="nc">ResponseBody</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span>
         <span class="k">var</span> <span class="py">body</span><span class="p">:</span> <span class="n">T</span><span class="p">?,</span>
         <span class="k">var</span> <span class="py">error</span><span class="p">:</span> <span class="n">ResponseError</span><span class="p">?</span>
 <span class="p">)</span>
@@ -151,7 +151,7 @@
 </code></pre></div><p>実際に橋渡しをしているのはRetrofitLiveDataのonResponseメソッドです。これはLiveDataを継承したクラスで、用意されている<code>value</code>に値をセットすることでobserverに伝搬することができます。</p>
 <p>ResponseBodyというクラスを用意していますが、これはLiveDataの仕様でsubscribeしたときのコールバック関数が1つしかないためです。その1つのコールバックに成功したときと失敗したときの両方のレスポンスが受け取れるようにしています。</p>
 <p>次にRetrofitでAPIを叩く準備をします。</p>
-<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">interface</span> <span class="nc">Api</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">interface</span> <span class="nc">Api</span> <span class="p">{</span>
     <span class="nd">@GET</span><span class="p">(</span><span class="s2">&#34;/entry/jsonlite/&#34;</span><span class="p">)</span>
     <span class="k">fun</span> <span class="nf">getComments</span><span class="p">(</span><span class="nd">@Query</span><span class="p">(</span><span class="s2">&#34;url&#34;</span><span class="p">)</span> <span class="n">url</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">CommentResponse</span><span class="p">&gt;</span>
 <span class="p">}</span>
@@ -169,7 +169,7 @@
 <span class="p">}</span>
 </code></pre></div><p>コンバーターは不要です。<br>
 最後にActivityで呼び出します。</p>
-<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
     <span class="o">..</span><span class="p">.</span>
 

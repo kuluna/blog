@@ -83,7 +83,7 @@ AngularにはRouting Guardsという仕組みがあり、これを使うとAngul
 <p><a href="https://angular.io/guide/router#milestone-5-route-guards">Milestone 5: Route guards</a></p>
 <p>やり方は簡単で、CanActivateインターフェースを実装したサービスクラスを作り、どのルーティングでログイン情報を確認するか設定するだけです。</p>
 <p>まずサービスクラスを作ります。</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span>     <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span>     <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">CanActivate</span> <span class="p">}</span>    <span class="nx">from</span> <span class="s1">&#39;@angular/router&#39;</span><span class="p">;</span>
 
 <span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
@@ -95,7 +95,7 @@ AngularにはRouting Guardsという仕組みがあり、これを使うとAngul
 </code></pre></div><p>これはサンプルそのままですが、この場合は常にログイン状態であることを返します。<br>
 もちろん作ったAuthGuardはapp.module.tsに登録しましょう。</p>
 <p>あとはルーティングでこのAuthGuardを使います。</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">adminRoutes</span><span class="o">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">adminRoutes</span><span class="o">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">AdminComponent</span><span class="p">,</span> <span class="nx">canActivate</span><span class="o">:</span> <span class="p">[</span><span class="nx">AuthGuard</span><span class="p">]</span> <span class="p">}</span>
 <span class="p">];</span>
 </code></pre></div><p>adminページを開くと普通に見ることができます。では上のcanActiveメソッドでfalseを返してみるとどうでしょう。adminが開けなくなります。<br>
@@ -113,7 +113,7 @@ AngularにはRouting Guardsという仕組みがあり、これを使うとAngul
 すべてのコンポーネントがログインAPIを叩きに行けば**ひどいことになります。**かといってcanActiveだけではユーザーの特定は不可能です。</p>
 <p>そこでAuthGuardを拡張してログイン情報も保持するようにしてみました。</p>
 <h1 id="ログイン情報observableを作る">ログイン情報Observableを作る</h1>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">CanActivate</span><span class="p">,</span> <span class="nx">Router</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/router&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">BehaviorSubject</span><span class="p">,</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;rxjs/Rx&#39;</span><span class="p">;</span>
 
@@ -160,7 +160,7 @@ AngularにはRouting Guardsという仕組みがあり、これを使うとAngul
 これが<code>checkAsync()</code>メソッドが呼ばれるたびにストリームにログイン情報が流れていきます。<br>
 つまりこのストリームを各コンポーネントが受け取ればログイン情報を共有することができます。</p>
 <p>例えばユーザー名を表示するかしないかは</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppComponent</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppComponent</span> <span class="p">{</span>
   <span class="nx">login</span><span class="o">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
 
   <span class="nx">constructor</span><span class="p">(</span><span class="kr">public</span> <span class="nx">auth</span><span class="o">:</span> <span class="nx">AuthGuard</span><span class="p">)</span> <span class="p">{</span>
@@ -170,7 +170,7 @@ AngularにはRouting Guardsという仕組みがあり、これを使うとAngul
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><p>としておけば、HTML側で</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="err">*</span><span class="na">ngIf</span><span class="o">=</span><span class="s">&#34;login.name&#34;</span><span class="p">&gt;</span>{{login.name}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="err">*</span><span class="na">ngIf</span><span class="o">=</span><span class="s">&#34;login.name&#34;</span><span class="p">&gt;</span>{{login.name}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div><p>とするだけです。<br>
 Router Guardによってログイン確認が行われるので各コンポーネントはObservableをsubscribeするだけでOKです。</p>
 <p>今回はログインしているかどうかをオブジェクトに値があるかどうかで見ていますが、Observableに流すストリームは自由に作れるのでお好みのやり方でできます。</p>

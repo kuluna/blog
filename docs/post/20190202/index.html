@@ -78,7 +78,7 @@
 <p>例えばAPIにデータを更新かけに行く時、APIのレスポンスを待ってUIの更新をすることが多いでしょう。
 ですが、APIのレスポンスを待たずにUIの更新をかければユーザーは待たされることなくユーザー体験をより良いものとすることができます。</p>
 <p>この時のUI処理はどちらも同じことをやるでしょう。これが1行で済めば良いのですが、たまに値の変換やソートをかける必要がある場合、同じ処理を2回書かなければならなくなります。</p>
-<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">update</span><span class="p">(</span><span class="n">udateData</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">update</span><span class="p">(</span><span class="n">udateData</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// APIを待たずにUI反映
 </span><span class="c1"></span>  <span class="n">hoge</span><span class="p">(</span><span class="n">udateData</span><span class="p">)</span>
   <span class="n">huga</span><span class="p">(</span><span class="n">udateData</span><span class="p">)</span>
@@ -97,7 +97,7 @@
 <span class="p">}</span>
 </code></pre></div><p>ではこれをLocal Functionでまとめてみましょう。<br>
 Local Functionは呼び出す時より前に定義する必要があります。</p>
-<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">update</span><span class="p">(</span><span class="n">udateData</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">update</span><span class="p">(</span><span class="n">udateData</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// このへんがLocal Function
 </span><span class="c1"></span>  <span class="k">fun</span> <span class="nf">updateUI</span><span class="p">(</span><span class="k">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">hoge</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
