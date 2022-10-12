@@ -83,22 +83,22 @@ AngularにはRouting Guardsという仕組みがあり、これを使うとAngul
 <p><a href="https://angular.io/guide/router#milestone-5-route-guards">Milestone 5: Route guards</a></p>
 <p>やり方は簡単で、CanActivateインターフェースを実装したサービスクラスを作り、どのルーティングでログイン情報を確認するか設定するだけです。</p>
 <p>まずサービスクラスを作ります。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span>     <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">CanActivate</span> <span class="p">}</span>    <span class="nx">from</span> <span class="s1">&#39;@angular/router&#39;</span><span class="p">;</span>
-
-<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
-<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AuthGuard</span> <span class="kr">implements</span> <span class="nx">CanActivate</span> <span class="p">{</span>
-  <span class="nx">canActivate</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>これはサンプルそのままですが、この場合は常にログイン状態であることを返します。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span>     <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">CanActivate</span> <span class="p">}</span>    <span class="nx">from</span> <span class="s1">&#39;@angular/router&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">AuthGuard</span> <span class="kr">implements</span> <span class="nx">CanActivate</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">canActivate</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>これはサンプルそのままですが、この場合は常にログイン状態であることを返します。<br>
 もちろん作ったAuthGuardはapp.module.tsに登録しましょう。</p>
 <p>あとはルーティングでこのAuthGuardを使います。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">adminRoutes</span><span class="o">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">AdminComponent</span><span class="p">,</span> <span class="nx">canActivate</span><span class="o">:</span> <span class="p">[</span><span class="nx">AuthGuard</span><span class="p">]</span> <span class="p">}</span>
-<span class="p">];</span>
-</code></pre></div><p>adminページを開くと普通に見ることができます。では上のcanActiveメソッドでfalseを返してみるとどうでしょう。adminが開けなくなります。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">adminRoutes</span><span class="o">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">AdminComponent</span><span class="p">,</span> <span class="nx">canActivate</span><span class="o">:</span> <span class="p">[</span><span class="nx">AuthGuard</span><span class="p">]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">];</span>
+</span></span></code></pre></div><p>adminページを開くと普通に見ることができます。では上のcanActiveメソッドでfalseを返してみるとどうでしょう。adminが開けなくなります。<br>
 これはAngularのRoute Guardsという仕組みです。</p>
 <h1 id="ログイン情報を保持する">ログイン情報を保持する</h1>
 <p>ところで、canActiveメソッドの戻り値ですが</p>
@@ -113,65 +113,65 @@ AngularにはRouting Guardsという仕組みがあり、これを使うとAngul
 すべてのコンポーネントがログインAPIを叩きに行けば**ひどいことになります。**かといってcanActiveだけではユーザーの特定は不可能です。</p>
 <p>そこでAuthGuardを拡張してログイン情報も保持するようにしてみました。</p>
 <h1 id="ログイン情報observableを作る">ログイン情報Observableを作る</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">CanActivate</span><span class="p">,</span> <span class="nx">Router</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/router&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">BehaviorSubject</span><span class="p">,</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;rxjs/Rx&#39;</span><span class="p">;</span>
-
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Api</span><span class="p">,</span> <span class="nx">User</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../models/model&#39;</span><span class="p">;</span>
-
-<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
-<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AuthGuard</span> <span class="kr">implements</span> <span class="nx">CanActivate</span> <span class="p">{</span>
-  <span class="kr">private</span> <span class="nx">userSubject</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BehaviorSubject</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span> <span class="nx">User</span><span class="p">());</span>
-
-  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">api</span><span class="o">:</span> <span class="nx">Api</span><span class="p">,</span> <span class="kr">private</span> <span class="nx">router</span><span class="o">:</span> <span class="nx">Router</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
-
-  <span class="kr">async</span> <span class="nx">canActivate</span><span class="p">()</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">login</span><span class="o">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="kr">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkAsync</span><span class="p">();</span>
-
-    <span class="c1">// ログインしていない場合rootに飛ばす
-</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">login</span><span class="p">.</span><span class="nx">token</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">navigate</span><span class="p">([</span><span class="s1">&#39;/&#39;</span><span class="p">]);</span>
-      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="cm">/**
-</span><span class="cm">   * ログイン状態を確認します。
-</span><span class="cm">   * ログイン状態ならログイン情報が取得でき、未ログインの場合は空のオブジェクトが渡されます。
-</span><span class="cm">   */</span>
-  <span class="kr">async</span> <span class="nx">checkAsync</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">login</span><span class="o">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="kr">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">check</span><span class="p">().</span><span class="nx">toPromise</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nx">User</span><span class="p">());</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">userSubject</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nx">login</span><span class="p">);</span>
-
-    <span class="k">return</span> <span class="nx">login</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="cm">/**
-</span><span class="cm">   * ログイン情報をリアルタイムに通知します。
-</span><span class="cm">   * 未ログインであれば空のオブジェクトが、
-</span><span class="cm">   * ログイン済みであればログイン情報がストリームに流れます。
-</span><span class="cm">   */</span>
-  <span class="nx">getObservable</span><span class="p">()</span><span class="o">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">userSubject</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>追加したのは<code>userSubject</code>というSubjectオブジェクトです。Subjectはrxjsのライブラリで、ストリームに値を流す時に使います。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">CanActivate</span><span class="p">,</span> <span class="nx">Router</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/router&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">BehaviorSubject</span><span class="p">,</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;rxjs/Rx&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Api</span><span class="p">,</span> <span class="nx">User</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../models/model&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">AuthGuard</span> <span class="kr">implements</span> <span class="nx">CanActivate</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">private</span> <span class="nx">userSubject</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BehaviorSubject</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span> <span class="nx">User</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">api</span><span class="o">:</span> <span class="nx">Api</span><span class="p">,</span> <span class="kr">private</span> <span class="nx">router</span><span class="o">:</span> <span class="nx">Router</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">async</span> <span class="nx">canActivate</span><span class="p">()</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">login</span><span class="o">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="kr">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkAsync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// ログインしていない場合rootに飛ばす
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">login</span><span class="p">.</span><span class="nx">token</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">navigate</span><span class="p">([</span><span class="s1">&#39;/&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * ログイン状態を確認します。
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * ログイン状態ならログイン情報が取得でき、未ログインの場合は空のオブジェクトが渡されます。
+</span></span></span><span class="line"><span class="cl"><span class="cm">   */</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">async</span> <span class="nx">checkAsync</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">login</span><span class="o">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="kr">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">check</span><span class="p">().</span><span class="nx">toPromise</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nx">User</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">userSubject</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nx">login</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">login</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * ログイン情報をリアルタイムに通知します。
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * 未ログインであれば空のオブジェクトが、
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * ログイン済みであればログイン情報がストリームに流れます。
+</span></span></span><span class="line"><span class="cl"><span class="cm">   */</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">getObservable</span><span class="p">()</span><span class="o">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">userSubject</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>追加したのは<code>userSubject</code>というSubjectオブジェクトです。Subjectはrxjsのライブラリで、ストリームに値を流す時に使います。<br>
 これが<code>checkAsync()</code>メソッドが呼ばれるたびにストリームにログイン情報が流れていきます。<br>
 つまりこのストリームを各コンポーネントが受け取ればログイン情報を共有することができます。</p>
 <p>例えばユーザー名を表示するかしないかは</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppComponent</span> <span class="p">{</span>
-  <span class="nx">login</span><span class="o">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
-
-  <span class="nx">constructor</span><span class="p">(</span><span class="kr">public</span> <span class="nx">auth</span><span class="o">:</span> <span class="nx">AuthGuard</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">auth</span><span class="p">.</span><span class="nx">getObservable</span><span class="p">().</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">login</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">login</span> <span class="o">=</span> <span class="nx">login</span><span class="p">;</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>としておけば、HTML側で</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="err">*</span><span class="na">ngIf</span><span class="o">=</span><span class="s">&#34;login.name&#34;</span><span class="p">&gt;</span>{{login.name}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</code></pre></div><p>とするだけです。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppComponent</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">login</span><span class="o">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">constructor</span><span class="p">(</span><span class="kr">public</span> <span class="nx">auth</span><span class="o">:</span> <span class="nx">AuthGuard</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">auth</span><span class="p">.</span><span class="nx">getObservable</span><span class="p">().</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">login</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">login</span> <span class="o">=</span> <span class="nx">login</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>としておけば、HTML側で</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="err">*</span><span class="na">ngIf</span><span class="o">=</span><span class="s">&#34;login.name&#34;</span><span class="p">&gt;</span>{{login.name}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>とするだけです。<br>
 Router Guardによってログイン確認が行われるので各コンポーネントはObservableをsubscribeするだけでOKです。</p>
 <p>今回はログインしているかどうかをオブジェクトに値があるかどうかで見ていますが、Observableに流すストリームは自由に作れるのでお好みのやり方でできます。</p>
 <p>ほんとはこのへんもAngular側でやってくれる仕組みができると嬉しいのですが。</p>

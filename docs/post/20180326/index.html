@@ -75,24 +75,24 @@
     <p><p>久々に技術ネタ。</p>
 <p>Androidでレイアウト組む時は基本XMLなのでプログラムから作成することはほとんどないと思うのですが、プログラム側からmarginを指定するときにこの <code>MarginLayoutParams</code> を使用します。</p>
 <p><code>MarginLayoutParams</code> はLayoutParamsを継承しているのでそのまま他のViewのLayoutParamsにも渡せますが、古いAndroid(5系とか)ではこれが通用しません。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"> <span class="k">val</span> <span class="py">marginParams</span> <span class="p">=</span> <span class="n">MarginLayoutParams</span><span class="p">(</span><span class="n">ViewGroup</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">MATCH_PARENT</span><span class="p">,</span> <span class="n">ViewGroup</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">MATCH_PARENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
-    <span class="n">topMargin</span> <span class="p">=</span> <span class="m">100</span>
-<span class="p">}</span>
-<span class="n">addView</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">marginParams</span><span class="p">)</span>
-</code></pre></div><p>ではどうやるかというと、addViewするViewGroupのLayoutParamsにMarginLayoutParamsを渡してあげるのです。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"> <span class="k">val</span> <span class="py">marginParams</span> <span class="p">=</span> <span class="n">MarginLayoutParams</span><span class="p">(</span><span class="n">ViewGroup</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">MATCH_PARENT</span><span class="p">,</span> <span class="n">ViewGroup</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">MATCH_PARENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">topMargin</span> <span class="p">=</span> <span class="m">100</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">addView</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">marginParams</span><span class="p">)</span>
+</span></span></code></pre></div><p>ではどうやるかというと、addViewするViewGroupのLayoutParamsにMarginLayoutParamsを渡してあげるのです。<br>
 addViewする対象がFrameLayoutの場合はFrameLayout.LayoutParamsのコンストラクタに渡しましょう。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"> <span class="k">val</span> <span class="py">marginParams</span> <span class="p">=</span> <span class="n">MarginLayoutParams</span><span class="p">(</span><span class="n">ViewGroup</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">MATCH_PARENT</span><span class="p">,</span> <span class="n">ViewGroup</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">MATCH_PARENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
-    <span class="n">topMargin</span> <span class="p">=</span> <span class="m">100</span>
-<span class="p">}</span>
-<span class="k">val</span> <span class="py">params</span> <span class="p">=</span> <span class="n">FrameLayout</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">(</span><span class="n">marginParams</span><span class="p">)</span>
-<span class="n">addView</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"> <span class="k">val</span> <span class="py">marginParams</span> <span class="p">=</span> <span class="n">MarginLayoutParams</span><span class="p">(</span><span class="n">ViewGroup</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">MATCH_PARENT</span><span class="p">,</span> <span class="n">ViewGroup</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">MATCH_PARENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">topMargin</span> <span class="p">=</span> <span class="m">100</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">params</span> <span class="p">=</span> <span class="n">FrameLayout</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">(</span><span class="n">marginParams</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">addView</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</span></span></code></pre></div><hr>
 <h1 id="追記2018-03-31t1358064100">追記(2018-03-31T13:58:06+41:00)</h1>
 <p>FrameLayoutParamsはMarginLayoutParamsを継承しているので、わざわざMarginLayoutParamsから作る必要はなかった。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">params</span> <span class="p">=</span> <span class="n">FrameLayout</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">(</span><span class="n">FrameLayout</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">MATCH_PARENT</span><span class="p">,</span> <span class="n">FrameLayout</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">MATCH_PARENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
-    <span class="n">topMargin</span> <span class="p">=</span> <span class="m">100</span>
-<span class="p">}</span>
-</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">val</span> <span class="py">params</span> <span class="p">=</span> <span class="n">FrameLayout</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">(</span><span class="n">FrameLayout</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">MATCH_PARENT</span><span class="p">,</span> <span class="n">FrameLayout</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">MATCH_PARENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">topMargin</span> <span class="p">=</span> <span class="m">100</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></p>
 
   </article>
 </main>

@@ -1,0 +1,161 @@
+
+<!doctype html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+  <title>今こそ技術者は技術者倫理を再履修すべき - kuluna.class</title>
+  <link rel="icon" href="https://kuluna.github.io/blog/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <meta property="og:title" content="今こそ技術者は技術者倫理を再履修すべき - kuluna.class">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kuluna.github.io/blog/post/20221009/">
+  
+  <meta property="og:description" content="TL:DR Danbooruや自分でないイラストレーターが描いた絵を学習元に使うのは気持ちは置いといて法律上は問題ない 技術者は安易にGUIを与えるな あ..." />
+  
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://kuluna.github.io/blog/css/theme.css">
+</head>
+<body>
+<header class="mdc-top-app-bar" style="top: 0px;">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <span class="mdc-top-app-bar__title"><a href="https://kuluna.github.io/blog/" class="title-link">kuluna.class</a></span>
+    </section>
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+      <a href="https://twitter.com/kuluna" class="mdc-top-app-bar__action-item mdc-icon-button">
+        <img src="https://kuluna.github.io/blog/images/twitter.png" />
+      </a>
+      <a href="https://github.com/kuluna" class="mdc-top-app-bar__action-item mdc-icon-button">
+        <img src="https://kuluna.github.io/blog/images/github.png" />
+      </a>
+      <a href="https://qiita.com/kuluna" class="mdc-top-app-bar__action-item mdc-button">Qiita</a>
+    </section>
+  </div>
+</header>
+
+
+<main class="mdc-top-app-bar--fixed-adjust">
+  <article class="mdc-card mdc-elevation--z6 default-padding">
+    <header>
+      <h1 class="entry-title">今こそ技術者は技術者倫理を再履修すべき</h1>
+      <p class="entry-date">2022-10-09 08:22:46 &#43;0900 JST</p>
+      <p>
+        Categories:
+        
+          <a href="https://kuluna.github.io/blog/categories/ai">AI</a>
+        
+          <a href="https://kuluna.github.io/blog/categories/stable-diffusion">Stable Diffusion</a>
+        
+          <a href="https://kuluna.github.io/blog/categories/%E3%83%9D%E3%82%A8%E3%83%A0">ポエム</a>
+        
+      </p>
+      
+      <div class="socials">
+        
+        <button id="button_share" style="visibility: hidden;" class="mdc-button" onclick="share()">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">Share</span>
+        </button>
+        <script>
+          window.addEventListener('load', function() {
+            if (navigator.share) {
+              document.getElementById('button_share').style.visibility = 'visible';
+            }
+          })
+          function share() {
+            
+            if (navigator.share) {
+              navigator.share({ text: document.title, url: location.href });
+            }
+          }
+        </script>
+      </div>
+    </header>
+
+    <p><h1 id="tldr">TL:DR</h1>
+<ul>
+<li>Danbooruや自分でないイラストレーターが描いた絵を学習元に使うのは気持ちは置いといて法律上は問題ない</li>
+<li>技術者は安易にGUIを与えるな</li>
+<li>あなたが公開するものはあなたの責任が伴う</li>
+</ul>
+<hr>
+<p>最近イラストAI界隈がとても活発ですね。<br>
+発端は<a href="https://github.com/CompVis/stable-diffusion">Stable Diffusion</a>というOSSが公開されたことで火がついたかなと思います。</p>
+<p>Stable Diffusionは簡単にAIがイラストを生成できるツールで、特に写実系のイラストの生成はとても正確に描いているように見えました。今までのAIと比べてその精度が段違いだったのです。</p>
+<p>GoogleのImaginが非公開だったことがきっかけでStableDiffusionが作られたこと自体は非常に良いことだと思いますし、そこからたくさんの派生AIモデルが生まれたのも非常に面白いですね。AIといえど万能ではないので一部の絵柄に特化したものがたくさん公開されていて毎週のように新しいニュースが飛び込んでくるほどでした。</p>
+<p>ここまではよかったのですが、だんだんと怪しい動きも見えてきました。<br>
+個人的にこの流れはよくないなと思ったものを挙げていきます。</p>
+<h1 id="1-nsfw解除パッチ">1. NSFW解除パッチ</h1>
+<p>まずStableDiffusionのNSFW(Not Safe For Work)パッチを解除する方法が日本語で公開されたことです。こういった類のものは仮にやるとしてもこっそりやるものであって、<strong>全世界</strong>で公開するものではないのではと思ってしまいます。<br>
+技術者というのは技術を追求する習性があり、その解除方法も技術の1つなだけですしそれ自体は悪意のあるスクリプトではないのも確かです。<br>
+そこで大事なのが、それを全世界に公開することによる影響です。少し考えればこの技術を日本語で公開すると利用の敷居が下がり、技術に明るくない人も利用可能になります。そうなるとスクリプトキディが悪さをするのは当然で、Pixivはもちろんあらゆるところで生成された画像が無造作に投稿される自体となりました。</p>
+<p>そしてNovelAIもNSFWが公式で外せる設定が可能な状態で公開されました。NoelAI自体は生成機能しか提供せず、生成後の画像の権利も主張しない代わりに責任も自己責任という規約のもと提供されています。つまり利用者の<strong>倫理</strong>に委ねられているわけです。しかしとても簡単なGUIで倫理を履修していない人が使うとどうなるか&hellip;&hellip;。<br>
+その結果が無造作に投稿されるだけでなく、DLSiteにてR18イラストが有料で販売され始めました。しかも生成コストがとてもやすいので100円という超低価格で売られています。ここまでくると絵師側も黙って見過ごすわけにもいかないというわけです。</p>
+<p>Stable Diffusionの時から一部絵師界隈では抵抗感のようなものが感じられましたが、その時の生成された絵を見ればまだ脅威ではないという雰囲気でした。それがWaifuDiffusionの登場で一気に危機感が現れ、そしてNovelAIでは見過ごせないほどの精度になったことで一気に爆発したところでしょうか。</p>
+<p>これはもう安易にNSFWが外せるようGUIで設定できるようにしたこと、もっと言えば評価前の技術に対して簡単にアクセスできすぎてしまう環境が整いすぎていたことが原因だと考えています。<br>
+そうなるとせっかくオープンにされた技術が使えないじゃないか！となるわけですが、個人的には<strong>だからこそPythonを勉強するきっかけになってほしかった</strong>と思うのです。<br>
+エロを見たい！という強い感情をエネルギーにPythonを学習してほしかったです。ちなみに私はGo言語そっちのけでPython勉強始めました。</p>
+<p>GUIで簡単に生成できるようにしたり、NSFWの解除パッチを意気揚々と紹介するアフィブログが出たり、Google Colabでタダ乗りできますと宣伝する人がいたりという動きがそこそこありました。これらも単体で見れば単に技術を紹介しているだけなのでそれ自体に問題はないものの、<strong>それを公開することで社会にどういう影響を与えるか</strong>までは考えに至ってないのではと正直思ってしまいます。</p>
+<p>そしてこれらはそこらの人が単純に興味をもってできるものではありません。これらの動きができるのはプログラミング知識のある<strong>ソフトウェア技術者</strong>です。技術者がその技術の興味だけで公開したものが今の結果を産んでいると私は考えます。<br>
+だからこそ技術者は技術者倫理を今一度再履修すべきだと思うのです。そしてその公開したものはあなたがその社会的責任を負うべきだと考えます。<br>
+(これについては個人的に好きな言葉「ノブリス・オブリージュ」に強く影響してのお気持ちです。プログラミングという強すぎる魔法を使える人はそれ相応の社会的責任が伴うべきだという考えです。)</p>
+<h1 id="2-mimic">2. mimic</h1>
+<p>一方国産では自身のイラストをファインチューニング(追加学習)して似た絵柄を生成できるmimicというWebサービスがBeta展開されましたが、すぐに一時非公開となりました。(現在は承認制にて再開)<br>
+一部絵師が一斉に拒否反応を示し、さらに「自分の絵を学習に使わないでください」と表明するまでに至り、いわゆる大炎上したからです。<br>
+この炎上でクローズドベータで協力していた一部の絵師まで炎上が広がりTwitterで謝罪するなど目も当てられない状況になっていました。</p>
+<p>mimic騒動を俯瞰から見ていた身としては、まず「自分の絵を学習に使わないでください」というのは気持ちは置いといて法律上は問題がないことの認知が足りていなかったと思います。<br>
+そして個人的に最も問題だったのはサービスの訴求ポイントが曖昧だったことです。なんとなく絵師のためのサービスとして始めたが絵師以外にも利用できるようになっていたこと、本人が描いた絵かどうかの判定をしていなかったこと、そして学習に使った絵は著作者人格権を失うことを規約に書いていた点が問題だったと感じました。<br>
+つまり絵師をターゲットにしたかったがそれ以外の人も簡単に利用できるようになっていたということです。</p>
+<p>原点に立ち返り絵師の<strong>ための</strong>サービスとして宣伝していればそこまで炎上しなかったのではと思います。この「ための」というユーザー目線が大事で、どうしてもAIという言葉を最前線に置きたくなりますがAIは所詮技術、それを使うと「絵師は何が嬉しいのか？」の答えを宣伝すべきでした。<br>
+例えば「あなたが苦手な構図をあなたの絵で練習できる！」とかどうでしょう。あなたの手ぐせがついた普段とは違う構図が出力できることでその絵を上からなぞり、苦手なところを集中して練習できるサービスという訴求です。これなら画力向上を目的とした絵師を明確にターゲットにできますし、それ以外の人がいたずらにファインチューニングをするようなことも比較的抑えられたのではないかと思います。</p>
+<p>現在mimicはその原点に原点に立ち返った絵師のためのサービスとなるべく、承認制で再開しています。mimicは個人的にこれからも期待しています。</p>
+<h1 id="3-danbooru">3. Danbooru</h1>
+<p>Waifu DiffusionやNovelAIの登場で良くも悪くも有名になったのがDanbooruというサイトです。これは萌えイラストを集め、そのイラストにメタタグをつけることができるWebサービスです。ただこのDanbooruに無断転載されている絵が大量にあり、容易に鑑賞目的の利用が可能だったりと、</p>
+<p>Dannboruのような無断転載サイトで学習された物なんか使えるか！と拳を振り上げた人たちが、Stable Diffusionの時点で使われていた、NovelAIすげーと使っていたが公式でDanbooruを学習元に利用していると公言した、そのNovelAIに対してDanbooruもあんましよく思ってないみたいな記事が出たといろいろあって拳を振り下ろす対象やタイミングを失い、最終的には「この流れは止められない」と泣き寝入りのような仕草をしているように見えました。<br>
+これもありDanbooruって本当に悪なの？相対的にNovelAIのほうが邪悪じゃない？でもそのNovelAIも後述でいろいろあり〜みたいな、もうぐっちゃぐっちゃな状態です。</p>
+<p>Danbooruは自身が描いた絵であることを証明できればライブラリから画像が削除できることをわざわざ日本語で解説してくれています。まずはこれを確認するのが良いと思います。<br>
+<a href="https://danbooru.donmai.us/contact">Contact - Danbooru</a></p>
+<p>ただ同時にDanbooruはこうも言っています。</p>
+<blockquote>
+<p>現時点ではNovelAIの学習データはすでに完成しており、AIモデルの構造上、例えDanbooruから絵を削除したところで、その絵から学習された情報がNovelAIの手元から勝手に無くなるわけではありませんので、ご注意ください。</p>
+</blockquote>
+<p><del>Danbooruへの削除依頼を送るためにDeepL(翻訳AI)を使ったと言っている人はギャグなのかな。</del></p>
+<h1 id="4-novelaiのクラッキング">4. NovelAIのクラッキング</h1>
+<p>こちらも重大事件ですが、現在進行形なことと、さまざまな憶測が飛び交いソースが全部怪しく見えてしまうので詳細は割愛しますが、ざっくりいうと、<br>
+「NovelAIのサーバーがクラックされ、ソースコードや画像生成に使っていた学習モデルが流出した」です。個人情報は流出していないのが幸いです。</p>
+<p>単純に、理由はなんであれクラッキングはよくないよ。以上。</p>
+<p>ただNovelAIのモデルが流出したことを受けてStable DiffusionのGUIを作っていた技術者がNovelAIに対応しました！とか言ってたのは相当引きました。本当に倫理が壊れているなと。<br>
+流出したものはなかったことにはできないですが、見なかったことにしよう、たとえ手元に流れてきたとしてもそのまま消そうというふうにしてほしかったです。<br>
+上司が間違って社員全員にメールを送信してしまった時のように。</p>
+<h1 id="5-vtuberも敬遠">5. VTuberも敬遠</h1>
+<p>最後はもう蛇足なんだけど、今のTwitterで聞こえる声として(Twitterでというのが重要。絵師界隈全体ではないことに注意)AIイラストを利用するとこれまで支えてきたファンに申し訳ないからAIイラストをファンアートと呼ぶのはやめて欲しいという意見が出てきました。とある帰国子女に至っては見分けがつきませんでしたと言っており、もうそれなら
+AIイラストの権利関係については前述で述べたとおりAIが学習したイラストについては法律上問題なく、生成したイラストは普通のイラストと同じように扱えば良いだけなので、<br>
+結局のところ、その絵を適切に扱えるかはその人次第なのではという気がします。</p>
+<hr>
+<hr>
+<hr>
+<p>AIについて苦言を呈するこの構図は、はるか昔の産業革命から続く、新しい文化がやってきた時のリアクションそのものに見えます。おそらくですがアナログ絵が主流の時代にデジタル絵が登場した時にも同じリアクションがあったんじゃないかなと思います。Undoで何度でも描き直したりボカシやフィルタを使うことは、アナログで描けないやつらが逃げているだけとか、美術も知らないやつがフィルタで誤魔化しているだけとか。デジタル絵が主流になって20年ぐらい経った今はそんな声はほとんど聞かなくなったし、じゃぁアナログ絵師は死にましたかというと全然生き残っていますし、今のデジタル絵の立ち位置もそういう感じになるんじゃないかなと思っています。</p>
+</p>
+
+  </article>
+</main>
+
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42303570-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+

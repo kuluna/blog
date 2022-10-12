@@ -106,79 +106,79 @@
 <li>Retrofit 2.3.0</li>
 </ul>
 <p>まずはライブラリをインポートします。Gradle4で<code>compile</code>から<code>implementation</code>に変わったようです。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">apply</span> <span class="n">plugin</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">kotlin</span><span class="o">-</span><span class="n">kapt</span><span class="err">&#39;</span>
-
-<span class="n">dependencies</span> <span class="o">{</span>
-  <span class="n">implementation</span> <span class="err">&#39;</span><span class="n">com</span><span class="o">.</span><span class="na">squareup</span><span class="o">.</span><span class="na">retrofit2</span><span class="o">:</span><span class="n">retrofit</span><span class="o">:</span><span class="n">2</span><span class="o">.</span><span class="na">3</span><span class="o">.</span><span class="na">0</span><span class="err">&#39;</span>
-  <span class="n">implementation</span> <span class="err">&#39;</span><span class="n">com</span><span class="o">.</span><span class="na">squareup</span><span class="o">.</span><span class="na">retrofit2</span><span class="o">:</span><span class="n">converter</span><span class="o">-</span><span class="n">moshi</span><span class="o">:</span><span class="n">2</span><span class="o">.</span><span class="na">3</span><span class="o">.</span><span class="na">0</span><span class="err">&#39;</span> <span class="c1">// json converter
-</span><span class="c1"></span>  <span class="n">implementation</span> <span class="err">&#39;</span><span class="n">android</span><span class="o">.</span><span class="na">arch</span><span class="o">.</span><span class="na">lifecycle</span><span class="o">:</span><span class="n">runtime</span><span class="o">:</span><span class="n">1</span><span class="o">.</span><span class="na">0</span><span class="o">.</span><span class="na">3</span><span class="err">&#39;</span>
-  <span class="n">kapt</span> <span class="err">&#39;</span><span class="n">android</span><span class="o">.</span><span class="na">arch</span><span class="o">.</span><span class="na">lifecycle</span><span class="o">:</span><span class="n">compiler</span><span class="o">:</span><span class="n">1</span><span class="o">.</span><span class="na">0</span><span class="o">.</span><span class="na">0</span><span class="err">&#39;</span>
-<span class="o">}</span>
-</code></pre></div><p>Gradle4で<code>compile</code>から<code>implementation</code>に変わったようです。何故。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">apply</span> <span class="n">plugin</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">kotlin</span><span class="o">-</span><span class="n">kapt</span><span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">dependencies</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">implementation</span> <span class="err">&#39;</span><span class="n">com</span><span class="o">.</span><span class="na">squareup</span><span class="o">.</span><span class="na">retrofit2</span><span class="o">:</span><span class="n">retrofit</span><span class="o">:</span><span class="n">2</span><span class="o">.</span><span class="na">3</span><span class="o">.</span><span class="na">0</span><span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">implementation</span> <span class="err">&#39;</span><span class="n">com</span><span class="o">.</span><span class="na">squareup</span><span class="o">.</span><span class="na">retrofit2</span><span class="o">:</span><span class="n">converter</span><span class="o">-</span><span class="n">moshi</span><span class="o">:</span><span class="n">2</span><span class="o">.</span><span class="na">3</span><span class="o">.</span><span class="na">0</span><span class="err">&#39;</span> <span class="c1">// json converter
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">implementation</span> <span class="err">&#39;</span><span class="n">android</span><span class="o">.</span><span class="na">arch</span><span class="o">.</span><span class="na">lifecycle</span><span class="o">:</span><span class="n">runtime</span><span class="o">:</span><span class="n">1</span><span class="o">.</span><span class="na">0</span><span class="o">.</span><span class="na">3</span><span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">kapt</span> <span class="err">&#39;</span><span class="n">android</span><span class="o">.</span><span class="na">arch</span><span class="o">.</span><span class="na">lifecycle</span><span class="o">:</span><span class="n">compiler</span><span class="o">:</span><span class="n">1</span><span class="o">.</span><span class="na">0</span><span class="o">.</span><span class="na">0</span><span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Gradle4で<code>compile</code>から<code>implementation</code>に変わったようです。何故。</p>
 <p>次にLiveDataとRetrofitを橋渡しするクラスを用意します。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">data</span> <span class="k">class</span> <span class="nc">ResponseBody</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span>
-        <span class="k">var</span> <span class="py">body</span><span class="p">:</span> <span class="n">T</span><span class="p">?,</span>
-        <span class="k">var</span> <span class="py">error</span><span class="p">:</span> <span class="n">ResponseError</span><span class="p">?</span>
-<span class="p">)</span>
-
-<span class="k">data</span> <span class="k">class</span> <span class="nc">ResponseError</span><span class="p">(</span>
-        <span class="k">var</span> <span class="py">statusCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span>
-        <span class="k">var</span> <span class="py">message</span><span class="p">:</span> <span class="n">String</span>
-<span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">RetrofitLiveData</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">private</span> <span class="k">val</span> <span class="py">call</span><span class="p">:</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">:</span> <span class="n">LiveData</span><span class="p">&lt;</span><span class="n">ResponseBody</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;(),</span> <span class="n">Callback</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onActive</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(!</span><span class="n">call</span><span class="p">.</span><span class="n">isCanceled</span> <span class="o">&amp;&amp;</span> <span class="p">!</span><span class="n">call</span><span class="p">.</span><span class="n">isExecuted</span><span class="p">)</span> <span class="n">call</span><span class="p">.</span><span class="n">enqueue</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onFailure</span><span class="p">(</span><span class="n">call</span><span class="p">:</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Throwable</span><span class="p">?)</span> <span class="p">{</span>
-<span class="c1">//        not implemented
-</span><span class="c1"></span>    <span class="p">}</span>
-
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onResponse</span><span class="p">(</span><span class="n">call</span><span class="p">:</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?,</span> <span class="n">response</span><span class="p">:</span> <span class="n">Response</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="o">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">isSuccessful</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">value</span> <span class="p">=</span> <span class="n">ResponseBody</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">body</span><span class="p">(),</span> <span class="k">null</span><span class="p">)</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="k">val</span> <span class="py">err</span> <span class="p">=</span> <span class="n">ResponseError</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">code</span><span class="p">(),</span> <span class="n">response</span><span class="p">.</span><span class="n">message</span><span class="p">())</span>
-                <span class="n">value</span> <span class="p">=</span> <span class="n">ResponseBody</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="k">fun</span> <span class="nf">cancel</span><span class="p">()</span> <span class="p">=</span> <span class="k">if</span><span class="p">(!</span><span class="n">call</span><span class="p">.</span><span class="n">isCanceled</span><span class="p">)</span> <span class="n">call</span><span class="p">.</span><span class="n">cancel</span><span class="p">()</span> <span class="k">else</span> <span class="n">Unit</span>
-<span class="p">}</span>
-</code></pre></div><p>実際に橋渡しをしているのはRetrofitLiveDataのonResponseメソッドです。これはLiveDataを継承したクラスで、用意されている<code>value</code>に値をセットすることでobserverに伝搬することができます。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">data</span> <span class="k">class</span> <span class="nc">ResponseBody</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span>
+</span></span><span class="line"><span class="cl">        <span class="k">var</span> <span class="py">body</span><span class="p">:</span> <span class="n">T</span><span class="p">?,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">var</span> <span class="py">error</span><span class="p">:</span> <span class="n">ResponseError</span><span class="p">?</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">data</span> <span class="k">class</span> <span class="nc">ResponseError</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="k">var</span> <span class="py">statusCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">var</span> <span class="py">message</span><span class="p">:</span> <span class="n">String</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">RetrofitLiveData</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">private</span> <span class="k">val</span> <span class="py">call</span><span class="p">:</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">:</span> <span class="n">LiveData</span><span class="p">&lt;</span><span class="n">ResponseBody</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;(),</span> <span class="n">Callback</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onActive</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="n">call</span><span class="p">.</span><span class="n">isCanceled</span> <span class="o">&amp;&amp;</span> <span class="p">!</span><span class="n">call</span><span class="p">.</span><span class="n">isExecuted</span><span class="p">)</span> <span class="n">call</span><span class="p">.</span><span class="n">enqueue</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onFailure</span><span class="p">(</span><span class="n">call</span><span class="p">:</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Throwable</span><span class="p">?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//        not implemented
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onResponse</span><span class="p">(</span><span class="n">call</span><span class="p">:</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?,</span> <span class="n">response</span><span class="p">:</span> <span class="n">Response</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="o">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">isSuccessful</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">value</span> <span class="p">=</span> <span class="n">ResponseBody</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">body</span><span class="p">(),</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">val</span> <span class="py">err</span> <span class="p">=</span> <span class="n">ResponseError</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">code</span><span class="p">(),</span> <span class="n">response</span><span class="p">.</span><span class="n">message</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="k">value</span> <span class="p">=</span> <span class="n">ResponseBody</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">cancel</span><span class="p">()</span> <span class="p">=</span> <span class="k">if</span><span class="p">(!</span><span class="n">call</span><span class="p">.</span><span class="n">isCanceled</span><span class="p">)</span> <span class="n">call</span><span class="p">.</span><span class="n">cancel</span><span class="p">()</span> <span class="k">else</span> <span class="n">Unit</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>実際に橋渡しをしているのはRetrofitLiveDataのonResponseメソッドです。これはLiveDataを継承したクラスで、用意されている<code>value</code>に値をセットすることでobserverに伝搬することができます。</p>
 <p>ResponseBodyというクラスを用意していますが、これはLiveDataの仕様でsubscribeしたときのコールバック関数が1つしかないためです。その1つのコールバックに成功したときと失敗したときの両方のレスポンスが受け取れるようにしています。</p>
 <p>次にRetrofitでAPIを叩く準備をします。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">interface</span> <span class="nc">Api</span> <span class="p">{</span>
-    <span class="nd">@GET</span><span class="p">(</span><span class="s2">&#34;/entry/jsonlite/&#34;</span><span class="p">)</span>
-    <span class="k">fun</span> <span class="nf">getComments</span><span class="p">(</span><span class="nd">@Query</span><span class="p">(</span><span class="s2">&#34;url&#34;</span><span class="p">)</span> <span class="n">url</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">CommentResponse</span><span class="p">&gt;</span>
-<span class="p">}</span>
-
-<span class="k">object</span> <span class="nc">ApiClient</span> <span class="p">{</span>
-    <span class="k">val</span> <span class="py">hatena</span><span class="p">:</span> <span class="n">Api</span>
-        <span class="k">get</span><span class="p">()</span> <span class="p">{</span>
-            <span class="k">val</span> <span class="py">retrofit</span> <span class="p">=</span> <span class="n">Retrofit</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
-                    <span class="p">.</span><span class="n">baseUrl</span><span class="p">(</span><span class="s2">&#34;http://b.hatena.ne.jp&#34;</span><span class="p">)</span>
-                    <span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="n">OkHttpClient</span><span class="p">())</span>
-                    <span class="p">.</span><span class="n">addConverterFactory</span><span class="p">(</span><span class="n">MoshiConverterFactory</span><span class="p">.</span><span class="n">create</span><span class="p">())</span>
-                    <span class="p">.</span><span class="n">build</span><span class="p">()</span>
-            <span class="k">return</span> <span class="n">retrofit</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">Api</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
-        <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>コンバーターは不要です。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">interface</span> <span class="nc">Api</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@GET</span><span class="p">(</span><span class="s2">&#34;/entry/jsonlite/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">getComments</span><span class="p">(</span><span class="nd">@Query</span><span class="p">(</span><span class="s2">&#34;url&#34;</span><span class="p">)</span> <span class="n">url</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">Call</span><span class="p">&lt;</span><span class="n">CommentResponse</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">object</span> <span class="nc">ApiClient</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">hatena</span><span class="p">:</span> <span class="n">Api</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">val</span> <span class="py">retrofit</span> <span class="p">=</span> <span class="n">Retrofit</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">baseUrl</span><span class="p">(</span><span class="s2">&#34;http://b.hatena.ne.jp&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="n">OkHttpClient</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">addConverterFactory</span><span class="p">(</span><span class="n">MoshiConverterFactory</span><span class="p">.</span><span class="n">create</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">retrofit</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">Api</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>コンバーターは不要です。<br>
 最後にActivityで呼び出します。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-    <span class="o">..</span><span class="p">.</span>
-
-    <span class="n">RetrofitLiveData</span><span class="p">(</span><span class="n">ApiClient</span><span class="p">.</span><span class="n">hatena</span><span class="p">.</span><span class="n">getComments</span><span class="p">(</span><span class="s2">&#34;http://www.bunkakeihack.com/entry/2018/01/06/200800&#34;</span><span class="p">)).</span><span class="n">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Observer</span> <span class="p">{</span>
-        <span class="c1">// it.body
-</span><span class="c1"></span>        <span class="c1">// it.error
-</span><span class="c1"></span>    <span class="p">})</span>
-<span class="p">}</span>
-</code></pre></div><p>RetrofitLiveDataの中でRetrofitのAPI通信を実行します。その結果はobserveメソッド内のコールバックで受け取ります。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">..</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">RetrofitLiveData</span><span class="p">(</span><span class="n">ApiClient</span><span class="p">.</span><span class="n">hatena</span><span class="p">.</span><span class="n">getComments</span><span class="p">(</span><span class="s2">&#34;http://www.bunkakeihack.com/entry/2018/01/06/200800&#34;</span><span class="p">)).</span><span class="n">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// it.body
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// it.error
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>RetrofitLiveDataの中でRetrofitのAPI通信を実行します。その結果はobserveメソッド内のコールバックで受け取ります。<br>
 このコールバックの中が上の図でいう赤枠の部分にあたります。例えRetrofitの処理が終わったとしても、onPause時はこのコールバックが実行されることはありません。<br>
 なのでこの中で安心してTextViewにsetTextができます。</p>
 <p>とりあえずこれで安全なAPI通信ができるようになりました。</p>

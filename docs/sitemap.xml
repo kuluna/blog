@@ -2,23 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://kuluna.github.io/blog/categories/ai/</loc>
+    <lastmod>2022-10-12T12:09:46+09:00</lastmod>
+  </url><url>
     <loc>https://kuluna.github.io/blog/categories/</loc>
-    <lastmod>2021-12-04T09:15:37+09:00</lastmod>
+    <lastmod>2022-10-12T12:09:46+09:00</lastmod>
+  </url><url>
+    <loc>https://kuluna.github.io/blog/</loc>
+    <lastmod>2022-10-12T12:09:46+09:00</lastmod>
+  </url><url>
+    <loc>https://kuluna.github.io/blog/post/</loc>
+    <lastmod>2022-10-12T12:09:46+09:00</lastmod>
+  </url><url>
+    <loc>https://kuluna.github.io/blog/categories/stable-diffusion/</loc>
+    <lastmod>2022-10-12T12:09:46+09:00</lastmod>
+  </url><url>
+    <loc>https://kuluna.github.io/blog/categories/%E3%83%9D%E3%82%A8%E3%83%A0/</loc>
+    <lastmod>2022-10-12T12:09:46+09:00</lastmod>
+  </url><url>
+    <loc>https://kuluna.github.io/blog/post/20221012/</loc>
+    <lastmod>2022-10-12T12:09:46+09:00</lastmod>
   </url><url>
     <loc>https://kuluna.github.io/blog/categories/game/</loc>
     <lastmod>2021-12-04T09:15:37+09:00</lastmod>
   </url><url>
-    <loc>https://kuluna.github.io/blog/</loc>
-    <lastmod>2021-12-04T09:15:37+09:00</lastmod>
-  </url><url>
-    <loc>https://kuluna.github.io/blog/post/</loc>
-    <lastmod>2021-12-04T09:15:37+09:00</lastmod>
-  </url><url>
     <loc>https://kuluna.github.io/blog/post/20211204/</loc>
     <lastmod>2021-12-04T09:15:37+09:00</lastmod>
-  </url><url>
-    <loc>https://kuluna.github.io/blog/categories/ai/</loc>
-    <lastmod>2021-11-28T21:44:31+09:00</lastmod>
   </url><url>
     <loc>https://kuluna.github.io/blog/categories/movie/</loc>
     <lastmod>2021-11-28T21:44:31+09:00</lastmod>

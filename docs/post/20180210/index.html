@@ -78,29 +78,29 @@
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p>CoodinatorLayoutを使ってスクロール時にActionBarを消した処理を入れてみました。<br>
 2列に表示されているリストはRecyclerViewのLayoutManagerを <code>StaggeredGridLayoutManager</code> をすることで、高さが可変なGridLayoutを表示することができます。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">recyclerView</span><span class="p">.</span><span class="n">layoutManager</span> <span class="p">=</span> <span class="n">StaggeredGridLayoutManager</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">StaggeredGridLayoutManager</span><span class="p">.</span><span class="n">VERTICAL</span><span class="p">)</span>
-</code></pre></div><p>たったこれだけであのレイアウトになるんですね。すごい。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">recyclerView</span><span class="p">.</span><span class="n">layoutManager</span> <span class="p">=</span> <span class="n">StaggeredGridLayoutManager</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">StaggeredGridLayoutManager</span><span class="p">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+</span></span></code></pre></div><p>たったこれだけであのレイアウトになるんですね。すごい。</p>
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">あっ、これすごく良い <a href="https://t.co/V6wqisssrc">pic.twitter.com/V6wqisssrc</a></p>&mdash; kuluna (@kuluna) <a href="https://twitter.com/kuluna/status/959985334804037633?ref_src=twsrc%5Etfw">2018年2月4日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p>こちらは設定でJavaScriptを実行しないようにできるモードを追加してみたものです。明らかにロードの時間が違いますね。<br>
 AndroidのWebViewはデフォルトでJavaScriptが無効になっています。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">webView</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">run</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="n">javaScriptEnabled</span> <span class="p">=</span> <span class="k">true</span> <span class="p">}</span>
-</code></pre></div><p>これでJavaScriptが有効になるのですが、あえて無効のままにするオプションを追加してみました。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">webView</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">run</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="n">javaScriptEnabled</span> <span class="p">=</span> <span class="k">true</span> <span class="p">}</span>
+</span></span></code></pre></div><p>これでJavaScriptが有効になるのですが、あえて無効のままにするオプションを追加してみました。<br>
 最近のWebはJavaScriptにあまり頼らなくてもリッチな表示ができているので、ある程度のサイトはこれで読み込み速度を大幅に向上させることができます。一応メニューからブラウザで開く機能もつけたので、より詳細にページを見たい場合はブラウザで開くことができます。</p>
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ダークテーマにしてみたのと、ブコメをさくっと見られるモードを用意しました。良さげ。 <a href="https://t.co/dR7HXjolwU">pic.twitter.com/dR7HXjolwU</a></p>&mdash; kuluna (@kuluna) <a href="https://twitter.com/kuluna/status/960104832966180864?ref_src=twsrc%5Etfw">2018年2月4日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p>このあたりから画面もFragmentで分割するようにしました。ダークテーマですがどうもRecyclerViewで表示するViewにはデフォルトでアプリのテーマが設定されないようなので、XMLにthemeを追記することでダークテーマになりました。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;android.support.v7.widget.CardView</span>
-        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
-        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
-        <span class="na">android:layout_marginBottom=</span><span class="s">&#34;4dp&#34;</span>
-        <span class="na">android:layout_marginEnd=</span><span class="s">&#34;4dp&#34;</span>
-        <span class="na">android:layout_marginStart=</span><span class="s">&#34;4dp&#34;</span>
-        <span class="na">android:layout_marginTop=</span><span class="s">&#34;4dp&#34;</span>
-        <span class="na">android:foreground=</span><span class="s">&#34;?android:attr/selectableItemBackground&#34;</span>
-        <span class="na">android:theme=</span><span class="s">&#34;@style/AppTheme&#34;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/android.support.v7.widget.CardView&gt;</span>
-</code></pre></div><p>あんまり深く考えずに、テーマが適用されてない箇所があったらとりあえずこのテーマでヨロ！って感じで設定しておけばいいんだと思います。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;android.support.v7.widget.CardView</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_marginBottom=</span><span class="s">&#34;4dp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_marginEnd=</span><span class="s">&#34;4dp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_marginStart=</span><span class="s">&#34;4dp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_marginTop=</span><span class="s">&#34;4dp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:foreground=</span><span class="s">&#34;?android:attr/selectableItemBackground&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:theme=</span><span class="s">&#34;@style/AppTheme&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/android.support.v7.widget.CardView&gt;</span>
+</span></span></code></pre></div><p>あんまり深く考えずに、テーマが適用されてない箇所があったらとりあえずこのテーマでヨロ！って感じで設定しておけばいいんだと思います。</p>
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">今日一日アプリを使ってみて、コメントからBackキーを押した時に一覧に戻ってしまうのがすごく微妙だったので、コメントを非表示にするだけにしてみました。 <a href="https://t.co/bXdYET2M50">pic.twitter.com/bXdYET2M50</a></p>&mdash; kuluna (@kuluna) <a href="https://twitter.com/kuluna/status/960515820215418880?ref_src=twsrc%5Etfw">2018年2月5日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p>ここは普通にFragmentManagerのbackstackを・・・とやろうと思ったのですが、そうするとFragmentを毎回生成することになるので単純にブコメ表示するFragmentをshow/hideするだけにしています。そうすることで表示を切り替えても読み込みが発生せずサクサクと表示されるようになりました。</p>

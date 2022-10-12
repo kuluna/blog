@@ -6,22 +6,40 @@
     <description>Recent content in Categories on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 04 Dec 2021 09:15:37 +0900</lastBuildDate><atom:link href="https://kuluna.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Oct 2022 12:09:46 +0900</lastBuildDate><atom:link href="https://kuluna.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://kuluna.github.io/blog/categories/ai/</link>
+      <pubDate>Wed, 12 Oct 2022 12:09:46 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/categories/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stable Diffusion</title>
+      <link>https://kuluna.github.io/blog/categories/stable-diffusion/</link>
+      <pubDate>Wed, 12 Oct 2022 12:09:46 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/categories/stable-diffusion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ポエム</title>
+      <link>https://kuluna.github.io/blog/categories/%E3%83%9D%E3%82%A8%E3%83%A0/</link>
+      <pubDate>Wed, 12 Oct 2022 12:09:46 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/categories/%E3%83%9D%E3%82%A8%E3%83%A0/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Game</title>
       <link>https://kuluna.github.io/blog/categories/game/</link>
       <pubDate>Sat, 04 Dec 2021 09:15:37 +0900</pubDate>
       
       <guid>https://kuluna.github.io/blog/categories/game/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>AI</title>
-      <link>https://kuluna.github.io/blog/categories/ai/</link>
-      <pubDate>Sun, 28 Nov 2021 21:44:31 +0900</pubDate>
-      
-      <guid>https://kuluna.github.io/blog/categories/ai/</guid>
       <description></description>
     </item>
     

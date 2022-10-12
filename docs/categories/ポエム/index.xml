@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ポエム on kuluna.class</title>
+    <link>https://kuluna.github.io/blog/categories/%E3%83%9D%E3%82%A8%E3%83%A0/</link>
+    <description>Recent content in ポエム on kuluna.class</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Wed, 12 Oct 2022 12:09:46 +0900</lastBuildDate><atom:link href="https://kuluna.github.io/blog/categories/%E3%83%9D%E3%82%A8%E3%83%A0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>今こそ技術者は技術者倫理を再履修すべき</title>
+      <link>https://kuluna.github.io/blog/post/20221012/</link>
+      <pubDate>Wed, 12 Oct 2022 12:09:46 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20221012/</guid>
+      <description>TL:DR Danbooruや自分でないイラストレーターが描いた絵を学習元に使うのは気持ちは置いといて法律上は問題ない 技術者は安易にGUIを与えるな あ</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -74,27 +74,27 @@
 
     <p><p>Android Architecture Componentsの中にあるLiveDataが非常に便利で、クラス間での値のやりとりや非同期処理のコールバック等で大活躍するのでめちゃくちゃ多用します。<br>
 さてこのLiveDataなのですが、ひとついまいちだと思うのが値を取り出す時がnullableな型になっているということです。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">hoge</span><span class="p">.</span><span class="n">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Observer</span> <span class="p">{</span>
-  <span class="c1">// it is nullable
-</span><span class="c1"></span><span class="p">})</span>
-</code></pre></div><p>kotlinの場合はOptionalを回避することによって安全に値を受け取ることができますが、その分ネストが深くなってしまいます。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">hoge</span><span class="p">.</span><span class="n">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Observer</span> <span class="p">{</span>
-  <span class="k">it</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span>
-    <span class="c1">// it is non-null
-</span><span class="c1"></span>  <span class="p">}</span>
-<span class="p">})</span>
-</code></pre></div><p>ならば初めからnon-nullな場合のみコールバックが返ってくるようにすれば良いではないか！<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">hoge</span><span class="p">.</span><span class="n">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// it is nullable
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">})</span>
+</span></span></code></pre></div><p>kotlinの場合はOptionalを回避することによって安全に値を受け取ることができますが、その分ネストが深くなってしまいます。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">hoge</span><span class="p">.</span><span class="n">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">it</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// it is non-null
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></div><p>ならば初めからnon-nullな場合のみコールバックが返ってくるようにすれば良いではないか！<br>
 ということでこんな拡張関数を生やしてみました。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="p">&lt;</span><span class="nc">T</span><span class="p">&gt;</span> <span class="nf">LiveData</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;.</span><span class="n">observe</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="n">LifecycleOwner</span><span class="p">,</span> <span class="n">observer</span><span class="p">:</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Unit</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">observe</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">android</span><span class="p">.</span><span class="n">arch</span><span class="p">.</span><span class="n">lifecycle</span><span class="p">.</span><span class="n">Observer</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
-        <span class="k">it</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span> <span class="n">observer</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">}</span>
-    <span class="p">})</span>
-<span class="p">}</span>
-</code></pre></div><p>LiveDataの中で自分をobserveしてnon-nullの時だけコールバックを実行します。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">hoge</span><span class="p">.</span><span class="n">observe</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// it is non-null
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></div><p>らくちん。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">fun</span> <span class="p">&lt;</span><span class="nc">T</span><span class="p">&gt;</span> <span class="nf">LiveData</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;.</span><span class="n">observe</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="n">LifecycleOwner</span><span class="p">,</span> <span class="n">observer</span><span class="p">:</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Unit</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">observe</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">android</span><span class="p">.</span><span class="n">arch</span><span class="p">.</span><span class="n">lifecycle</span><span class="p">.</span><span class="n">Observer</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">it</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span> <span class="n">observer</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>LiveDataの中で自分をobserveしてnon-nullの時だけコールバックを実行します。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">hoge</span><span class="p">.</span><span class="n">observe</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// it is non-null
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>らくちん。</p>
 </p>
 
   </article>

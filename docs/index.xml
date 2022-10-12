@@ -6,7 +6,16 @@
     <description>Recent content on kuluna.class</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 04 Dec 2021 09:15:37 +0900</lastBuildDate><atom:link href="https://kuluna.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Oct 2022 12:09:46 +0900</lastBuildDate><atom:link href="https://kuluna.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>今こそ技術者は技術者倫理を再履修すべき</title>
+      <link>https://kuluna.github.io/blog/post/20221012/</link>
+      <pubDate>Wed, 12 Oct 2022 12:09:46 +0900</pubDate>
+      
+      <guid>https://kuluna.github.io/blog/post/20221012/</guid>
+      <description>TL:DR Danbooruや自分でないイラストレーターが描いた絵を学習元に使うのは気持ちは置いといて法律上は問題ない 技術者は安易にGUIを与えるな あ</description>
+    </item>
+    
     <item>
       <title>ゲーム開発ブログにCi-enを採用した理由</title>
       <link>https://kuluna.github.io/blog/post/20211204/</link>
